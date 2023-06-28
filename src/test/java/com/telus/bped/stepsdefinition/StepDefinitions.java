@@ -1244,7 +1244,7 @@ public class StepDefinitions extends BaseTest {
 
 		MainframeSteps.launchMainframeApplication(cmd);
 
-		String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
+		//String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
 
 		// Reporting.logReporter(Status.INFO,"Mainframe Screenshots Available at : <a
 		// href='"+screenshotPath+"'>SCREENSHOTS LINK</a>");
@@ -1253,10 +1253,23 @@ public class StepDefinitions extends BaseTest {
 		// href='D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\Mainframe
 		// Demo Codes POCMainframeAppUpdatedmainframeScreenshots'>SCREENSHOTS
 		// LINK</a>");
-		File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
-		GenericUtils.getAllImagesHelper(f, "CRIS");
+		
+		
+		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
+		
+		
+		
+		
+		//GenericUtils.getAllImagesHelper(f, "CRIS");
 
 		mainframeCrisStatus = MainframeSteps.getMainframeAppStatus();
+		
+		
+		
+		
+		
+		
+		
 //		String mainframeScreenshot=System.getProperty("user.dir");
 //		Reporting.logReporter(Status.INFO, "Mainframe Screenshots Available at : <a href='"+mainframeScreenshot+"'>Screenshots LINK</a>");
 
@@ -1287,9 +1300,17 @@ public class StepDefinitions extends BaseTest {
 				+ "E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atest\\soecs.robot\"";
 		// +
 		// "E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atest\\soecs.robot\"";
+		
+		
+		
+		
 		MainframeSteps.launchMainframeApplication(cmd);
 
-		String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
+		//String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
+		
+		
+		
+		
 
 		// Reporting.logReporter(Status.INFO,"SOECS Screenshots Available at : <a
 		// href='D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\Mainframe
@@ -1304,25 +1325,24 @@ public class StepDefinitions extends BaseTest {
 		// File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
 
 		
+		/*
+		 * try { File file = new File(
+		 * "E:\\J2\\workspace\\TestAutomation\\launchSOECS.jpg");
+		 * 
+		 * byte[] fileBytes = new byte[(int) file.length()]; try (FileInputStream
+		 * fileInputStream = new FileInputStream(file)) {
+		 * fileInputStream.read(fileBytes); } String base64Image =
+		 * Base64.getEncoder().encodeToString(fileBytes);
+		 * Reporting.logReporter(Status.INFO, "TESTSS",
+		 * MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
+		 * Reporting.logReporter(Status.INFO, "Reached till this point");
+		 * 
+		 * } catch (Exception e) { // TODO Auto-generated catch block
+		 * Reporting.logReporter(Status.INFO, "Error:===========================>" +
+		 * e.getMessage()); }
+		 * 
+		 */
 		
-		try {
-			File file = new File(
-					"E:\\J2\\workspace\\TestAutomation\\launchSOECS.jpg");
-
-			byte[] fileBytes = new byte[(int) file.length()];
-			try (FileInputStream fileInputStream = new FileInputStream(file)) {
-				fileInputStream.read(fileBytes);
-			}
-			String base64Image = Base64.getEncoder().encodeToString(fileBytes);
-			Reporting.logReporter(Status.INFO, "TESTSS",
-					MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
-			Reporting.logReporter(Status.INFO, "Reached till this point");
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			Reporting.logReporter(Status.INFO, "Error:===========================>" + e.getMessage());
-		}
-
 		
 		mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
 		
