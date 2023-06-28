@@ -1306,7 +1306,7 @@ public class StepDefinitions extends BaseTest {
 		
 		
 		File file = new File(
-				"E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\target\\extent-reports\\SOECS_first.jpg");
+				"E:\\J2\\workspace\\TestAutomation\\launchSOECS.jpg");
 
 		byte[] fileBytes = new byte[(int) file.length()];
 		try (FileInputStream fileInputStream = new FileInputStream(file)) {
