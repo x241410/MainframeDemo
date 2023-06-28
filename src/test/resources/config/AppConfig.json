@@ -1,0 +1,10 @@
+{   
+	PATH_CONFIG: 'classpath:config/',
+	PATH_TESTS:'classpath:tests/',
+	PATH_UTILS: 'classpath:utils/testSpecs/',
+	PATH_FILES: 'classpath:files/',
+	PATH_API_OPS: 'classpath:services/BPED/',
+	PATH_API_PAYLOAD: 'classpath:testSpecs/BPED/',
+	PATH_DATAGRIDMGMT_OPS: 'classpath:services/',
+	PATH_TESTDATA: 'classpath:TestData/'
+}

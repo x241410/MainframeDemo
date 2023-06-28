@@ -1,0 +1,26 @@
+{
+  "PROD": {
+    "ENDPOINT_PROD": "https://cm90empr.tsl.telus.com:8443/automation-api/",
+    "ENDPOINT_CMS_PROD": "https://soa-mp-toll-pr.tsl.telus.com/CMO/ContractMgmt/SelfServe/ContractMgmtSvc_v3_0_vs0",
+    "ENDPOINT_CSBA_PROD":"http://cm-smpbillingvc-west-pr.tsl.telus.com:80/csba-billing-webservices-2_0/csbaBillingSvc",
+    "ENDPOINT_CSOMToken_PROD": "https://apigw-pr.tsl.telus.com/token",
+    "ENDPOINT_CSOM_PROD":"https://apigw-private-yul-pr-001.tsl.telus.com/service/crisServiceOrderingManagement/v1/serviceOrder",
+    "ENDPOINT_CAMToken_PROD":"",
+    "ENDPOINT_CAM_PROD":""
+  },
+  "NON_PROD": {
+    "ENDPOINT_NON_PROD": "https://btln009093:8443/automation-api/",
+    "ENDPOINT_CMS_NON_PROD": "https://soa-mp-toll-pr.tsl.telus.com/CMO/ContractMgmt/SelfServe/ContractMgmtSvc_v3_0_vs0",
+    "ENDPOINT_CLECOSS_NON_PROD": "https://ws-sm-partnermanagement-s1.tmi.telus.com/telus-clecaccess-app-web/services/CustomerInformation",
+    "ENDPOINT_TOLLFREEORDERSTATUS_NON_PROD":"https://apigw-st.tsl.telus.com/rest/it04/service/TollFreeOrderStatusRESTSvc_v1_0_RP/ping",
+    "ENDPOINT_CSBA_NON_PROD":"http://cm-smpbillingvc-west-st01.tsl.telus.com/csba-billing-webservices-2_0/csbaBillingSvc",
+    "ENDPOINT_CAMToken_NON_PROD":"https://apigw-st.tsl.telus.com/st/token",
+    "ENDPOINT_CAM_NON_PROD":"https://apigw-st.tsl.telus.com/customer/coreAccountManagement/v2/billingAccount",
+    "ENDPOINT_CSOMToken_NON_PROD": "https://apigw-st.tsl.telus.com/st/token",
+    "ENDPOINT_CSOM_NON_PROD":"https://apigw-private-yul-np-001.tsl.telus.com/service/crisServiceOrderingManagement/v1/serviceOrder"
+
+  },
+  "PT140": {
+    "ENDPOINT_PT140": ""
+  }
+}

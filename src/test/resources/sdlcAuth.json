@@ -1,0 +1,27 @@
+{
+	"JIRA_SERVER":{
+		"ConnectionEnable": "false", 
+		"AttachmentsEnable": "true", 
+		"ServerUrl": "", 
+	    "User": "", 
+		"Password": "",
+		"ProjectKey": "", 
+		"ProjectId": "",  			
+		"SearchMode": "",
+		"SearchModeSummary_CreateItemToReport": "",
+		"SearchModeSummary_SearchJqlBaseQuery": "",
+		"SearchModeSummary_SearchResultsMaxItemsToUpdate": "",
+		"ZephyrTestExecutionEnable": "", 
+		"ZephyrTestCycleId": "", 
+		"ZephyrTestCycleVersionId": ""
+	},
+	
+	"ALM_SERVER":{
+		"ServerUrl": ""
+	},
+	
+	"RALLY_SERVER":{
+		"ServerUrl": ""
+	}
+
+ }

@@ -1,0 +1,62 @@
+<settings xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <servers>
+        <server>
+            <id>github</id>
+            <configuration>
+                <httpHeaders>
+                    <property>
+                        <name>Authorization</name>
+                        <value>Bearer ${env.GH_READ_PACKAGES_TOKEN}</value>
+                    </property>
+                </httpHeaders>
+            </configuration>
+        </server>
+    </servers>
+
+    <activeProfiles>
+        <activeProfile>github</activeProfile>
+    </activeProfiles>
+
+<!--    <mirrors>
+      <mirror>
+        <id>TELUSCentral</id>
+        <mirrorOf>*,!github</mirrorOf>
+        <url>https://repo1.maven.org/maven2</url>
+      </mirror>
+    </mirrors>
+-->	
+    <profiles>
+        <profile>
+            <id>github</id>
+            <repositories>
+               <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>MaryTTS</id>
+                    <url>https://jcenter.bintray.com/</url>
+                </repository>
+                <repository>
+                    <id>github</id>
+                    <name>GitHub OWNER Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/telus/m3repository</url>
+                </repository>
+                <repository>
+                    <id>epam</id>
+                    <name>GitHub OWNER Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/reportportal/m3repository</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+</settings>
