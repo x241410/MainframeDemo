@@ -1237,24 +1237,8 @@ public class StepDefinitions extends BaseTest {
 				+ " " + robotFilePath;
 		MainframeSteps.launchMainframeApplication(cmd);
 
-		String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
-
-		// Reporting.logReporter(Status.INFO,"Mainframe Screenshots Available at : <a
-		// href='"+screenshotPath+"'>SCREENSHOTS LINK</a>");
-
-		// Reporting.logReporter(Status.INFO,"Mainframe Screenshots Available at : <a
-		// href='D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\Mainframe
-		// Demo Codes POCMainframeAppUpdatedmainframeScreenshots'>SCREENSHOTS
-		// LINK</a>");
-		File f = new File("D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\mainframeScreenshots");
-		GenericUtils.getAllImagesHelper(f, "CRIS");
-
 		mainframeCrisStatus = MainframeSteps.getMainframeAppStatus();
-//		String mainframeScreenshot=System.getProperty("user.dir");
-//		Reporting.logReporter(Status.INFO, "Mainframe Screenshots Available at : <a href='"+mainframeScreenshot+"'>Screenshots LINK</a>");
 
-		// D:\BPED_MAINFRAME\LATEST_MAINFRAME_DEMO\MainframeDemo\MainframeProject\atest\mainframe.robot
-		// D:\BPED_MAINFRAME\LATEST_MAINFRAME_DEMO\MainframeDemo
 	}
 
 	@Given("Test SOECS Applications")
@@ -1274,31 +1258,10 @@ public class StepDefinitions extends BaseTest {
 		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\soecs.robot\"";
 		String cmd = "cmd /c \"python -m robot  --variable SOECS_USERNAME:" + soecs_username
 				+ " --variable SOECS_PASSWORD:" + soecs_pass + " " + robotFilePath;
-		// +
-		// "E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atest\\soecs.robot\"";
 		MainframeSteps.launchMainframeApplication(cmd);
 
-		String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
-
-		// Reporting.logReporter(Status.INFO,"SOECS Screenshots Available at : <a
-		// href='D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\Mainframe
-		// Demo Codes POCMainframeAppUpdatedmainframeScreenshots'>SCREENSHOTS
-		// LINK</a>");
-
-		// Reporting.logReporter(Status.INFO,"SOECS Screenshots Available at : <a
-		// href='"+screenshotPath+"'>SCREENSHOTS LINK</a>");
-
-		// embed screenshots
-
-		File f = new File("D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\mainframeScreenshots");
-		GenericUtils.getAllImagesHelper(f, "SOECS");
-		// Reporting.logReporter(Status.INFO, "Login Details",
-		// MediaEntityBuilder.createScreenCaptureFromPath(("C:\\bin\\installOrder.jpg")).build());
 		mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
 
 	}
 
-	public static void main(String[] args) {
-		System.out.println(System.getProperty("user.dir"));
-	}
 }
