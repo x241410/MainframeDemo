@@ -10,7 +10,6 @@ import com.telus.bped.utils.GoogleSheetData;
 import com.telus.bped.utils.GoogleSheetsUtils;
 import com.test.files.interaction.ReadJSON;
 import com.test.reporting.Reporting;
-import com.test.screenshots.Screenshots;
 import com.test.ui.actions.BaseSteps;
 import com.test.ui.actions.BaseTest;
 import com.test.ui.actions.Validate;
@@ -39,14 +38,12 @@ import org.sikuli.script.Key;
 import org.sikuli.script.Screen;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Base64;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -1234,17 +1231,13 @@ public class StepDefinitions extends BaseTest {
 		String cris_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_APP_USERNAME"));
 		String cris_pass = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_APP_PASSWORD"));
 
-//		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\mainframe.robot\"";
-//		String cmd = "cmd /c \"python -m robot --variable ENV_USERNAME:" + imse_username + " --variable ENV_PASSWORD:"
-//				+ imse_pass + " --variable APP_USERNAME:" + cris_username + " --variable APP_PASSWORD:" + cris_pass
-//				+ " " + robotFilePath;
-		String cmd = "cmd /c \"robot --variable ENV_USERNAME:" + imse_username + " --variable ENV_PASSWORD:" + imse_pass
-				+ " --variable APP_USERNAME:" + cris_username + " --variable APP_PASSWORD:" + cris_pass + " "
-				+ "E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atest\\mainframe.robot\"";
-
+		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\mainframe.robot\"";
+		String cmd = "cmd /c \"python -m robot --variable ENV_USERNAME:" + imse_username + " --variable ENV_PASSWORD:"
+				+ imse_pass + " --variable APP_USERNAME:" + cris_username + " --variable APP_PASSWORD:" + cris_pass
+				+ " " + robotFilePath;
 		MainframeSteps.launchMainframeApplication(cmd);
 
-		//String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
+		String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
 
 		// Reporting.logReporter(Status.INFO,"Mainframe Screenshots Available at : <a
 		// href='"+screenshotPath+"'>SCREENSHOTS LINK</a>");
@@ -1253,23 +1246,10 @@ public class StepDefinitions extends BaseTest {
 		// href='D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\Mainframe
 		// Demo Codes POCMainframeAppUpdatedmainframeScreenshots'>SCREENSHOTS
 		// LINK</a>");
-		
-		
-		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
-		
-		
-		
-		
-		//GenericUtils.getAllImagesHelper(f, "CRIS");
+		File f = new File("D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\mainframeScreenshots");
+		GenericUtils.getAllImagesHelper(f, "CRIS");
 
 		mainframeCrisStatus = MainframeSteps.getMainframeAppStatus();
-		
-		
-		
-		
-		
-		
-		
 //		String mainframeScreenshot=System.getProperty("user.dir");
 //		Reporting.logReporter(Status.INFO, "Mainframe Screenshots Available at : <a href='"+mainframeScreenshot+"'>Screenshots LINK</a>");
 
@@ -1291,26 +1271,14 @@ public class StepDefinitions extends BaseTest {
 		String soecs_username = EncryptionUtils.decode(userAccess.getString("SOECS_USERNAME"));
 		String soecs_pass = EncryptionUtils.decode(userAccess.getString("SOECS_PASSWORD"));
 
-//		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\soecs.robot\"";
-//		String cmd = "cmd /c \"python -m robot  --variable SOECS_USERNAME:" + soecs_username
-//				+ " --variable SOECS_PASSWORD:" + soecs_pass + " " + robotFilePath;
-
-		String cmd = "cmd /c \"robot  --variable SOECS_USERNAME:" + soecs_username + " --variable SOECS_PASSWORD:"
-				+ soecs_pass + " "
-				+ "E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atest\\soecs.robot\"";
+		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\soecs.robot\"";
+		String cmd = "cmd /c \"python -m robot  --variable SOECS_USERNAME:" + soecs_username
+				+ " --variable SOECS_PASSWORD:" + soecs_pass + " " + robotFilePath;
 		// +
 		// "E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atest\\soecs.robot\"";
-		
-		
-		
-		
 		MainframeSteps.launchMainframeApplication(cmd);
 
-		//String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
-		
-		
-		
-		
+		String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
 
 		// Reporting.logReporter(Status.INFO,"SOECS Screenshots Available at : <a
 		// href='D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\Mainframe
@@ -1322,47 +1290,15 @@ public class StepDefinitions extends BaseTest {
 
 		// embed screenshots
 
-		// File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
-
-		
-		/*
-		 * try { File file = new File(
-		 * "E:\\J2\\workspace\\TestAutomation\\launchSOECS.jpg");
-		 * 
-		 * byte[] fileBytes = new byte[(int) file.length()]; try (FileInputStream
-		 * fileInputStream = new FileInputStream(file)) {
-		 * fileInputStream.read(fileBytes); } String base64Image =
-		 * Base64.getEncoder().encodeToString(fileBytes);
-		 * Reporting.logReporter(Status.INFO, "TESTSS",
-		 * MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
-		 * Reporting.logReporter(Status.INFO, "Reached till this point");
-		 * 
-		 * } catch (Exception e) { // TODO Auto-generated catch block
-		 * Reporting.logReporter(Status.INFO, "Error:===========================>" +
-		 * e.getMessage()); }
-		 * 
-		 */
-		
-		
+		File f = new File("D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\mainframeScreenshots");
+		GenericUtils.getAllImagesHelper(f, "SOECS");
+		// Reporting.logReporter(Status.INFO, "Login Details",
+		// MediaEntityBuilder.createScreenCaptureFromPath(("C:\\bin\\installOrder.jpg")).build());
 		mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
-		
-		
-		
-		
-		/**
-		 * GenericUtils.moveScreenshots(); String filePath =
-		 * System.getProperty("user.dir")+ Screenshots.getBaseFolderPath();
-		 * Reporting.logReporter(Status.INFO, "filePath: "+ filePath);
-		 * 
-		 * File f = new File(filePath); GenericUtils.getAllImagesHelper(f, "SOECS");
-		 * 
-		 * 
-		 * 
-		 * Reporting.logReporter(Status.INFO, "Login Details",
-		 * MediaEntityBuilder.createScreenCaptureFromPath(("E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\target\\extent-reports\\SOECS_first.jpg"))
-		 * .build()); 
-		 * 
-		 **/
+
 	}
 
+	public static void main(String[] args) {
+		System.out.println(System.getProperty("user.dir"));
+	}
 }
