@@ -4,14 +4,12 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.test.files.interaction.ReadJSON;
 import com.test.logging.Logging;
 import com.test.reporting.Reporting;
-import com.test.screenshots.Screenshots;
 import com.test.utils.Status;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -23,7 +21,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Base64;
 
 /**
  * ***************************************************************************
@@ -145,13 +142,9 @@ public class GenericUtils {
 	}
 
 	public static void moveScreenshots() {
-		Path sourceFolder = Paths.get("E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atestmainframeScreenshots");
-		
-		
-		Path targetFolder = Paths.get(System.getProperty("user.dir")+ Screenshots.getBaseFolderPath());
-		Reporting.logReporter(Status.INFO, "sourceFolder: "+ sourceFolder.toString());
-		Reporting.logReporter(Status.INFO, "targetFolder: "+ targetFolder.toString());
-		
+		Path sourceFolder = Paths.get(
+				System.getProperty("user.dir") + "\\Mainframe Demo Codes POCMainframeAppUpdatedmainframeScreenshots");
+		Path targetFolder = Paths.get(System.getProperty("user.dir") + "\\screenshots");
 		try {
 			// Copy the entire folder and its contents
 			copyFolder(sourceFolder, targetFolder);
@@ -167,22 +160,9 @@ public class GenericUtils {
 			// System.out.println(file.getAbsolutePath());
 			if (file != null && file.getName().toLowerCase().endsWith(".jpg")
 					&& file.getName().toUpperCase().contains(scenarioName)) {
-				
-				byte[] fileBytes = new byte[(int) file.length()];
-				try (FileInputStream fileInputStream = new FileInputStream(file)) {
-				    fileInputStream.read(fileBytes);
-				}
-				String base64Image = Base64.getEncoder().encodeToString(fileBytes);
-				Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
-						MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
-				
 				System.out.println(file.getName());
-				
-				/*
-				 * Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
-				 * MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).
-				 * build());
-				 */
+				Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
+						MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).build());
 			}
 
 		}
@@ -190,6 +170,7 @@ public class GenericUtils {
 
 	public static void main(String[] args) throws IOException {
 
-		System.out.println(System.getProperty("user.dir")+ Screenshots.getBaseFolderPath());
+		File f = new File("D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\mainframeScreenshots");
+		getAllImagesHelper(f, "");
 	}
 }
