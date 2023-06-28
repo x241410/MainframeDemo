@@ -1316,13 +1316,15 @@ public class StepDefinitions extends BaseTest {
 			String base64Image = Base64.getEncoder().encodeToString(fileBytes);
 			Reporting.logReporter(Status.INFO, "TESTSS",
 					MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
+			Reporting.logReporter(Status.INFO, "Reached till this point");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			Reporting.logReporter(Status.INFO, e.getMessage());
+			Reporting.logReporter(Status.INFO, "Error:===========================>" + e.getMessage());
 		}
 
 		
-		
+		mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
 		
 		
 		
@@ -1338,7 +1340,7 @@ public class StepDefinitions extends BaseTest {
 		 * 
 		 * Reporting.logReporter(Status.INFO, "Login Details",
 		 * MediaEntityBuilder.createScreenCaptureFromPath(("E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\target\\extent-reports\\SOECS_first.jpg"))
-		 * .build()); mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
+		 * .build()); 
 		 * 
 		 **/
 	}
