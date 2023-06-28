@@ -1305,16 +1305,21 @@ public class StepDefinitions extends BaseTest {
 
 		
 		
-		File file = new File(
-				"E:\\J2\\workspace\\TestAutomation\\launchSOECS.jpg");
+		try {
+			File file = new File(
+					"E:\\J2\\workspace\\TestAutomation\\launchSOECS.jpg");
 
-		byte[] fileBytes = new byte[(int) file.length()];
-		try (FileInputStream fileInputStream = new FileInputStream(file)) {
-			fileInputStream.read(fileBytes);
+			byte[] fileBytes = new byte[(int) file.length()];
+			try (FileInputStream fileInputStream = new FileInputStream(file)) {
+				fileInputStream.read(fileBytes);
+			}
+			String base64Image = Base64.getEncoder().encodeToString(fileBytes);
+			Reporting.logReporter(Status.INFO, "TESTSS",
+					MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Reporting.logReporter(Status.INFO, e.getMessage());
 		}
-		String base64Image = Base64.getEncoder().encodeToString(fileBytes);
-		Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
-				MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
 
 		
 		
