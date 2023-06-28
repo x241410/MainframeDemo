@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -22,6 +23,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Base64;
 
 /**
  * ***************************************************************************
@@ -165,9 +167,22 @@ public class GenericUtils {
 			// System.out.println(file.getAbsolutePath());
 			if (file != null && file.getName().toLowerCase().endsWith(".jpg")
 					&& file.getName().toUpperCase().contains(scenarioName)) {
-				System.out.println(file.getName());
+				
+				byte[] fileBytes = new byte[(int) file.length()];
+				try (FileInputStream fileInputStream = new FileInputStream(file)) {
+				    fileInputStream.read(fileBytes);
+				}
+				String base64Image = Base64.getEncoder().encodeToString(fileBytes);
 				Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
-						MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).build());
+						MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
+				
+				System.out.println(file.getName());
+				
+				/*
+				 * Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
+				 * MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).
+				 * build());
+				 */
 			}
 
 		}
