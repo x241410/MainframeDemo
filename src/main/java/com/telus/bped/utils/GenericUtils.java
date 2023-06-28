@@ -143,8 +143,11 @@ public class GenericUtils {
 	}
 
 	public static void moveScreenshots() {
-		Path sourceFolder = Paths.get("E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\mainframeScreenshots");
+		Path sourceFolder = Paths.get("E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atestmainframeScreenshots");
 		Path targetFolder = Paths.get(Screenshots.getBaseFolderPath());
+		Reporting.logReporter(Status.INFO, "sourceFolder: "+ sourceFolder.toString());
+		Reporting.logReporter(Status.INFO, "targetFolder: "+ targetFolder.toString());
+		
 		try {
 			// Copy the entire folder and its contents
 			copyFolder(sourceFolder, targetFolder);

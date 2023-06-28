@@ -1300,6 +1300,8 @@ public class StepDefinitions extends BaseTest {
 		
 		GenericUtils.moveScreenshots();
 		String filePath = Screenshots.getBaseFolderPath();
+		Reporting.logReporter(Status.INFO, "filePath: "+ filePath);
+
 		File f = new File(filePath);
 		GenericUtils.getAllImagesHelper(f, "SOECS");
 		
