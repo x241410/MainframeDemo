@@ -19,7 +19,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 @CucumberOptions(features = "src/test/resources/features", glue = {
-		"com.telus.bped.stepsdefinition" }, tags = "@Mainframe", plugin = { "pretty",
+		"com.telus.bped.stepsdefinition" }, tags = "@SOECS", plugin = { "pretty",
 				"com.test.cucumber.ExtentCucumberAdapter:",
 //        "com.telus.cucumber.plugin.ReportPortalCucumberPlugin",
 				"rerun:target/rerun.txt" }, monochrome = true, publish = true

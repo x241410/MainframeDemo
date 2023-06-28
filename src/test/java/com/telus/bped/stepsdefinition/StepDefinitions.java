@@ -1295,8 +1295,14 @@ public class StepDefinitions extends BaseTest {
 
 		// embed screenshots
 
-		File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
-		GenericUtils.getAllImagesHelper(f, "SOECS");
+		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
+		//GenericUtils.getAllImagesHelper(f, "SOECS");
+		
+	
+		Reporting.logReporter(Status.INFO, "TEST",
+				MediaEntityBuilder.createScreenCaptureFromPath(("E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\mainframeScreenshots\\SOECS_first.jpg")).build());
+		
+		
 		// Reporting.logReporter(Status.INFO, "Login Details",
 		// MediaEntityBuilder.createScreenCaptureFromPath(("C:\\bin\\installOrder.jpg")).build());
 		mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
