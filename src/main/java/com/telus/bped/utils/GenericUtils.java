@@ -4,6 +4,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.test.files.interaction.ReadJSON;
 import com.test.logging.Logging;
 import com.test.reporting.Reporting;
+import com.test.screenshots.Screenshots;
 import com.test.utils.Status;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -142,9 +143,8 @@ public class GenericUtils {
 	}
 
 	public static void moveScreenshots() {
-		Path sourceFolder = Paths.get(
-				System.getProperty("user.dir") + "\\Mainframe Demo Codes POCMainframeAppUpdatedmainframeScreenshots");
-		Path targetFolder = Paths.get(System.getProperty("user.dir") + "\\screenshots");
+		Path sourceFolder = Paths.get("E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\mainframeScreenshots");
+		Path targetFolder = Paths.get(Screenshots.getBaseFolderPath());
 		try {
 			// Copy the entire folder and its contents
 			copyFolder(sourceFolder, targetFolder);

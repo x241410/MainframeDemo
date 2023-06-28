@@ -10,6 +10,7 @@ import com.telus.bped.utils.GoogleSheetData;
 import com.telus.bped.utils.GoogleSheetsUtils;
 import com.test.files.interaction.ReadJSON;
 import com.test.reporting.Reporting;
+import com.test.screenshots.Screenshots;
 import com.test.ui.actions.BaseSteps;
 import com.test.ui.actions.BaseTest;
 import com.test.ui.actions.Validate;
@@ -1296,7 +1297,11 @@ public class StepDefinitions extends BaseTest {
 		// embed screenshots
 
 		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
-		//GenericUtils.getAllImagesHelper(f, "SOECS");
+		
+		GenericUtils.moveScreenshots();
+		String filePath = Screenshots.getBaseFolderPath();
+		File f = new File(filePath);
+		GenericUtils.getAllImagesHelper(f, "SOECS");
 		
 	
 		Reporting.logReporter(Status.INFO, "TEST",
