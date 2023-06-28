@@ -1231,10 +1231,12 @@ public class StepDefinitions extends BaseTest {
 		String cris_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_APP_USERNAME"));
 		String cris_pass = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_APP_PASSWORD"));
 
-		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\mainframe.robot\"";
-		String cmd = "cmd /c \"python -m robot --variable ENV_USERNAME:" + imse_username + " --variable ENV_PASSWORD:"
-				+ imse_pass + " --variable APP_USERNAME:" + cris_username + " --variable APP_PASSWORD:" + cris_pass
-				+ " " + robotFilePath;
+//		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\mainframe.robot\"";
+//		String cmd = "cmd /c \"python -m robot --variable ENV_USERNAME:" + imse_username + " --variable ENV_PASSWORD:"
+//				+ imse_pass + " --variable APP_USERNAME:" + cris_username + " --variable APP_PASSWORD:" + cris_pass
+//				+ " " + robotFilePath;
+		String cmd="cmd /c \"robot --variable ENV_USERNAME:"+imse_username+" --variable ENV_PASSWORD:"+imse_pass+" --variable APP_USERNAME:"+cris_username+" --variable APP_PASSWORD:"+cris_pass+" "+ "E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atest\\mainframe.robot\"";
+		
 		MainframeSteps.launchMainframeApplication(cmd);
 
 		String screenshotPath = System.getProperty("user.dir") + "\\screenshots";
@@ -1246,7 +1248,7 @@ public class StepDefinitions extends BaseTest {
 		// href='D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\Mainframe
 		// Demo Codes POCMainframeAppUpdatedmainframeScreenshots'>SCREENSHOTS
 		// LINK</a>");
-		File f = new File("D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\mainframeScreenshots");
+		File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
 		GenericUtils.getAllImagesHelper(f, "CRIS");
 
 		mainframeCrisStatus = MainframeSteps.getMainframeAppStatus();
@@ -1271,9 +1273,12 @@ public class StepDefinitions extends BaseTest {
 		String soecs_username = EncryptionUtils.decode(userAccess.getString("SOECS_USERNAME"));
 		String soecs_pass = EncryptionUtils.decode(userAccess.getString("SOECS_PASSWORD"));
 
-		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\soecs.robot\"";
-		String cmd = "cmd /c \"python -m robot  --variable SOECS_USERNAME:" + soecs_username
-				+ " --variable SOECS_PASSWORD:" + soecs_pass + " " + robotFilePath;
+//		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\soecs.robot\"";
+//		String cmd = "cmd /c \"python -m robot  --variable SOECS_USERNAME:" + soecs_username
+//				+ " --variable SOECS_PASSWORD:" + soecs_pass + " " + robotFilePath;
+		
+		
+		String cmd="cmd /c \"robot  --variable SOECS_USERNAME:"+soecs_username+" --variable SOECS_PASSWORD:"+soecs_pass+" "+ "E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atest\\soecs.robot\"";
 		// +
 		// "E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atest\\soecs.robot\"";
 		MainframeSteps.launchMainframeApplication(cmd);
@@ -1290,7 +1295,7 @@ public class StepDefinitions extends BaseTest {
 
 		// embed screenshots
 
-		File f = new File("D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\mainframeScreenshots");
+		File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
 		GenericUtils.getAllImagesHelper(f, "SOECS");
 		// Reporting.logReporter(Status.INFO, "Login Details",
 		// MediaEntityBuilder.createScreenCaptureFromPath(("C:\\bin\\installOrder.jpg")).build());
@@ -1298,7 +1303,4 @@ public class StepDefinitions extends BaseTest {
 
 	}
 
-	public static void main(String[] args) {
-		System.out.println(System.getProperty("user.dir"));
-	}
 }
