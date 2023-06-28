@@ -144,7 +144,9 @@ public class GenericUtils {
 
 	public static void moveScreenshots() {
 		Path sourceFolder = Paths.get("E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\MainframeProject\\atestmainframeScreenshots");
-		Path targetFolder = Paths.get(Screenshots.getBaseFolderPath());
+		
+		
+		Path targetFolder = Paths.get(System.getProperty("user.dir")+ Screenshots.getBaseFolderPath());
 		Reporting.logReporter(Status.INFO, "sourceFolder: "+ sourceFolder.toString());
 		Reporting.logReporter(Status.INFO, "targetFolder: "+ targetFolder.toString());
 		
@@ -173,7 +175,6 @@ public class GenericUtils {
 
 	public static void main(String[] args) throws IOException {
 
-		File f = new File("D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\mainframeScreenshots");
-		getAllImagesHelper(f, "");
+		System.out.println(System.getProperty("user.dir")+ Screenshots.getBaseFolderPath());
 	}
 }
