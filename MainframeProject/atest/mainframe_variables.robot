@@ -2,8 +2,8 @@
 ${VISIBLE}               True
 ${HOST_cris}             sys1tcp.tsl.telus.com
 ${HOST_soecs}            soecs.tsl.telus.com
-${FOLDER}    		 \mainframeScreenshots
-# ${FOLDER}              ${CURDIR}${/}screenshots
+# ${FOLDER}    		 \mainframeScreenshots
+${FOLDER}              ${CURDIR}${/}screenshots
 # Text to write
 ${WRITE_TEXT}     imse
 ${ENV_USERNAME}    
