@@ -21,7 +21,7 @@ Service Order Entry and Control System
     Write Bare    ${SOECS_password}
     Send Enter
     sleep    2s
-    Screenshot.Take Screenshot        C:\\bin\\MainframeProject\\BPEDScreenshots\\SOECS_Dashboard.jpg
+    Screenshot.Take Screenshot        SOECS_Dashboard.jpg
     Write Bare in Position    3    23    057
     Log To Console    ${\n}Step2- SOECS Application logout successfully
     Send Enter
