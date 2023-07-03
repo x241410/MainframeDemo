@@ -6,16 +6,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.test.ui.actions.Validate;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,7 +21,6 @@ import org.jsoup.select.Elements;
 import org.testng.Assert;
 
 import com.test.reporting.Reporting;
-import com.test.ui.actions.Validate;
 import com.test.utils.EncryptDecrypt;
 import com.test.utils.Status;
 
@@ -35,6 +29,8 @@ import com.test.utils.Status;
 public class MainframeSteps {
 
 	public static JSONArray mainframeResult=null;
+	JSONObject mainframeResultObject = new JSONObject();
+
 	public static boolean flag=false;
 	public static String startTime=null;
 	public static String PSTDate=null;
@@ -54,8 +50,11 @@ public class MainframeSteps {
             	Reporting.logReporter(Status.INFO," Application is running...."); 
             	flag=true;
             }else {
-            	Assert.fail("Mainframe execution is not started"); 	
-            }
+//            	Assert.fail("Mainframe execution is not started");
+				Reporting.logReporter(Status.FAIL," Application is not running....");
+				flag=false;
+			}
+
             
           while ((s = stdInput.readLine()) != null) {
         	  Reporting.logReporter(Status.INFO, s);  
@@ -135,12 +134,11 @@ public class MainframeSteps {
 	public JSONArray getMainframeAppStatus()	{
         //To get data in JSON Array
 	
-	if (flag != true ) { 
-		Assert.fail("Mainframe output is not updated");
+	if (!flag) {
+		Validate.assertTrue(false,"Mainframe Application Not Started",true,"Mainframe Application Working");
 	}
 	
 	try {
-		
 		File xmlFile = new File("output.xml");
 		byte[] b= Files.readAllBytes(xmlFile.toPath());
 		String xml=new String (b);
@@ -156,22 +154,21 @@ public class MainframeSteps {
 		
 		if (testCount==1) {
 			JSONObject testObj = obj.getJSONObject("robot").getJSONObject("suite").getJSONObject("test");
-			
-			
 			String appName = testObj.getString("name");
             JSONObject appStatus = testObj.getJSONObject("status");
-            startTime = appStatus.getString("starttime");
+		    startTime = appStatus.getString("starttime");
             String overallStatus = appStatus.getString("status");
-            executedAtDate();
+			if (overallStatus.equalsIgnoreCase("Fail")){
+				Validate.assertTrue(false,"Mainframe Application Status Failed",true,"Mainframe Application Working");
+			}
+			executedAtDate();
             JSONObject testResultsObj = new JSONObject();
             testResultsObj.put("executedAt",PSTDate);
             testResultsObj.put("appStatus",overallStatus+"ED");
             testResultsObj.put("appName",appName);
-            
             JSONArray jsonArraySingleRes = new JSONArray();
             jsonArraySingleRes.put(testResultsObj);
-            
-            mainframeResult=jsonArraySingleRes;
+			mainframeResult=jsonArraySingleRes;
             
             return mainframeResult;
 		}else {
@@ -188,7 +185,12 @@ public class MainframeSteps {
 				    
 				    jsonObj.put("executedAt",PSTDate);
 				    String executionStatus=status.get("status").toString();
-				    if (executionStatus.equals("PASS")) {
+					if (executionStatus.equalsIgnoreCase("Fail")){
+						Validate.assertTrue(false,"Mainframe Application Status Failed",true,"Mainframe Application Working");
+
+					}
+
+					if (executionStatus.equals("PASS")) {
 				    	String finalStatus=executionStatus+"ED";
 				    	jsonObj.put("appStatus",finalStatus);
 				    }else {

@@ -56,7 +56,8 @@ public class GoogleSheetsUtils {
         return accessToken;
     }
 
-    public static JSONArray updateBulKDataIntoGSheets(JSONArray p1Apps, JSONArray p2Apps, JSONArray p3Apps, JSONArray mainframes_apps, JSONArray soecs_apps) throws Exception {
+
+    public static JSONArray updateBulKDataIntoGSheets(JSONArray p1Apps, JSONArray p2Apps, JSONArray p3Apps) throws Exception {
 
         GoogleSheetsUtils googleSheetsUtils = new GoogleSheetsUtils();
 
@@ -72,8 +73,8 @@ public class GoogleSheetsUtils {
         writeDataArray.put(generateGoogleSheetArray(p1Apps, baseDataAppDetailsArray));
         writeDataArray.put(generateGoogleSheetArray(p2Apps, baseDataAppDetailsArray));
         writeDataArray.put(generateGoogleSheetArray(p3Apps, baseDataAppDetailsArray));
-        writeDataArray.put(generateGoogleSheetArray(mainframes_apps, baseDataAppDetailsArray));
-        writeDataArray.put(generateGoogleSheetArray(soecs_apps, baseDataAppDetailsArray));
+//        writeDataArray.put(generateGoogleSheetArray(mainframes_apps, baseDataAppDetailsArray));
+//        writeDataArray.put(generateGoogleSheetArray(soecs_apps, baseDataAppDetailsArray));
 
         JSONObject payload = generatePayload(jsonArray, lastUsedRow, updatedRow);
 

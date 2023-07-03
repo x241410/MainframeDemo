@@ -19,6 +19,7 @@ import com.test.utils.EncryptionUtils;
 import com.test.utils.Status;
 import com.test.utils.SystemProperties;
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -51,6 +52,8 @@ import java.util.Map;
 
 import static com.telus.bped.steps.LoginPageSteps.userAccessVar;
 
+
+
 /**
  * ***************************************************************************
  * DESCRIPTION: This class contains the steps implementations for the BPED
@@ -82,7 +85,10 @@ public class StepDefinitions extends BaseTest {
 	public static JSONArray mainframeCrisStatus = null;
 	public static JSONArray mainframeSoecsStatus = null;
 
+
+
 	LoginPageSteps loginPageSteps = new LoginPageSteps();
+
 
 	public static String getJobsFolder(String appName) {
 
@@ -470,6 +476,7 @@ public class StepDefinitions extends BaseTest {
 		statusObj.put("appName", scenario.getName());
 		statusObj.put("appStatus", scenario.getStatus().toString());
 		statusObj.put("executedAt", GenericUtils.getDateInMMDDYYYYHHMMSSInPST() + " (PST)");
+
 		Collection<String> tags = scenario.getSourceTagNames();
 		Reporting.logReporter(Status.INFO, "LogInfo===> tags: " + tags);
 		if (tags.contains("@P1-APPS")) {
@@ -1236,6 +1243,7 @@ public class StepDefinitions extends BaseTest {
 				+ imse_pass + " --variable APP_USERNAME:" + cris_username + " --variable APP_PASSWORD:" + cris_pass
 				+ " " + robotFilePath;
 		MainframeSteps.launchMainframeApplication(cmd);
+
 
 		mainframeCrisStatus = MainframeSteps.getMainframeAppStatus();
 

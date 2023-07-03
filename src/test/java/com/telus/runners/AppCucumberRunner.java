@@ -19,7 +19,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 @CucumberOptions(features = "src/test/resources/features", glue = {
-		"com.telus.bped.stepsdefinition" }, tags = "@SOECS", plugin = { "pretty",
+		"com.telus.bped.stepsdefinition" }, tags = "@Mainframe", plugin = { "pretty",
 				"com.test.cucumber.ExtentCucumberAdapter:",
 //        "com.telus.cucumber.plugin.ReportPortalCucumberPlugin",
 				"rerun:target/rerun.txt" }, monochrome = true, publish = true
@@ -70,11 +70,10 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 		System.out.println("P2 APPS:======>" + p2_apps);
 		System.out.println("P3 APPS:======>" + p3_apps);
 
-		MainframeSteps MainframeSteps = new MainframeSteps();
-		StepDefinitions steps = new StepDefinitions();
+		GoogleSheetsUtils.updateBulKDataIntoGSheets(p1_apps, p2_apps, p3_apps);
 
-		GoogleSheetsUtils.updateBulKDataIntoGSheets(p1_apps, p2_apps, p3_apps, steps.mainframeCrisStatus,
-				steps.mainframeSoecsStatus);
+//		GoogleSheetsUtils.updateBulKDataIntoGSheets(p1_apps, p2_apps, p3_apps, steps.mainframeCrisStatus,
+//				steps.mainframeSoecsStatus);
 
 		/*
 		 * GenericUtils.moveScreenshots(); String
