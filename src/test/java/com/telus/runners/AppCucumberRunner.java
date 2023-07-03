@@ -45,9 +45,10 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 
 		
 		try {
+			MainframeSteps mainframeSteps= new MainframeSteps();
 			String mainframeDirPath = SystemProperties.getStringValue("mainframe.folder.path");
 			String mainframeFWDir = System.getProperty("user.dir") + "\\MainframeProject";
-			MainframeSteps.createMFDir(mainframeDirPath, mainframeFWDir);
+			mainframeSteps.createMFDir(mainframeDirPath, mainframeFWDir);
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO, "Screenshot not available");
 		}
