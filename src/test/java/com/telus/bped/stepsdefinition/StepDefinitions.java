@@ -52,8 +52,6 @@ import java.util.Map;
 
 import static com.telus.bped.steps.LoginPageSteps.userAccessVar;
 
-
-
 /**
  * ***************************************************************************
  * DESCRIPTION: This class contains the steps implementations for the BPED
@@ -85,10 +83,7 @@ public class StepDefinitions extends BaseTest {
 	public static JSONArray mainframeCrisStatus = null;
 	public static JSONArray mainframeSoecsStatus = null;
 
-
-
 	LoginPageSteps loginPageSteps = new LoginPageSteps();
-
 
 	public static String getJobsFolder(String appName) {
 
@@ -1227,9 +1222,12 @@ public class StepDefinitions extends BaseTest {
 
 		MainframeSteps MainframeSteps = new MainframeSteps();
 
-		String mainframeDirPath = SystemProperties.getStringValue("mainframe.folder.path");
-		String mainframeFWDir = System.getProperty("user.dir") + "\\MainframeProject";
-		MainframeSteps.createMFDir(mainframeDirPath, mainframeFWDir);
+		/*
+		 * String mainframeDirPath =
+		 * SystemProperties.getStringValue("mainframe.folder.path"); String
+		 * mainframeFWDir = System.getProperty("user.dir") + "\\MainframeProject";
+		 * MainframeSteps.createMFDir(mainframeDirPath, mainframeFWDir);
+		 */
 
 		JSONObject userAccess = userAccessVar.getJSONObject(SystemProperties.EXECUTION_ENVIRONMENT);
 
@@ -1244,6 +1242,10 @@ public class StepDefinitions extends BaseTest {
 				+ " " + robotFilePath;
 		MainframeSteps.launchMainframeApplication(cmd);
 
+		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
+		//GenericUtils.getAllImagesHelper(f, "CRIS");
+
+		captureScreenshots("CRIS");
 
 		mainframeCrisStatus = MainframeSteps.getMainframeAppStatus();
 
@@ -1254,9 +1256,12 @@ public class StepDefinitions extends BaseTest {
 
 		MainframeSteps MainframeSteps = new MainframeSteps();
 
-		String mainframeDirPath = SystemProperties.getStringValue("mainframe.folder.path");
-		String mainframeFWDir = System.getProperty("user.dir") + "\\MainframeProject";
-		MainframeSteps.createMFDir(mainframeDirPath, mainframeFWDir);
+		/*
+		 * String mainframeDirPath =
+		 * SystemProperties.getStringValue("mainframe.folder.path"); String
+		 * mainframeFWDir = System.getProperty("user.dir") + "\\MainframeProject";
+		 * MainframeSteps.createMFDir(mainframeDirPath, mainframeFWDir);
+		 */
 
 		JSONObject userAccess = userAccessVar.getJSONObject(SystemProperties.EXECUTION_ENVIRONMENT);
 
@@ -1268,8 +1273,23 @@ public class StepDefinitions extends BaseTest {
 				+ " --variable SOECS_PASSWORD:" + soecs_pass + " " + robotFilePath;
 		MainframeSteps.launchMainframeApplication(cmd);
 
+		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
+		//GenericUtils.getAllImagesHelper(f, "SOECS");
+
+		captureScreenshots("SOECS");
+
 		mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
 
+	}
+
+	public static void captureScreenshots(String fileName) {
+
+		try {
+			File f = new File(System.getProperty("user.dir") + "\\BPEDScreenshots");
+			GenericUtils.getAllImagesHelper(f, fileName);
+		} catch (IOException e) {
+			Reporting.logReporter(Status.DEBUG, "Unable to capture screenshots");
+		}
 	}
 
 }
