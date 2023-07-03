@@ -2,7 +2,7 @@
 ${VISIBLE}               True
 ${HOST_cris}             sys1tcp.tsl.telus.com
 ${HOST_soecs}            soecs.tsl.telus.com
-${FOLDER}    		 	E:\\J2\\workspace\\TestAutomation\\BPED_Mainframe_Test\\BPEDScreenshots
+${FOLDER}    		 	C:\\bin\\MainframeProject\\BPEDScreenshots
 #${FOLDER}              ${CURDIR}${/}screenshots
 # Text to write
 ${WRITE_TEXT}     imse
