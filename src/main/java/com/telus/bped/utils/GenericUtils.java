@@ -155,16 +155,20 @@ public class GenericUtils {
 	}
 
 	public static void getAllImagesHelper(File directory, String scenarioName) throws IOException {
-		File[] f = directory.listFiles();
-		for (File file : f) {
-			// System.out.println(file.getAbsolutePath());
-			if (file != null && file.getName().toLowerCase().endsWith(".jpg")
-					&& file.getName().toUpperCase().contains(scenarioName)) {
-				//System.out.println(file.getName());
-				Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
-						MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).build());
-			}
+		try {
+			File[] f = directory.listFiles();
+			for (File file : f) {
+				// System.out.println(file.getAbsolutePath());
+				if (file != null && file.getName().toLowerCase().endsWith(".jpg")
+						&& file.getName().toUpperCase().contains(scenarioName)) {
+					//System.out.println(file.getName());
+					Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
+							MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).build());
+				}
 
+			}
+		} catch (Exception e) {
+			Reporting.logReporter(Status.INFO, "Directory not found");
 		}
 	}
 

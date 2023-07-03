@@ -1285,7 +1285,7 @@ public class StepDefinitions extends BaseTest {
 	public static void captureScreenshots(String fileName) {
 
 		try {
-			File f = new File(System.getProperty("user.dir") + "\\BPEDScreenshots");
+			File f = new File("C:\\bin\\MainframeProject\\BPEDScreenshots");
 			GenericUtils.getAllImagesHelper(f, fileName);
 		} catch (IOException e) {
 			Reporting.logReporter(Status.DEBUG, "Unable to capture screenshots");
