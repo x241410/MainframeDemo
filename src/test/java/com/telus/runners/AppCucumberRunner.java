@@ -19,7 +19,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 @CucumberOptions(features = "src/test/resources/features", glue = {
-		"com.telus.bped.stepsdefinition" }, tags = "@SOECS", plugin = { "pretty",
+		"com.telus.bped.stepsdefinition" }, tags = "@SS", plugin = { "pretty",
 				"com.test.cucumber.ExtentCucumberAdapter:",
 //        "com.telus.cucumber.plugin.ReportPortalCucumberPlugin",
 				"rerun:target/rerun.txt" }, monochrome = true, publish = true
@@ -48,6 +48,7 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 			MainframeSteps mainframeSteps= new MainframeSteps();
 			String mainframeDirPath = SystemProperties.getStringValue("mainframe.folder.path");
 			String mainframeFWDir = System.getProperty("user.dir") + "\\MainframeProject";
+			mainframeSteps.deleteMFDir(mainframeDirPath);
 			mainframeSteps.createMFDir(mainframeDirPath, mainframeFWDir);
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO, "Screenshot not available");
