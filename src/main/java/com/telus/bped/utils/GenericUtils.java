@@ -161,13 +161,14 @@ public class GenericUtils {
 			
 			File[] f = directory.listFiles();
 			for (File file : f) {
-				//Reporting.logReporter(Status.INFO, file.getAbsolutePath());
 				if (file != null && file.getName().toLowerCase().endsWith(".jpg")
 						&& file.getName().toUpperCase().contains(scenarioName)) {
 					
 					//Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
 							//MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).build());
 					
+					Reporting.logReporter(Status.INFO, "Path: "+ sspath+file.getName());
+
 					Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
 							MediaEntityBuilder.createScreenCaptureFromPath((sspath+file.getName())).build());
 				}
