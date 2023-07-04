@@ -159,7 +159,7 @@ public class MainframeSteps {
 		    startTime = appStatus.getString("starttime");
             String overallStatus = appStatus.getString("status");
 			if (overallStatus.equalsIgnoreCase("Fail")){
-				Validate.assertTrue(false,"Mainframe Application Status Failed",true,"Mainframe Application Working");
+				Validate.assertTrue(false,"Mainframe Application Health Check Failed",true,"Mainframe Application Working");
 			}
 			executedAtDate();
             JSONObject testResultsObj = new JSONObject();
@@ -186,7 +186,7 @@ public class MainframeSteps {
 				    jsonObj.put("executedAt",PSTDate);
 				    String executionStatus=status.get("status").toString();
 					if (executionStatus.equalsIgnoreCase("Fail")){
-						Validate.assertTrue(false,"Mainframe Application Status Failed",true,"Mainframe Application Working");
+						Validate.assertTrue(false,"Mainframe Application Health Check Failed",true,"Mainframe Application Working");
 
 					}
 

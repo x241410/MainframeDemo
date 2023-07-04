@@ -1240,12 +1240,14 @@ public class StepDefinitions extends BaseTest {
 		String cmd = "cmd /c \"python -m robot --variable ENV_USERNAME:" + imse_username + " --variable ENV_PASSWORD:"
 				+ imse_pass + " --variable APP_USERNAME:" + cris_username + " --variable APP_PASSWORD:" + cris_pass
 				+ " " + robotFilePath;
-		MainframeSteps.launchMainframeApplication(cmd);
 
-		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
-		//GenericUtils.getAllImagesHelper(f, "CRIS");
-
-		captureScreenshots("CRIS");
+		try {
+			MainframeSteps.launchMainframeApplication(cmd);
+		} catch (Exception e) {
+			Reporting.logReporter(Status.INFO, "Unable to validate CRIS application health check");
+		} finally {
+			captureScreenshots("CRIS");
+		}
 
 		mainframeCrisStatus = MainframeSteps.getMainframeAppStatus();
 
@@ -1271,13 +1273,15 @@ public class StepDefinitions extends BaseTest {
 		String robotFilePath = System.getProperty("user.dir") + "\\MainframeProject\\atest\\soecs.robot\"";
 		String cmd = "cmd /c \"python -m robot  --variable SOECS_USERNAME:" + soecs_username
 				+ " --variable SOECS_PASSWORD:" + soecs_pass + " " + robotFilePath;
-		MainframeSteps.launchMainframeApplication(cmd);
 
-		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
-		//GenericUtils.getAllImagesHelper(f, "SOECS");
+		try {
+			MainframeSteps.launchMainframeApplication(cmd);
+		} catch (Exception e) {
+			Reporting.logReporter(Status.INFO, "Unable to validate SOECS application health check");
+		} finally {
+			captureScreenshots("SOECS");
+		}
 
-		captureScreenshots("SOECS");
-				
 		mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
 
 	}
@@ -1285,7 +1289,7 @@ public class StepDefinitions extends BaseTest {
 	public static void captureScreenshots(String fileName) {
 
 		try {
-			String ssDirectory = System.getProperty("user.dir")+ "\\MainframeProject\\atest\\screenshots";
+			String ssDirectory = System.getProperty("user.dir") + "\\MainframeProject\\atest\\screenshots";
 			File f = new File(ssDirectory);
 			GenericUtils.getAllImagesHelper(f, fileName);
 		} catch (IOException e) {
