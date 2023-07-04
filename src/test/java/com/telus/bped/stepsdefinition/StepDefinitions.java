@@ -1285,7 +1285,7 @@ public class StepDefinitions extends BaseTest {
 	public static void captureScreenshots(String fileName) {
 
 		try {
-			String ssDirectory = System.getProperty("user.dir")+ "\\MainframeProject\\atest";
+			String ssDirectory = System.getProperty("user.dir")+ "\\MainframeProject\\atest\\screenshots";
 			File f = new File(ssDirectory);
 			GenericUtils.getAllImagesHelper(f, fileName);
 		} catch (IOException e) {
