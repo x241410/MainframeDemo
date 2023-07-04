@@ -1285,7 +1285,9 @@ public class StepDefinitions extends BaseTest {
 	public static void captureScreenshots(String fileName) {
 
 		String buildUrl = System.getenv("BUILD_URL");
-		String sspath = buildUrl + "artifact/MainframeProject/atest/";
+		String sspath = buildUrl + "artifact/MainframeProject/atest";
+		Reporting.logReporter(Status.INFO, "Directory Path: " + sspath);
+		
 		try {
 			File f = new File(sspath);
 			GenericUtils.getAllImagesHelper(f, fileName);
