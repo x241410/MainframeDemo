@@ -157,7 +157,7 @@ public class GenericUtils {
 	public static void getAllImagesHelper(File directory, String scenarioName) throws IOException {
 		try {
 			String buildUrl = System.getenv("BUILD_URL");
-			String sspath = buildUrl + "artifact/MainframeProject/atest/screenshots";
+			String sspath = buildUrl + "artifact/MainframeProject/atest/screenshots/";
 			
 			File[] f = directory.listFiles();
 			for (File file : f) {
