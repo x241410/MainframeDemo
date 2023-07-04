@@ -2,8 +2,8 @@
 ${VISIBLE}               True
 ${HOST_cris}             sys1tcp.tsl.telus.com
 ${HOST_soecs}            soecs.tsl.telus.com
-${FOLDER}    		 	${CURDIR}
-#${FOLDER}              ${CURDIR}${/}screenshots
+#${FOLDER}    		 	${CURDIR}
+${FOLDER}               ${CURDIR}${/}screenshots
 # Text to write
 ${WRITE_TEXT}     imse
 ${ENV_USERNAME}    
