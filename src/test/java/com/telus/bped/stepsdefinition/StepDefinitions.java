@@ -1242,8 +1242,8 @@ public class StepDefinitions extends BaseTest {
 				+ " " + robotFilePath;
 		MainframeSteps.launchMainframeApplication(cmd);
 
-		// File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
-		// GenericUtils.getAllImagesHelper(f, "CRIS");
+		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
+		//GenericUtils.getAllImagesHelper(f, "CRIS");
 
 		captureScreenshots("CRIS");
 
@@ -1273,27 +1273,28 @@ public class StepDefinitions extends BaseTest {
 				+ " --variable SOECS_PASSWORD:" + soecs_pass + " " + robotFilePath;
 		MainframeSteps.launchMainframeApplication(cmd);
 
-		// File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
-		// GenericUtils.getAllImagesHelper(f, "SOECS");
+		//File f = new File(System.getProperty("user.dir") + "\\mainframeScreenshots");
+		//GenericUtils.getAllImagesHelper(f, "SOECS");
 
 		captureScreenshots("SOECS");
-
+				
 		mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
 
 	}
 
 	public static void captureScreenshots(String fileName) {
 
-		String buildUrl = System.getenv("BUILD_URL");
-		String sspath = buildUrl + "artifact/MainframeProject/atest";
-		Reporting.logReporter(Status.INFO, "Directory Path: " + sspath);
-		
 		try {
-			File f = new File(sspath);
+			String ssDirectory = System.getProperty("user.dir")+ "\\MainframeProject\\atest";
+			File f = new File(ssDirectory);
 			GenericUtils.getAllImagesHelper(f, fileName);
 		} catch (IOException e) {
 			Reporting.logReporter(Status.DEBUG, "Unable to capture screenshots");
 		}
 	}
 
+	/*
+	 * public static void main(String[] args) { System.out.println(
+	 * System.getProperty("user.dir")+ "\\MainframeProject\\atest"); }
+	 */
 }

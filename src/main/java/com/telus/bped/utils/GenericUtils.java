@@ -156,14 +156,20 @@ public class GenericUtils {
 
 	public static void getAllImagesHelper(File directory, String scenarioName) throws IOException {
 		try {
+			String buildUrl = System.getenv("BUILD_URL");
+			String sspath = buildUrl + "artifact/MainframeProject/atest/";
+			
 			File[] f = directory.listFiles();
 			for (File file : f) {
 				Reporting.logReporter(Status.INFO, file.getAbsolutePath());
 				if (file != null && file.getName().toLowerCase().endsWith(".jpg")
 						&& file.getName().toUpperCase().contains(scenarioName)) {
-					//System.out.println(file.getName());
+					
+					//Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
+							//MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).build());
+					
 					Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
-							MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).build());
+							MediaEntityBuilder.createScreenCaptureFromPath((sspath+file.getName())).build());
 				}
 
 			}
@@ -172,9 +178,4 @@ public class GenericUtils {
 		}
 	}
 
-	public static void main(String[] args) throws IOException {
-
-		File f = new File("D:\\BPED_MAINFRAME\\LATEST_MAINFRAME_DEMO\\MainframeDemo\\mainframeScreenshots");
-		getAllImagesHelper(f, "");
-	}
 }
