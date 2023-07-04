@@ -1277,7 +1277,12 @@ public class StepDefinitions extends BaseTest {
 		//GenericUtils.getAllImagesHelper(f, "SOECS");
 
 		captureScreenshots("SOECS");
-
+		
+		String buildUrl = System.getenv("BUILD_URL");
+		String sspath = buildUrl + "artifact/MainframeProject/atest/SOECS.jpg";
+		Reporting.logReporter(Status.INFO, "SS: 1".toUpperCase(),
+				MediaEntityBuilder.createScreenCaptureFromPath((sspath)).build());
+		
 		mainframeSoecsStatus = MainframeSteps.getMainframeAppStatus();
 
 	}
