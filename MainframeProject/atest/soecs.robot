@@ -12,19 +12,18 @@ Resource          mainframe_variables.robot
 *** Test Cases ***
 Service Order Entry and Control System
 
-    ${screenLoc}    Screenshot.Take Screenshot        SOECS_first.jpg
-    Log To Console    ${screenLoc}
     Log To Console    ${\n}Step1- Login into the SOECS Application
-    Screenshot.Take Screenshot        SOECS_launchSOECS.jpg
+    Screenshot.Take Screenshot        SS1_SOECS_LAUNCH_PAGE.jpg
     Write Bare    ${SOECS_username}
     Send Enter
     Write Bare    ${SOECS_password}
     Send Enter
     sleep    2s
-    Screenshot.Take Screenshot        SOECS_Dashboard.jpg
+    Screenshot.Take Screenshot        SS2_SOECS_DASHBOARD.jpg
+    Log To Console    ${\n}Step2- SOECS Application logout
     Write Bare in Position    3    23    057
-    Log To Console    ${\n}Step2- SOECS Application logout successfully
     Send Enter
+    Screenshot.Take Screenshot        SS3_SOECS_LOGOUT_PAGE.jpg
 
 *** Keywords ***
 
@@ -37,6 +36,5 @@ Suite Setup
     Sleep    3s
 
 Suite Teardown
-    Send PF    1
     Close Connection
     Sleep    1s
