@@ -7,12 +7,14 @@ Library           Dialogs
 Library           OperatingSystem
 Library           String
 Library           Screenshot
+Library           SeleniumLibrary
 Library           ./utils.py
 Resource          mainframe_variables.robot
 *** Test Cases ***
 Service Order Entry and Control System
 
     ${screenLoc}    Screenshot.Take Screenshot        SOECS_first.jpg
+    Capture Page Screenshot    ${FOLDER}/screenshot.png
     Log To Console    ${screenLoc}
     Log To Console    ${\n}Step1- Login into the SOECS Application
     Screenshot.Take Screenshot        SOECS_launchSOECS.jpg
