@@ -160,15 +160,16 @@ public class GenericUtils {
 	public static void getAllImagesHelper(File directory, String scenarioName) throws IOException {
 		try {
 			String buildUrl = System.getenv("BUILD_URL");
-			String sspath = buildUrl + "artifact/MainframeProject/atest/screenshots/";
+			//String sspath = buildUrl + "artifact/MainframeProject/atest/screenshots/";
+			
+			String mainframeScreenshotPath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path");
+			String sspath = buildUrl + mainframeScreenshotPath;
 			
 			File[] f = directory.listFiles();
 			for (File file : f) {
 				if (file != null && file.getName().toLowerCase().endsWith(".jpg")
 						&& file.getName().toUpperCase().contains(scenarioName)) {
 										
-					//Reporting.logReporter(Status.INFO, "Path: "+ sspath+file.getName());
-
 					Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
 							MediaEntityBuilder.createScreenCaptureFromPath((sspath+file.getName())).build());
 				}
