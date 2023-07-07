@@ -5,9 +5,12 @@ import com.test.files.interaction.ReadJSON;
 import com.test.logging.Logging;
 import com.test.reporting.Reporting;
 import com.test.utils.Status;
+import com.test.utils.SystemProperties;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.openqa.selenium.firefox.FirefoxDriver.SystemProperty;
 
 import java.io.File;
 import java.io.IOException;
@@ -163,11 +166,8 @@ public class GenericUtils {
 			for (File file : f) {
 				if (file != null && file.getName().toLowerCase().endsWith(".jpg")
 						&& file.getName().toUpperCase().contains(scenarioName)) {
-					
-					//Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
-							//MediaEntityBuilder.createScreenCaptureFromPath((file.getAbsolutePath())).build());
-					
-					Reporting.logReporter(Status.INFO, "Path: "+ sspath+file.getName());
+										
+					//Reporting.logReporter(Status.INFO, "Path: "+ sspath+file.getName());
 
 					Reporting.logReporter(Status.INFO, file.getName().toUpperCase(),
 							MediaEntityBuilder.createScreenCaptureFromPath((sspath+file.getName())).build());
@@ -178,5 +178,6 @@ public class GenericUtils {
 			Reporting.logReporter(Status.INFO, "Directory not found");
 		}
 	}
-
+	
+	
 }
