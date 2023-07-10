@@ -56,7 +56,6 @@ public class GoogleSheetsUtils {
         return accessToken;
     }
 
-
     public static JSONArray updateBulKDataIntoGSheets(JSONArray p1Apps, JSONArray p2Apps, JSONArray p3Apps) throws Exception {
 
         GoogleSheetsUtils googleSheetsUtils = new GoogleSheetsUtils();
@@ -73,8 +72,6 @@ public class GoogleSheetsUtils {
         writeDataArray.put(generateGoogleSheetArray(p1Apps, baseDataAppDetailsArray));
         writeDataArray.put(generateGoogleSheetArray(p2Apps, baseDataAppDetailsArray));
         writeDataArray.put(generateGoogleSheetArray(p3Apps, baseDataAppDetailsArray));
-//        writeDataArray.put(generateGoogleSheetArray(mainframes_apps, baseDataAppDetailsArray));
-//        writeDataArray.put(generateGoogleSheetArray(soecs_apps, baseDataAppDetailsArray));
 
         JSONObject payload = generatePayload(jsonArray, lastUsedRow, updatedRow);
 
@@ -96,7 +93,7 @@ public class GoogleSheetsUtils {
 
         JSONObject payload = new JSONObject();
 
-        payload.put("range", sheet + "!A" + ++lastUsedRow + ":K" + updatedRow);
+        payload.put("range", sheet + "!A" + ++lastUsedRow + ":L" + updatedRow);
         payload.put("majorDimension", "ROWS");
         payload.put("values", writeDataArray);
         return payload;
@@ -133,6 +130,7 @@ public class GoogleSheetsUtils {
             String appStatus = jObj.getString("appStatus");
             String executedAt = jObj.getString("executedAt");
             String date = jObj.getString("executedAt").split(" ")[0];
+            String testEnvironment = SystemProperties.EXECUTION_ENVIRONMENT;
 
             for (int j = 0; j < baseDataAppDetailsArray.length(); j++) {
                 int appIndex = GenericUtils.getIndexFromJsonObject(baseDataAppDetailsArray, appName);
@@ -155,6 +153,7 @@ public class GoogleSheetsUtils {
                     dataObject1.put(appStatus);
                     dataObject1.put(executedAt);
                     dataObject1.put(date);
+                    dataObject1.put(testEnvironment);
                     jsonArray.put(dataObject1);
                     break;
                 }
