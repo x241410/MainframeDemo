@@ -1243,7 +1243,6 @@ public class StepDefinitions extends BaseTest {
 
 		try {
 			MainframeSteps.launchMainframeApplication(cmd);
-			Reporting.logReporter(Status.INFO, "CRIS application health check validation is Passed");
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO, "Unable to validate CRIS application health check"+ e);
 		} finally {
@@ -1277,7 +1276,6 @@ public class StepDefinitions extends BaseTest {
 
 		try {
 			MainframeSteps.launchMainframeApplication(cmd);
-			Reporting.logReporter(Status.INFO, "SOECS application health check validation is Passed");
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO, "Unable to validate SOECS application health check"+ e);
 		} finally {
