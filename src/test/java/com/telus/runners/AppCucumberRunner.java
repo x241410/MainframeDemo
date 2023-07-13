@@ -1,29 +1,25 @@
 package com.telus.runners;
 
-import com.jayway.jsonpath.JsonPath;
-import com.telus.bped.steps.LoginPageSteps;
-import com.telus.bped.steps.MainframeSteps;
-import com.telus.bped.stepsdefinition.StepDefinitions;
-import com.telus.bped.utils.GenericUtils;
-import com.telus.bped.utils.GoogleSheetData;
-import com.telus.bped.utils.GoogleSheetsUtils;
-import com.test.cucumber.AbstractTestNGCucumberTests;
-import com.test.reporting.Reporting;
-import com.test.ui.actions.WebDriverSession;
-import com.test.ui.actions.WebDriverSteps;
-import com.test.utils.Status;
-import com.test.utils.SystemProperties;
-
-import io.cucumber.testng.CucumberOptions;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import com.jayway.jsonpath.JsonPath;
+import com.telus.bped.steps.LoginPageSteps;
+import com.telus.bped.utils.GoogleSheetData;
+import com.telus.bped.utils.GoogleSheetsUtils;
+import com.test.cucumber.AbstractTestNGCucumberTests;
+import com.test.reporting.Reporting;
+import com.test.ui.actions.WebDriverSteps;
+import com.test.utils.Status;
+
+import io.cucumber.testng.CucumberOptions;
+
 @CucumberOptions(features = "src/test/resources/features", glue = {
-		"com.telus.bped.stepsdefinition" }, tags = "@SOECS", plugin = { "pretty",
-				"com.test.cucumber.ExtentCucumberAdapter:",
-           "com.telus.cucumber.plugin.ReportPortalCucumberPlugin",
+		"com.telus.bped.stepsdefinition" }, tags = "@Mainframe", plugin = { "pretty",
+				"com.test.cucumber.ExtentCucumberAdapter:", 
+				"com.telus.cucumber.plugin.ReportPortalCucumberPlugin",
 				"rerun:target/rerun.txt" }, monochrome = true, publish = true
 
 )
@@ -31,7 +27,7 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 
 	@BeforeSuite
 	public void beforeSuit() {
-		
+
 		WebDriverSteps.openApplication("MAINFRAME");
 		Reporting.logReporter(Status.INFO,
 				"......................................... Befor Suite called ....................................");
@@ -46,16 +42,7 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		/*
-		 * 
-		 * try { MainframeSteps mainframeSteps= new MainframeSteps(); String
-		 * mainframeDirPath = SystemProperties.getStringValue("mainframe.folder.path");
-		 * String mainframeFWDir = System.getProperty("user.dir") +
-		 * "\\MainframeProject"; mainframeSteps.deleteMFDir(mainframeDirPath);
-		 * mainframeSteps.createMFDir(mainframeDirPath, mainframeFWDir); } catch
-		 * (Exception e) { Reporting.logReporter(Status.INFO,
-		 * "Screenshot not available"); }
-		 */
+
 	}
 
 	@AfterSuite
@@ -85,15 +72,6 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 
 		GoogleSheetsUtils.updateBulKDataIntoGSheets(p1_apps, p2_apps, p3_apps);
 
-//		GoogleSheetsUtils.updateBulKDataIntoGSheets(p1_apps, p2_apps, p3_apps, steps.mainframeCrisStatus,
-//				steps.mainframeSoecsStatus);
-
-		/*
-		 * GenericUtils.moveScreenshots(); String
-		 * mainframeDirPath=SystemProperties.getStringValue("mainframe.folder.path");
-		 * MainframeSteps.reportMF(); MainframeSteps.deleteMFDir(mainframeDirPath);
-		 */
-		
 		WebDriverSteps.closeTheBrowser();
 	}
 
