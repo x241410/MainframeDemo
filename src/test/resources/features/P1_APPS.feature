@@ -120,11 +120,22 @@ Feature: BPED Apps HealthCheck
     Then verify GOnet Billing Engine Homepage is displayed
     Then verify all servers are running
     
-  @Mainframe @ALLAPPS @P1-APPS
+#  @Mainframe @ALLAPPS @P1-APPS
+#  Scenario: Customer Records Information System 1 / Inquiry: AB
+#    Given Test Mainframe Applications
+#
+#  @Mainframe @ALLAPPS @SOECS @P1-APPS
+#  Scenario: Service Order Entry and Control System
+#    Given Test SOECS Applications
+#
+  @Mainframe @ALLAPPS @P1-APPS @CRISM
   Scenario: Customer Records Information System 1 / Inquiry: AB
-    Given Test Mainframe Applications
-    
+    Given Test "CRIS" Applications
+
   @Mainframe @ALLAPPS @SOECS @P1-APPS
   Scenario: Service Order Entry and Control System
-    Given Test SOECS Applications
-   
+    Given Test "SOECS" Applications
+
+
+
+

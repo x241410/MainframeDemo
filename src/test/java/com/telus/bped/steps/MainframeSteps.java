@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 import com.test.ui.actions.Validate;
 import org.apache.commons.io.FileUtils;
@@ -36,9 +37,12 @@ public class MainframeSteps {
 	public static String PSTDate=null;
 	
 	public void launchMainframeApplication(String command){
-		
-		//String command = "cmd /c \"robot C:\\Users\\himanshu.singh01\\Desktop\\Robot-Framework-Mainframe-3270-Library-master\\atest\\mainframe.robot\"";
-        
+
+
+//		String command1 =  "cmd /c \"python -m robot --variable ENV_USERNAME:" + imse_username + " --variable ENV_PASSWORD:"
+//				+ imse_pass + " --variable APP_USERNAME:" + cris_username + " --variable APP_PASSWORD:" + cris_pass
+//				+ " " + robotFilePath;
+
 		try {
             Process proc = Runtime.getRuntime().exec(command);
             
@@ -66,8 +70,57 @@ public class MainframeSteps {
                 e.printStackTrace();
             }
 	}
-	
-	
+
+	public void launchMainframeApplication(HashMap<String,String> EnvVariables,String robotFilePath){
+
+	String command=	generateCommand(EnvVariables,robotFilePath);
+
+		try {
+			Process proc = Runtime.getRuntime().exec(command);
+
+			BufferedReader stdInput = new BufferedReader(new
+					InputStreamReader(proc.getInputStream()));
+			String s = null;
+
+			if ((s = stdInput.readLine()) != null) {
+				Reporting.logReporter(Status.INFO," Application is running....");
+				flag=true;
+			}else {
+//            	Assert.fail("Mainframe execution is not started");
+				Reporting.logReporter(Status.FAIL," Application is not running....");
+				flag=false;
+			}
+
+
+			while ((s = stdInput.readLine()) != null) {
+				Reporting.logReporter(Status.INFO, s);
+
+			}
+
+		}catch (Exception e) {
+			Assert.fail("Unable to launch session");
+			e.printStackTrace();
+		}
+	}
+
+	private String generateCommand(HashMap<String, String> envVariables,String robotFilePath) {
+		String cmd="";
+		if(envVariables.size()>0) {
+			String envvariables = "";
+
+			for (String a : envVariables.keySet()) {
+				envvariables = envvariables + "--variable " + a + ":" + envVariables.get(a) + " ";
+			}
+			cmd = "cmd /c \"python -m robot  " + envvariables + " " + robotFilePath;
+		}else {
+			cmd = "cmd /c \"python -m robot  " + robotFilePath;
+		}
+
+		System.out.println(cmd);
+		return cmd;
+	}
+
+
 	/**
 	 * This method will create a Directory
 	 * @param dirPath
