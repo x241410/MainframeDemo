@@ -86,7 +86,7 @@ public class MainframeUtils {
 				flag = false;
 			}
 
-			while ((s = stdInput.readLine()) != null && !s.contains("Log:")) {
+			while ((s = stdInput.readLine()) != null) {
 				Reporting.logReporter(Status.INFO, s);
 
 			}
@@ -169,7 +169,6 @@ public class MainframeUtils {
 		}
 
 		try {
-//			File xmlFile = new File("output.xml");
 			File xmlFile = new File(outputFilePath);
 			byte[] b = Files.readAllBytes(xmlFile.toPath());
 			String xml = new String(b);
