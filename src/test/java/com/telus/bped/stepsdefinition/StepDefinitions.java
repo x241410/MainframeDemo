@@ -1284,11 +1284,6 @@ public class StepDefinitions extends BaseTest {
 			captureScreenshots(applicationName);
 		}
 
-//		if (buildUrl!=null) {
-//			mainframeAppStatus = MainframeUtils.getMainframeAppStatus(outputFileArtifectPath);
-//		}else {
-//			mainframeAppStatus = MainframeUtils.getMainframeAppStatus(outputFilePath);
-//		}
 		mainframeAppStatus = MainframeUtils.getMainframeAppStatus(outputFilePath);
 		
 	}

@@ -86,7 +86,7 @@ public class MainframeUtils {
 				flag = false;
 			}
 
-			while ((s = stdInput.readLine()) != null) {
+			while ((s = stdInput.readLine()) != null && !s.contains("Log:")) {
 				Reporting.logReporter(Status.INFO, s);
 
 			}
