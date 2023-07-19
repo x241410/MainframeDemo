@@ -105,7 +105,7 @@ public class MainframeUtils {
 			for (String a : envVariables.keySet()) {
 				envvariables = envvariables + "--variable " + a + ":" + envVariables.get(a) + " ";
 			}
-			cmd = "cmd /c \"python -m robot --Output "+outputFilePath+" " + envvariables + " " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Log NONE --Report NONE --Output "+outputFilePath+" " + envvariables + " " + robotFilePath;
 		} else {
 			cmd = "cmd /c \"python -m robot --Log NONE --Report NONE --Output "+outputFileArtifectPath+" " + robotFilePath;
 		}
