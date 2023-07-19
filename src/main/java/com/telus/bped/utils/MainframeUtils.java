@@ -107,7 +107,7 @@ public class MainframeUtils {
 			}
 			cmd = "cmd /c \"python -m robot --Output "+outputFilePath+" " + envvariables + " " + robotFilePath;
 		} else {
-			cmd = "cmd /c \"python -m robot  --Output "+outputFileArtifectPath+" " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Log NONE --Report NONE --Output "+outputFileArtifectPath+" " + robotFilePath;
 		}
 
 		return cmd;
