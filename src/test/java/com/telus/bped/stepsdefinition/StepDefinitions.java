@@ -1269,9 +1269,13 @@ public class StepDefinitions extends BaseTest {
 		String robotFilePath = System.getProperty("user.dir") + File.separator + "MainframeProject" + File.separator
 				+ "atest" + File.separator + applicationName + ".robot";
 
+		String buildUrl = System.getenv("BUILD_URL");
+		String outputFilePath = SystemProperties.getStringValue("mainframe.build.output.artifact.path");
+		String outputFileArtifectPath =buildUrl + outputFilePath;
+		
 		try {
 			String command = MainframeUtils.generateCommand(getEnviornmentVariablesForApplication(applicationName),
-					robotFilePath);
+					robotFilePath, outputFilePath, outputFileArtifectPath);
 			MainframeUtils.launchMainframeApplication(command);
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO,
@@ -1280,7 +1284,12 @@ public class StepDefinitions extends BaseTest {
 			captureScreenshots(applicationName);
 		}
 
-		mainframeAppStatus = MainframeUtils.getMainframeAppStatus();
+		if (buildUrl!=null) {
+			mainframeAppStatus = MainframeUtils.getMainframeAppStatus(outputFileArtifectPath);
+		}else {
+			mainframeAppStatus = MainframeUtils.getMainframeAppStatus(outputFilePath);
+		}
+		//mainframeAppStatus = MainframeUtils.getMainframeAppStatus(outputFileArtifectPath);
 		
 	}
 

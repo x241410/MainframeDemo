@@ -68,9 +68,9 @@ public class MainframeUtils {
 	 * @param EnvVariables
 	 * @param robotFilePath
 	 */
-	public void launchMainframeApplication(HashMap<String, String> EnvVariables, String robotFilePath) {
+	public void launchMainframeApplication(HashMap<String, String> EnvVariables, String robotFilePath, String outputFilePath, String outputFileArtifectPath) {
 
-		String command = generateCommand(EnvVariables, robotFilePath);
+		String command = generateCommand(EnvVariables, robotFilePath,outputFilePath, outputFileArtifectPath);
 
 		try {
 			Process proc = Runtime.getRuntime().exec(command);
@@ -97,7 +97,7 @@ public class MainframeUtils {
 		}
 	}
 
-	public String generateCommand(HashMap<String, String> envVariables, String robotFilePath) {
+	public String generateCommand(HashMap<String, String> envVariables, String robotFilePath, String outputFilePath, String outputFileArtifectPath) {
 		String cmd = "";
 		if (envVariables.size() > 0) {
 			String envvariables = "";
@@ -105,9 +105,9 @@ public class MainframeUtils {
 			for (String a : envVariables.keySet()) {
 				envvariables = envvariables + "--variable " + a + ":" + envVariables.get(a) + " ";
 			}
-			cmd = "cmd /c \"python -m robot  " + envvariables + " " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Output "+outputFilePath+" " + envvariables + " " + robotFilePath;
 		} else {
-			cmd = "cmd /c \"python -m robot  " + robotFilePath;
+			cmd = "cmd /c \"python -m robot  --Output "+outputFileArtifectPath+" " + robotFilePath;
 		}
 
 		return cmd;
@@ -161,7 +161,7 @@ public class MainframeUtils {
 
 	}
 
-	public JSONArray getMainframeAppStatus() {
+	public JSONArray getMainframeAppStatus(String outputFilePath) {
 		// To get data in JSON Array
 
 		if (!flag) {
@@ -169,7 +169,8 @@ public class MainframeUtils {
 		}
 
 		try {
-			File xmlFile = new File("output.xml");
+//			File xmlFile = new File("output.xml");
+			File xmlFile = new File(outputFilePath);
 			byte[] b = Files.readAllBytes(xmlFile.toPath());
 			String xml = new String(b);
 
