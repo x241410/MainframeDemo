@@ -1269,7 +1269,7 @@ public class StepDefinitions extends BaseTest {
 		String robotFilePath = System.getProperty("user.dir") + File.separator + "MainframeProject" + File.separator
 				+ "atest" + File.separator + applicationName + ".robot";
 
-		String buildUrl = System.getenv("WORKSPACE");
+		String buildUrl = System.getenv("BUILD_URL");
 		String reportFilePath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path")+applicationName+".html";
 		String reportFileArtifectPath =buildUrl + reportFilePath;
 		
