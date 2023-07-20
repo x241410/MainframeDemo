@@ -1272,11 +1272,19 @@ public class StepDefinitions extends BaseTest {
 		String buildUrl = System.getenv("BUILD_URL");
 		String outputFilePath = SystemProperties.getStringValue("mainframe.build.output.artifact.path");
 		String outputFileArtifectPath =buildUrl + outputFilePath;
-		System.out.println(outputFileArtifectPath);
+		
+		Reporting.logReporter(Status.INFO,
+				"output artifect path " + outputFileArtifectPath);
+		
 		try {
 			String command = MainframeUtils.generateCommand(getEnviornmentVariablesForApplication(applicationName),
 					robotFilePath, outputFilePath, outputFileArtifectPath);
+			
+			Reporting.logReporter(Status.INFO,
+					"cmd is " + outputFileArtifectPath);
+			
 			MainframeUtils.launchMainframeApplication(command);
+			
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO,
 					"Unable to validate " + applicationName + " application health check" + e);
