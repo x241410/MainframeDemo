@@ -105,7 +105,7 @@ public class MainframeUtils {
 			for (String a : envVariables.keySet()) {
 				envvariables = envvariables + "--variable " + a + ":" + envVariables.get(a) + " ";
 			}
-			cmd = "cmd /c \"python -m robot --Log NONE --Report NONE --Output "+outputFilePath+" " + envvariables + " " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Log NONE --Report NONE --Output "+outputFileArtifectPath+" " + envvariables + " " + robotFilePath;
 		} else {
 			cmd = "cmd /c \"python -m robot --Log NONE --Report NONE --Output "+outputFileArtifectPath+" " + robotFilePath;
 		}
@@ -161,7 +161,7 @@ public class MainframeUtils {
 
 	}
 
-	public JSONArray getMainframeAppStatus(String outputFilePath) {
+	public JSONArray getMainframeAppStatus(String outputFileArtifectPath) {
 		// To get data in JSON Array
 
 		if (!flag) {
@@ -169,7 +169,7 @@ public class MainframeUtils {
 		}
 
 		try {
-			File xmlFile = new File(outputFilePath);
+			File xmlFile = new File(outputFileArtifectPath);
 			byte[] b = Files.readAllBytes(xmlFile.toPath());
 			String xml = new String(b);
 

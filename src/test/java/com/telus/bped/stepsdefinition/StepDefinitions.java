@@ -1285,7 +1285,7 @@ public class StepDefinitions extends BaseTest {
 		}
 
 		
-		mainframeAppStatus = MainframeUtils.getMainframeAppStatus(outputFilePath);
+		mainframeAppStatus = MainframeUtils.getMainframeAppStatus(outputFileArtifectPath);
 	}
 
 	/**
