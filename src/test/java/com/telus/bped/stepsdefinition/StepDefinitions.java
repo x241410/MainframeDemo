@@ -1270,8 +1270,8 @@ public class StepDefinitions extends BaseTest {
 				+ "atest" + File.separator + applicationName + ".robot";
 
 		String buildUrl = System.getenv("BUILD_URL");
-		String outputFilePath = SystemProperties.getStringValue("mainframe.build.output.artifact.path");
-		String outputFileArtifectPath =buildUrl + outputFilePath;
+		String outputFilePath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path");
+		String outputFileArtifectPath =buildUrl + outputFilePath+"output.xml";
 		
 		Reporting.logReporter(Status.INFO,
 				"output artifect path " + outputFileArtifectPath);
