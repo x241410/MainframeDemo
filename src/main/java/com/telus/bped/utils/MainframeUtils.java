@@ -86,7 +86,9 @@ public class MainframeUtils {
 				flag = false;
 			}
 
-			while ((s = stdInput.readLine()) != null) {
+			while ((s = stdInput.readLine()) != null ) {
+				
+				//if (s.contains("Output:").re)
 				Reporting.logReporter(Status.INFO, s);
 
 			}
@@ -97,7 +99,7 @@ public class MainframeUtils {
 		}
 	}
 
-	public String generateCommand(HashMap<String, String> envVariables, String robotFilePath, String outputFilePath, String outputFileArtifectPath) {
+	public String generateCommand(HashMap<String, String> envVariables, String robotFilePath, String reportFilePath, String reportFileArtifectPath) {
 		String cmd = "";
 		if (envVariables.size() > 0) {
 			String envvariables = "";
@@ -105,9 +107,9 @@ public class MainframeUtils {
 			for (String a : envVariables.keySet()) {
 				envvariables = envvariables + "--variable " + a + ":" + envVariables.get(a) + " ";
 			}
-			cmd = "cmd /c \"python -m robot --Log NONE --Report NONE --Output "+outputFilePath+" " + envvariables + " " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Report "+reportFilePath+" " + envvariables + " " + robotFilePath;
 		} else {
-			cmd = "cmd /c \"python -m robot --Log NONE --Report NONE --Output "+outputFileArtifectPath+" " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Report "+reportFileArtifectPath+" " + robotFilePath;
 		}
 
 		return cmd;
@@ -161,7 +163,7 @@ public class MainframeUtils {
 
 	}
 
-	public JSONArray getMainframeAppStatus(String outputFileArtifectPath) {
+	public JSONArray getMainframeAppStatus() {
 		// To get data in JSON Array
 
 		if (!flag) {
@@ -169,7 +171,7 @@ public class MainframeUtils {
 		}
 
 		try {
-			File xmlFile = new File(outputFileArtifectPath);
+			File xmlFile = new File("output.xml");
 			byte[] b = Files.readAllBytes(xmlFile.toPath());
 			String xml = new String(b);
 

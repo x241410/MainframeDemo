@@ -1269,19 +1269,19 @@ public class StepDefinitions extends BaseTest {
 		String robotFilePath = System.getProperty("user.dir") + File.separator + "MainframeProject" + File.separator
 				+ "atest" + File.separator + applicationName + ".robot";
 
-		String buildUrl = System.getenv("BUILD_URL");
-		String outputFilePath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path")+"output.xml";
-		String outputFileArtifectPath =buildUrl + outputFilePath;
+		String buildUrl = System.getenv("WORKSPACE");
+		String reportFilePath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path")+applicationName+".html";
+		String reportFileArtifectPath =buildUrl + reportFilePath;
 		
 		Reporting.logReporter(Status.INFO,
-				"output artifect path " + outputFileArtifectPath);
+				"Report artifect path " + reportFileArtifectPath);
 		
 		try {
 			String command = MainframeUtils.generateCommand(getEnviornmentVariablesForApplication(applicationName),
-					robotFilePath, outputFilePath, outputFileArtifectPath);
+					robotFilePath, reportFilePath, reportFileArtifectPath);
 			
 			Reporting.logReporter(Status.INFO,
-					"cmd is " + outputFileArtifectPath);
+					"cmd is " + reportFileArtifectPath);
 			
 			MainframeUtils.launchMainframeApplication(command);
 			
@@ -1293,7 +1293,7 @@ public class StepDefinitions extends BaseTest {
 		}
 
 		
-		mainframeAppStatus = MainframeUtils.getMainframeAppStatus(outputFileArtifectPath);
+		mainframeAppStatus = MainframeUtils.getMainframeAppStatus();
 	}
 
 	/**
