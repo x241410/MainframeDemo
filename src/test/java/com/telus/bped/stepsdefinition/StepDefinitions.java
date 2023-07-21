@@ -1273,7 +1273,7 @@ public class StepDefinitions extends BaseTest {
 		
 		String buildUrl = System.getenv("BUILD_URL");
 		String wsUrl = buildUrl.split("BPED_Mainframe_Test")[0].concat("BPED_Mainframe_Test/ws/");
-		String reportFilePath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path")+applicationName+".html";
+		String reportFilePath = SystemProperties.getStringValue("mainframe.build.report.artifact.path")+applicationName+".html";
 		String reportFileArtifectPath =wsUrl + reportFilePath;
 		
 		try {
