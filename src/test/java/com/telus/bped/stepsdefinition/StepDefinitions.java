@@ -1282,7 +1282,7 @@ public class StepDefinitions extends BaseTest {
 		
 			MainframeUtils.launchMainframeApplication(command);
 			
-			Reporting.logReporter(Status.INFO, "Report: " + reportFileArtifectPath);
+//			Reporting.logReporter(Status.INFO, "Report: " + reportFileArtifectPath);
 			
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO,
