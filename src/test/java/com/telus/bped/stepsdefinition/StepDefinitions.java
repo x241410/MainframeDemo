@@ -1270,7 +1270,7 @@ public class StepDefinitions extends BaseTest {
 		MainframeUtils MainframeUtils = new MainframeUtils();
 		String robotFilePath = System.getProperty("user.dir") + File.separator + "MainframeProject" + File.separator
 				+ "atest" + File.separator + applicationName + ".robot";
-
+		
 		String buildUrl = System.getenv("BUILD_URL");
 		String wsUrl = buildUrl.split("BPED_Mainframe_Test")[0].concat("BPED_Mainframe_Test/ws/");
 		String reportFilePath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path")+applicationName+".html";
@@ -1282,10 +1282,7 @@ public class StepDefinitions extends BaseTest {
 		
 			MainframeUtils.launchMainframeApplication(command);
 			
-			
-			URI uri = new URI(reportFileArtifectPath);
-			URL url = uri.toURL();
-			Reporting.logReporter(Status.INFO, "Report: " + url);
+			Reporting.logReporter(Status.INFO, "Report: " + reportFileArtifectPath);
 			
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO,

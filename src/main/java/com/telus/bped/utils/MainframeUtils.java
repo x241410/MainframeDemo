@@ -85,10 +85,10 @@ public class MainframeUtils {
 				flag = false;
 			}
 
-			while ((s = stdInput.readLine()) != null && !s.contains("Output:")) {
+			while ((s = stdInput.readLine()) != null) {
 				Reporting.logReporter(Status.INFO, s);
 			}
-			Reporting.logReporter(Status.INFO, "Report: " + reportFileArtifectPath);
+			
 			
 		} catch (Exception e) {
 			Assert.fail("Unable to launch session");
