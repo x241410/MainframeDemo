@@ -17,6 +17,7 @@ import org.json.XML;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.mockito.internal.matchers.Contains;
 import org.testng.Assert;
 
 import com.test.reporting.Reporting;
@@ -52,7 +53,7 @@ public class MainframeUtils {
 				flag = false;
 			}
 
-			while ((s = stdInput.readLine()) != null) {
+			while ((s = stdInput.readLine()) != null && !s.contains("Output:")) {
 				Reporting.logReporter(Status.INFO, s);
 
 			}
@@ -68,9 +69,9 @@ public class MainframeUtils {
 	 * @param EnvVariables
 	 * @param robotFilePath
 	 */
-	public void launchMainframeApplication(HashMap<String, String> EnvVariables, String robotFilePath, String outputFilePath, String outputFileArtifectPath) {
+	public void launchMainframeApplication(HashMap<String, String> EnvVariables, String robotFilePath, String reportFilePath, String reportFileArtifectPath) {
 
-		String command = generateCommand(EnvVariables, robotFilePath,outputFilePath, outputFileArtifectPath);
+		String command = generateCommand(EnvVariables, robotFilePath,reportFilePath, reportFileArtifectPath);
 
 		try {
 			Process proc = Runtime.getRuntime().exec(command);
@@ -86,7 +87,7 @@ public class MainframeUtils {
 				flag = false;
 			}
 
-			while ((s = stdInput.readLine()) != null ) {
+			while ((s = stdInput.readLine()) != null && !s.contains("Output:")) {
 				
 				//if (s.contains("Output:").re)
 				Reporting.logReporter(Status.INFO, s);

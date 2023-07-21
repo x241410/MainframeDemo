@@ -1270,8 +1270,9 @@ public class StepDefinitions extends BaseTest {
 				+ "atest" + File.separator + applicationName + ".robot";
 
 		String buildUrl = System.getenv("BUILD_URL");
+		String wsUrl = buildUrl.split("BPED_Mainframe_Test")[0].concat("BPED_Mainframe_Test/ws/");
 		String reportFilePath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path")+applicationName+".html";
-		String reportFileArtifectPath =buildUrl + reportFilePath;
+		String reportFileArtifectPath =wsUrl + reportFilePath;
 		
 		Reporting.logReporter(Status.INFO,
 				"Report artifect path " + reportFileArtifectPath);
