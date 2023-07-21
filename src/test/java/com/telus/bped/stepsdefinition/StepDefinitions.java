@@ -36,6 +36,8 @@ import org.sikuli.script.Screen;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -1274,18 +1276,16 @@ public class StepDefinitions extends BaseTest {
 		String reportFilePath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path")+applicationName+".html";
 		String reportFileArtifectPath =wsUrl + reportFilePath;
 		
-		Reporting.logReporter(Status.INFO,
-				"Report artifect path " + reportFileArtifectPath);
-		
 		try {
 			String command = MainframeUtils.generateCommand(getEnviornmentVariablesForApplication(applicationName),
 					robotFilePath, reportFilePath, reportFileArtifectPath);
-			
-			Reporting.logReporter(Status.INFO,
-					"cmd is " + reportFileArtifectPath);
-			
+		
 			MainframeUtils.launchMainframeApplication(command);
-			Reporting.logReporter(Status.INFO, "Report: " + reportFileArtifectPath);
+			
+			
+			URI uri = new URI(reportFileArtifectPath);
+			URL url = uri.toURL();
+			Reporting.logReporter(Status.INFO, "Report: " + url);
 			
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO,
@@ -1293,8 +1293,6 @@ public class StepDefinitions extends BaseTest {
 		} finally {
 			captureScreenshots(applicationName);
 		}
-
-		
 		mainframeAppStatus = MainframeUtils.getMainframeAppStatus();
 	}
 
