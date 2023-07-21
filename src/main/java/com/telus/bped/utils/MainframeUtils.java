@@ -55,9 +55,7 @@ public class MainframeUtils {
 
 			while ((s = stdInput.readLine()) != null && !s.contains("Output:")) {
 				Reporting.logReporter(Status.INFO, s);
-
 			}
-
 		} catch (Exception e) {
 			Assert.fail("Unable to launch session");
 			e.printStackTrace();
@@ -88,12 +86,10 @@ public class MainframeUtils {
 			}
 
 			while ((s = stdInput.readLine()) != null && !s.contains("Output:")) {
-				
-				//if (s.contains("Output:").re)
 				Reporting.logReporter(Status.INFO, s);
-
 			}
-
+			Reporting.logReporter(Status.INFO, "Report: " + reportFileArtifectPath);
+			
 		} catch (Exception e) {
 			Assert.fail("Unable to launch session");
 			e.printStackTrace();

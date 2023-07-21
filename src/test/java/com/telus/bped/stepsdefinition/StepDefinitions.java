@@ -1285,6 +1285,7 @@ public class StepDefinitions extends BaseTest {
 					"cmd is " + reportFileArtifectPath);
 			
 			MainframeUtils.launchMainframeApplication(command);
+			Reporting.logReporter(Status.INFO, "Report: " + reportFileArtifectPath);
 			
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO,
