@@ -67,9 +67,9 @@ public class MainframeUtils {
 	 * @param EnvVariables
 	 * @param robotFilePath
 	 */
-	public void launchMainframeApplication(HashMap<String, String> EnvVariables, String robotFilePath, String reportFilePath, String reportFileArtifectPath) {
+	public void launchMainframeApplication(HashMap<String, String> EnvVariables, String robotFilePath, String reportFilePath, String reportFileArtifectPath,String logFilePath,String logFileArtifectPath) {
 
-		String command = generateCommand(EnvVariables, robotFilePath,reportFilePath, reportFileArtifectPath);
+		String command = generateCommand(EnvVariables, robotFilePath,reportFilePath, reportFileArtifectPath,logFilePath, logFileArtifectPath);
 
 		try {
 			Process proc = Runtime.getRuntime().exec(command);
@@ -96,7 +96,7 @@ public class MainframeUtils {
 		}
 	}
 
-	public String generateCommand(HashMap<String, String> envVariables, String robotFilePath, String reportFilePath, String reportFileArtifectPath) {
+	public String generateCommand(HashMap<String, String> envVariables, String robotFilePath, String reportFilePath, String reportFileArtifectPath,String logFilePath, String logFileArtifectPath) {
 		String cmd = "";
 		if (envVariables.size() > 0) {
 			String envvariables = "";
@@ -104,9 +104,9 @@ public class MainframeUtils {
 			for (String a : envVariables.keySet()) {
 				envvariables = envvariables + "--variable " + a + ":" + envVariables.get(a) + " ";
 			}
-			cmd = "cmd /c \"python -m robot --Report "+reportFilePath+" " + envvariables + " " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Log "+logFilePath+" --Report "+reportFilePath+" " + envvariables + " " + robotFilePath;
 		} else {
-			cmd = "cmd /c \"python -m robot --Report "+reportFileArtifectPath+" " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Log "+logFileArtifectPath+" --Report "+reportFileArtifectPath+" " + robotFilePath;
 		}
 
 		return cmd;
