@@ -12,12 +12,12 @@ Resource          mainframe_variables.robot
 *** Test Cases ***
 Customer Records Information System 2 / Update: AB
 
-    Log To Console    ${\n}Step1- Login into the TPX AB Cris in IMSE Env
+    Log To Console    ${\n}Step1- Login into the TPX AB Cris in ${REGIONS} Env
     Screenshot.Take Screenshot        SS1_CRISAB_LAUNCH_IMSI.jpg 
     ${read_env_title}    Read    19    013    41
     Log To Console    ${\n}Actual Env Title is ${read_env_title} and Expected is ${WELCOME_TITLE}
     Should Be Equal As Strings    ${WELCOME_TITLE}    ${read_env_title}
-    Write Bare    ${WRITE_TEXT}
+    Write Bare    ${REGIONS}
     Send Enter
     Write Bare    ${ENV_USERNAME}
     Move Next Field
