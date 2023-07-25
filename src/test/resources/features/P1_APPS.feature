@@ -136,6 +136,9 @@ Feature: BPED Apps HealthCheck
   Scenario: Service Order Entry and Control System
     Given Test "SOECS" Applications
 
+	@Mainframe @ALLAPPS @CAMS:AB @P1-APPS
+  Scenario: CAMS: AB
+    Given Test "CAMS" Applications
 
 
 

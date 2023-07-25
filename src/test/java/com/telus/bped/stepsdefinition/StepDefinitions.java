@@ -1305,7 +1305,9 @@ public class StepDefinitions extends BaseTest {
 		JSONObject userAccess = userAccessVar.getJSONObject(SystemProperties.EXECUTION_ENVIRONMENT);
 
 		switch (applicationName) {
-		case "CRIS": {
+		case "CRIS":
+		case "CAMS":
+		{
 			String imse_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_ENV_USERNAME"));// .getString("TPX_AB_IMSE_ENV_USERNAME");
 			String imse_pass = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_ENV_PASSWORD"));
 			String cris_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_APP_USERNAME"));

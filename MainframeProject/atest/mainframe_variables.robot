@@ -19,6 +19,7 @@ ${APP_USERNAME}
 ${APP_PASSWORD}    
 ${CRIS_APP_TITLE}    CRIS BULLETIN
 ${CRIS_APP_LOGINPAGE}    Customer Records Information System
+${CAMS_COLLECTION_SCREEN_PAGE}    Collection Screen
 ${INSTALL_ORDER_CMD}    in
 # ${B_NAME} \ \ \ \ \ \ \ \ \
 ${SA_HOUSE_No}    208
