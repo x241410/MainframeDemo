@@ -1285,8 +1285,6 @@ public class StepDefinitions extends BaseTest {
 		
 			MainframeUtils.launchMainframeApplication(command);
 			
-//			Reporting.logReporter(Status.INFO, "Report: " + reportFileArtifectPath);
-			
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO,
 					"Unable to validate " + applicationName + " application health check" + e);
@@ -1304,19 +1302,23 @@ public class StepDefinitions extends BaseTest {
 	private HashMap<String, String> getEnviornmentVariablesForApplication(String applicationName) {
 		JSONObject userAccess = userAccessVar.getJSONObject(SystemProperties.EXECUTION_ENVIRONMENT);
 
+
 		switch (applicationName) {
-		case "CRIS":
-		case "CAMS":
+		case "CRIS_AB":
+		case "CAMS_AB":
 		{
-			String imse_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_ENV_USERNAME"));// .getString("TPX_AB_IMSE_ENV_USERNAME");
-			String imse_pass = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_ENV_PASSWORD"));
-			String cris_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_APP_USERNAME"));
-			String cris_pass = EncryptionUtils.decode(userAccess.getString("TPX_AB_IMSE_APP_PASSWORD"));
+			
+			String region = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION"));
+			String region_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION_USERNAME"));// .getString("TPX_AB_IMSE_ENV_USERNAME");
+			String region_pass = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION_PASSWORD"));
+			String cris_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_CRIS_USERNAME"));
+			String cris_pass = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_CRIS_PASSWORD"));
 
 			HashMap<String, String> keys = new HashMap<>();
 
-			keys.put("ENV_USERNAME", imse_username);
-			keys.put("ENV_PASSWORD", imse_pass);
+			keys.put("REGION", region);
+			keys.put("REG_USERNAME", region_username);
+			keys.put("REG_PASSWORD", region_pass);
 			keys.put("APP_USERNAME", cris_username);
 			keys.put("APP_PASSWORD", cris_pass);
 //                keys.put("PATH",robotFilePath);

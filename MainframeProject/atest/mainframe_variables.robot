@@ -5,9 +5,9 @@ ${HOST_soecs}            soecs.tsl.telus.com
 #${FOLDER}    		 	${CURDIR}
 ${FOLDER}               ${CURDIR}${/}screenshots
 # Text to write
-${REGIONS}     imsc
-${ENV_USERNAME}    
-${ENV_PASSWORD}    
+${REGION}
+${REG_USERNAME}    
+${REG_PASSWORD}    
 
 ${SELECT_NEWS}    s
 # Texts in the Mainframe
