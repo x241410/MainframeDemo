@@ -10,7 +10,7 @@ Library           Screenshot
 Library           ./utils.py
 Resource          mainframe_variables.robot
 *** Test Cases ***
-CAMS: AB
+Customer Records Information System 2 / Update: AB
 
     Log To Console    ${\n}Step1- Login into the TPX AB Cris in ${REGION} Env
     Screenshot.Take Screenshot        SS1_CRIS_LAUNCH_IMSI.jpg 
@@ -36,8 +36,8 @@ CAMS: AB
     ${read_app_Title}    Read    01    027    13
     Screenshot.Take Screenshot        SS3_CRIS_DASHBOARD.jpg 
     Log To Console    ${\n}Actual App Dashboard Title is ${read_app_Title} and Expected is ${CRIS_APP_TITLE}
-    Should Be Equal As Strings    ${CRIS_APP_TITLE}    ${read_app_Title}
     Log To Console    ${\n}Step2- Login into CRIS Application is successful.
+    Should Be Equal As Strings    ${CRIS_APP_TITLE}    ${read_app_Title}
     Send PF    1
     Sleep    3s
 
