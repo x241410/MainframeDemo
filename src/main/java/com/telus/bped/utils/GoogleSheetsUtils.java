@@ -25,6 +25,8 @@ public class GoogleSheetsUtils {
     private static int updatedRow = 0;
     private static JSONObject gSheetConfigVar = null;
 
+
+    private static JSONObject gSheetManualConfigVar = null;
     /**
      * Method Description: This method is used to generate the access token
      *
@@ -75,25 +77,43 @@ public class GoogleSheetsUtils {
 
         JSONObject payload = generatePayload(jsonArray, lastUsedRow, updatedRow);
 
-        System.setProperty(karateTokenStr, token);
-        System.setProperty(karateSheetIdStr, getSheetId());
-        System.setProperty(karateSheetNameStr, getSheetUpdateName());
-        System.setProperty("karate.payload", payload.toString());
-        System.setProperty("karate.sheetRange", payload.getString("range"));
+        writeIntoGSheet(token,getSheetId(),getSheetUpdateName(),payload);
 
-        APIJava.runKarateFeatureReturnResultSet(tempEnvVar, "classpath:services/updateGoogleSheets.feature");
 
 
         return writeDataArray;
     }
 
+
+    public static void writeIntoGSheet(String token, String sheetID,String sheetName,JSONObject payload){
+
+        System.setProperty(karateTokenStr, token);
+        System.setProperty(karateSheetIdStr, sheetID);
+        System.setProperty(karateSheetNameStr, sheetName);
+        System.setProperty("karate.payload", payload.toString());
+        System.setProperty("karate.sheetRange", payload.getString("range"));
+
+        FeatureResult result1 =    APIJava.runKarateFeatureReturnResultSet(tempEnvVar, "classpath:services/updateGoogleSheets.feature");
+        Map<String, Object> apiOperationReadMainSheet = result1.getResultAsPrimitiveMap();
+
+    }
+
     public static JSONObject generatePayload(JSONArray writeDataArray, int lastUsedRow, int updatedRow) {
 
         String sheet = getSheetUpdateName();
-
         JSONObject payload = new JSONObject();
+        payload.put("range", sheet + "!A" + ++lastUsedRow + ":N" + updatedRow);
+        payload.put("majorDimension", "ROWS");
+        payload.put("values", writeDataArray);
+        return payload;
+    }
 
-        payload.put("range", sheet + "!A" + ++lastUsedRow + ":L" + updatedRow);
+
+    public static JSONObject generateManualExecutionsUpdatedPayload(JSONArray writeDataArray, int lastUsedRow, int updatedRow) {
+
+        String sheet = getManualSheetName();
+        JSONObject payload = new JSONObject();
+        payload.put("range", sheet + "!F" + ++lastUsedRow + ":F" + updatedRow);
         payload.put("majorDimension", "ROWS");
         payload.put("values", writeDataArray);
         return payload;
@@ -104,6 +124,25 @@ public class GoogleSheetsUtils {
         System.setProperty(karateTokenStr, token);
         System.setProperty(karateSheetIdStr, getSheetId());
         System.setProperty(karateSheetNameStr, getSheetUpdateName());
+
+        /**
+         * Call Read Googlesheet API
+         */
+
+        FeatureResult result1 = APIJava.runKarateFeatureReturnResultSet(tempEnvVar, readGSheetClassPathStr);
+
+        Map<String, Object> apiOperationReadMainSheet = result1.getResultAsPrimitiveMap();
+        JSONArray jObjMainSheet = new JSONArray(apiOperationReadMainSheet.get(responseValueStr).toString());
+        return jObjMainSheet.length();
+
+    }
+
+    public static int readTempConsolidatedGoogleSheet(String token) {
+
+        System.setProperty(karateTokenStr, token);
+        System.setProperty(karateSheetIdStr, "10YXOTTb6c0Y99SOEas9eZPn5jxaPpq-oqCfF8Sfgax0");
+        System.setProperty(karateSheetNameStr, "Consolidated");
+
 
         /**
          * Call Read Googlesheet API
@@ -131,6 +170,13 @@ public class GoogleSheetsUtils {
             String executedAt = jObj.getString("executedAt");
             String date = jObj.getString("executedAt").split(" ")[0];
             String testEnvironment = SystemProperties.EXECUTION_ENVIRONMENT;
+            String eventName = System.getenv("RELEASE_LAUNCH_NAME");
+
+
+            if(eventName == null){
+                eventName="JULY_DRY_RUNS";
+            }
+
 
             for (int j = 0; j < baseDataAppDetailsArray.length(); j++) {
                 int appIndex = GenericUtils.getIndexFromJsonObject(baseDataAppDetailsArray, appName);
@@ -154,6 +200,7 @@ public class GoogleSheetsUtils {
                     dataObject1.put(executedAt);
                     dataObject1.put(date);
                     dataObject1.put(testEnvironment);
+                    dataObject1.put(eventName);
                     jsonArray.put(dataObject1);
                     break;
                 }
@@ -172,6 +219,9 @@ public class GoogleSheetsUtils {
 
         return getgSheetConfigVar().get("gSheetId").toString();
     }
+    public static String getManualSheetId() {
+        return getgSheetManualConfigVar().get("gSheetId").toString();
+    }
 
     /**
      * Method Description: To get the sheet Name
@@ -181,6 +231,10 @@ public class GoogleSheetsUtils {
     public static String getSheetName() {
         return getgSheetConfigVar().get("gSheetName").toString();
 
+    }
+    public static String getManualSheetName() {
+
+        return getgSheetManualConfigVar().get("gSheetName").toString();
     }
 
     /**
@@ -217,10 +271,18 @@ public class GoogleSheetsUtils {
     public static JSONObject getgSheetConfigVar() {
         return gSheetConfigVar;
     }
+    public static JSONObject getgSheetManualConfigVar() {
+        return gSheetManualConfigVar;
+    }
 
     public static void setgSheetConfigVar(JSONObject gSheetConfigVar) {
         GoogleSheetsUtils.gSheetConfigVar = gSheetConfigVar;
+
     }
+    public static void setgSheetManualConfigVar(JSONObject gSheetConfigVar) {
+        GoogleSheetsUtils.gSheetManualConfigVar = gSheetConfigVar;
+    }
+
 
     public JSONObject getJSONObjectFromGit(String value) {
         String a = value;
@@ -336,6 +398,21 @@ public class GoogleSheetsUtils {
         System.setProperty(karateTokenStr, token);
         System.setProperty(karateSheetIdStr, getSheetId());
         System.setProperty(karateSheetNameStr, getSheetName());
+
+        /**
+         * Call Read Googlesheet API
+         */
+
+        FeatureResult result1 = APIJava.runKarateFeatureReturnResultSet(tempEnvVar, readGSheetClassPathStr);
+        Map<String, Object> apiOperationRead = result1.getResultAsPrimitiveMap();
+        return new JSONArray(apiOperationRead.get(responseValueStr).toString());
+
+    }
+    public JSONArray readManualExecutionGoogleSheet(String token) {
+
+        System.setProperty(karateTokenStr, token);
+        System.setProperty(karateSheetIdStr, getManualSheetId());
+        System.setProperty(karateSheetNameStr, getManualSheetName());
 
         /**
          * Call Read Googlesheet API

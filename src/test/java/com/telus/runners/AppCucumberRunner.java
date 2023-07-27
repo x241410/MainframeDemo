@@ -70,7 +70,7 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 		System.out.println("P2 APPS:======>" + p2_apps);
 		System.out.println("P3 APPS:======>" + p3_apps);
 
-		//GoogleSheetsUtils.updateBulKDataIntoGSheets(p1_apps, p2_apps, p3_apps);
+		GoogleSheetsUtils.updateBulKDataIntoGSheets(p1_apps, p2_apps, p3_apps);
 
 		WebDriverSteps.closeTheBrowser();
 	}
