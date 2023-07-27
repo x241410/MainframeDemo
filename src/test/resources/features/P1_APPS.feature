@@ -130,7 +130,7 @@ Feature: BPED Apps HealthCheck
 #
   @Mainframe @ALLAPPS @P1-APPS @CRISM
   Scenario: Customer Records Information System 1 / Inquiry: AB
-    Given Test "CRIS_AB" Applications
+    Given Test "CRISAB" Applications
 
   @Mainframe @ALLAPPS @SOECS @P1-APPS
   Scenario: Service Order Entry and Control System
@@ -138,7 +138,7 @@ Feature: BPED Apps HealthCheck
 
 	@Mainframe @ALLAPPS @CAMS:AB @P1-APPS
   Scenario: CAMS: AB
-    Given Test "CAMS_AB" Applications
+    Given Test "CAMSAB" Applications
 
 
 

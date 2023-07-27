@@ -13,7 +13,7 @@ Resource          mainframe_variables.robot
 Customer Records Information System 2 / Update: AB
 
     Log To Console    ${\n}Step1- Login into the TPX AB Cris in ${REGION} Env
-    Screenshot.Take Screenshot        SS1_CRIS_AB_LAUNCH.jpg 
+    Screenshot.Take Screenshot        SS1_CRISAB_LAUNCH.jpg 
     ${read_env_title}    Read    19    013    41
     Log To Console    ${\n}Actual Env Title is ${read_env_title} and Expected is ${WELCOME_TITLE}
     Should Be Equal As Strings    ${WELCOME_TITLE}    ${read_env_title}
@@ -26,7 +26,7 @@ Customer Records Information System 2 / Update: AB
     Write Bare    ${SELECT_NEWS}
     Send Enter
     Write Bare    /for cris
-    Screenshot.Take Screenshot        SS2_CRIS_AB_LOGIN.jpg
+    Screenshot.Take Screenshot        SS2_CRISAB_LOGIN.jpg
     Send Enter
     ${read_app_loginTitle}    Read    17    031    35
     Should Be Equal As Strings    ${CRIS_APP_LOGINPAGE}    ${read_app_loginTitle}
@@ -34,7 +34,7 @@ Customer Records Information System 2 / Update: AB
     Write Bare    ${APP_PASSWORD}
     Send Enter
     ${read_app_Title}    Read    01    027    13
-    Screenshot.Take Screenshot        SS3_CRIS_AB_DASHBOARD.jpg 
+    Screenshot.Take Screenshot        SS3_CRISAB_DASHBOARD.jpg 
     Log To Console    ${\n}Actual App Dashboard Title is ${read_app_Title} and Expected is ${CRIS_APP_TITLE}
     Log To Console    ${\n}Step2- Login into CRIS Application is successful.
     Should Be Equal As Strings    ${CRIS_APP_TITLE}    ${read_app_Title}
