@@ -1304,8 +1304,8 @@ public class StepDefinitions extends BaseTest {
 
 
 		switch (applicationName) {
-		case "CRIS_AB":
-		case "CAMS_AB":
+		case "CRISAB":
+		case "CAMSAB":
 		{
 			
 			String region = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION"));
