@@ -1311,7 +1311,14 @@ public class StepDefinitions extends BaseTest {
 		case "CRISBC":
 		case "CRIS3BC":
 		{
-			
+			String tn_number=null;
+			if (applicationName.contains("CAMSAB")||applicationName.contains("CRISAB")||applicationName.contains("CRIS3AB"))
+			{
+				tn_number= EncryptionUtils.decode(userAccess.getString("AB_TN_NUMBER"));
+			}else
+			{
+				tn_number= EncryptionUtils.decode(userAccess.getString("BC_TN_NUMBER"));
+			}
 			String region = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION"));
 			String region_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION_USERNAME"));// .getString("TPX_AB_IMSE_ENV_USERNAME");
 			String region_pass = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION_PASSWORD"));
@@ -1320,6 +1327,7 @@ public class StepDefinitions extends BaseTest {
 
 			HashMap<String, String> keys = new HashMap<>();
 
+			keys.put("POST_TN", tn_number);
 			keys.put("REGION", region);
 			keys.put("REG_USERNAME", region_username);
 			keys.put("REG_PASSWORD", region_pass);

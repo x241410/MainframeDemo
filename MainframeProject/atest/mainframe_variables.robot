@@ -34,8 +34,7 @@ ${REGION_TITLE}    Application Required
 ${BC_REGION}    bctimsc
 ${REGION_LOGIN_TITLE}    BCTEL  SIGNON  SCREEN
 ${BC_PRE_TN}    604
-${BC_POST_TN}    2731287
-${BC_TN}=    evaluate    ${BC_PRE_TN}${BC_POST_TN}
+${POST_TN}
 ${SCREEN}    bsc
 ${MONTH}    0
 ${SCREEN_TITLE}    **(BSC) basic information** 
