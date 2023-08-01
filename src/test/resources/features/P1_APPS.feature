@@ -139,6 +139,16 @@ Feature: BPED Apps HealthCheck
 	@Mainframe @ALLAPPS @CAMS:AB @P1-APPS
   Scenario: CAMS: AB
     Given Test "CAMSAB" Applications
+    
+  @Mainframe @ALLAPPS @CAMS:BC @P1-APPS
+  Scenario: CAMS: BC
+    Given Test "CAMSBC" Applications
+    
+  @Mainframe @ALLAPPS @CRIS:BC @P1-APPS
+  Scenario: Customer Records Information System 1 / Inquiry: BC
+    Given Test "CRISBC" Applications
 
-
+	@Mainframe @ALLAPPS @CRIS3:BC @P1-APPS
+  Scenario: CRIS3: Customer Records Information System 3 / Service Order System: BC
+    Given Test "CRIS3BC" Applications
 
