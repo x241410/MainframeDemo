@@ -12,12 +12,12 @@ Resource          mainframe_variables.robot
 *** Test Cases ***
 Customer Records Information System 2 / Update: AB
 
-    Log To Console    ${\n}Step1- Login into the TPX AB Cris in ${REGION} Env
+    Log To Console    ${\n}Step1- Login into the TPX AB Cris in ${AB_REGION} Env
     Screenshot.Take Screenshot        SS1_CRISAB_LAUNCH.jpg 
     ${read_env_title}    Read    19    013    41
     Log To Console    ${\n}Actual Env Title is ${read_env_title} and Expected is ${WELCOME_TITLE}
     Should Be Equal As Strings    ${WELCOME_TITLE}    ${read_env_title}
-    Write Bare    ${REGION}
+    Write Bare    ${AB_REGION}
     Send Enter
     Write Bare    ${REG_USERNAME}
     Move Next Field
@@ -43,7 +43,7 @@ Customer Records Information System 2 / Update: AB
 
 *** Keywords ***
 Suite Setup
-    Open Connection    ${HOST_cris}
+    Open Connection    ${TPX_AB}
     Create Directory    ${FOLDER}
     Set Screenshot Directory    ${FOLDER}
     Change Wait Time    0.4

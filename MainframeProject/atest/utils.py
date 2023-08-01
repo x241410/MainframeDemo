@@ -1,4 +1,4 @@
-import random,string,time,datetime
+import random,string,time,datetime,keyboard
 
 def billingName():
     letters = string.ascii_lowercase
@@ -18,3 +18,9 @@ def dueDate():
     NextDay_Date = datetime.datetime.today() + datetime.timedelta(days=1)
     Due_Date= NextDay_Date.strftime ('%Y%m%d')
     return str(Due_Date)
+
+def clearScreen():
+    keyboard.press_and_release('esc')
+    keyboard.write("clear")
+    keyboard.press_and_release('enter')
+    return
