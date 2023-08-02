@@ -12,12 +12,12 @@ Resource          mainframe_variables.robot
 *** Test Cases ***
 CAMS: AB
 
-    Log To Console    ${\n}Step1- Login into the TPX AB Cris in ${AB_REGION} Env
+    Log To Console    ${\n}Step1- Login into the TPX AB Cris in ${REGION} Region
     Screenshot.Take Screenshot        SS1_CAMSAB_LAUNCH.jpg 
     ${read_env_title}    Read    19    013    41
     Log To Console    ${\n}Actual Env Title is ${read_env_title} and Expected is ${WELCOME_TITLE}
     Should Be Equal As Strings    ${WELCOME_TITLE}    ${read_env_title}
-    Write Bare    ${AB_REGION}
+    Write Bare    ${REGION}
     Send Enter
     Write Bare    ${REG_USERNAME}
     Move Next Field

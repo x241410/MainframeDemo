@@ -12,12 +12,12 @@ Resource          mainframe_variables.robot
 *** Test Cases ***
 Customer Records Information System 1 / Inquiry: BC
 
-    Log To Console    ${\n}Step1- Enter region and Login into the region
+    Log To Console    ${\n}Step1- Enter region and Login into the	${REGION}	Region
     Screenshot.Take Screenshot        SS1_CRISBC_REGION.jpg
     ${read_region_title}    Read    04    002    20
     Log To Console    ${\n}Actual Env Title is ${read_region_title} and Expected is ${REGION_TITLE}
     Should Be Equal As Strings    ${REGION_TITLE}    ${read_region_title}
-    Write Bare    ${BC_REGION}
+    Write Bare    ${REGION}
     Send Enter
     Write Bare    /for signon
     Send Enter
@@ -30,7 +30,7 @@ Customer Records Information System 1 / Inquiry: BC
     ${read_login_alert}    Read    20    020    22
     Should Be Equal As Strings    ${LOGIN_ALERT}    ${read_login_alert}
     Screenshot.Take Screenshot        SS2_CRISBC_REGION_LOGIN.jpg
-    Log To Console    ${\n}Step2- Login into    ${BC_REGION}    is successful.
+    Log To Console    ${\n}Step2- Login into    ${REGION}    is successful.
     ${PRESS_ESC}=    evaluate    utils.clearScreen()    modules=utils
     Sleep    5s
     Write Bare    /for cris
@@ -44,7 +44,7 @@ Customer Records Information System 1 / Inquiry: BC
     Log To Console    ${\n}Actual App Dashboard Title is ${read_app_Title} and Expected is ${CRIS_APP_TITLE}
     Should Be Equal As Strings    ${CRIS_APP_TITLE}    ${read_app_Title}
     Log To Console    ${\n}Step3- Open BSC Screen to verify CRIS BC.
-    ${BC_TN}=    evaluate    ${BC_PRE_TN}${BC_POST_TN}
+    ${BC_TN}=    evaluate    ${BC_PRE_TN}${POST_TN}
     Write Bare    ${BC_TN}
     Move Next Field
     Write Bare    ${SCREEN}
@@ -59,7 +59,7 @@ Customer Records Information System 1 / Inquiry: BC
 
     #2. Verify TN Number
     ${read_screen_tn}    Read    01    007    7
-    Should Be Equal As Strings    ${BC_POST_TN}    ${read_screen_tn}    strip_spaces=${True}
+    Should Be Equal As Strings    ${POST_TN}    ${read_screen_tn}    strip_spaces=${True}
 
     Log To Console    ${\n}Step4- CRIS BC Health Check is verified.
     

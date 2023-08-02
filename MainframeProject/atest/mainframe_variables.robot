@@ -6,7 +6,7 @@ ${HOST_soecs}            soecs.tsl.telus.com
 ${FOLDER}               ${CURDIR}${/}screenshots
 
 # Region details
-${AB_REGION}
+${REGION}
 ${REG_USERNAME}
 ${REG_PASSWORD}
 ${SELECT_NEWS}    s
@@ -27,15 +27,13 @@ ${CAMS_COLLECTION_SCREEN_PAGE}    Collection Screen
 #For BCTIMSC
 ${LOGIN_ALERT}    SIGN COMMAND COMPLETED
 ${REGION_TITLE}    Application Required
-${BC_REGION}    bctimsc
 ${REGION_LOGIN_TITLE}    BCTEL  SIGNON  SCREEN
 ${BC_PRE_TN}    604
-${BC_POST_TN}
 ${SCREEN}    bsc
 ${MONTH}    0
 ${SCREEN_TITLE}    **(BSC) basic information**
 
 #For IMSC
 ${AB_PRE_TN}    403
-${AB_POST_TN}
+${POST_TN}
 

@@ -128,11 +128,11 @@ Feature: BPED Apps HealthCheck
 #  Scenario: Service Order Entry and Control System
 #    Given Test SOECS Applications
 #
-  @Mainframe @ALLAPPS @P1-APPS @CRISM
+  @Mainframe @ALLAPPS @P1-APPS @CRISAB
   Scenario: Customer Records Information System 1 / Inquiry: AB
     Given Test "CRISAB" Applications
     
- 	@Mainframe @ALLAPPS @CRIS3:BC @P1-APPS
+ 	@Mainframe @ALLAPPS @CRIS3AB @P1-APPS
   Scenario: CRIS3: Customer Records Information System 3 / Service Order System: AB
     Given Test "CRIS3AB" Applications
 
@@ -140,19 +140,19 @@ Feature: BPED Apps HealthCheck
   Scenario: Service Order Entry and Control System
     Given Test "SOECS" Applications
 
-	@Mainframe @ALLAPPS @CAMS:AB @P1-APPS
+	@Mainframe @ALLAPPS @CAMSAB @P1-APPS
   Scenario: CAMS: AB
     Given Test "CAMSAB" Applications
     
-  @Mainframe @ALLAPPS @CAMS:BC @P1-APPS
+  @Mainframe @ALLAPPS @CAMSBC @P1-APPS
   Scenario: CAMS: BC
     Given Test "CAMSBC" Applications
     
-  @Mainframe @ALLAPPS @CRIS:BC @P1-APPS
+  @Mainframe @ALLAPPS @CRISBC @P1-APPS
   Scenario: Customer Records Information System 1 / Inquiry: BC
     Given Test "CRISBC" Applications
 
-	@Mainframe @ALLAPPS @CRIS3:BC @P1-APPS
+	@Mainframe @ALLAPPS @CRIS3BC @P1-APPS
   Scenario: CRIS3: Customer Records Information System 3 / Service Order System: BC
     Given Test "CRIS3BC" Applications
     

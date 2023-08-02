@@ -12,12 +12,12 @@ Resource          mainframe_variables.robot
 *** Test Cases ***
 CAMS: BC
 
-    Log To Console    ${\n}Step1- Enter region and Login into the region
+    Log To Console    ${\n}Step1- Enter region and Login into the	${REGION}	Region
     Screenshot.Take Screenshot        SS1_CAMSBC_REGION.jpg
     ${read_region_title}    Read    04    002    20
     Log To Console    ${\n}Actual Env Title is ${read_region_title} and Expected is ${REGION_TITLE}
     Should Be Equal As Strings    ${REGION_TITLE}    ${read_region_title}
-    Write Bare    ${BC_REGION}
+    Write Bare    ${REGION}
     Send Enter
     Write Bare    /for signon
     Send Enter
@@ -29,7 +29,7 @@ CAMS: BC
     ${read_login_alert}    Read    20    020    22
     Should Be Equal As Strings    ${LOGIN_ALERT}    ${read_login_alert}
     Screenshot.Take Screenshot        SS2_CAMSBC_REGION_LOGIN.jpg
-    Log To Console    ${\n}Step2- Login into    ${BC_REGION}    is successful.
+    Log To Console    ${\n}Step2- Login into    ${REGION}    is successful.
     ${PRESS_ESC}=    evaluate    utils.clearScreen()    modules=utils
     Sleep    3s
     Write Bare    /for cris

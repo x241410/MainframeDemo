@@ -12,12 +12,12 @@ Resource          mainframe_variables.robot
 *** Test Cases ***
 Customer Records Information System 2 / Update: AB
 
-    Log To Console    ${\n}Step1- Login into the TPX AB Cris in ${AB_REGION} Env
+    Log To Console    ${\n}Step1- Login into the TPX AB Cris in ${REGION} Region
     Screenshot.Take Screenshot        SS1_CRISAB_LAUNCH.jpg 
     ${read_env_title}    Read    19    013    41
     Log To Console    ${\n}Actual Env Title is ${read_env_title} and Expected is ${WELCOME_TITLE}
     Should Be Equal As Strings    ${WELCOME_TITLE}    ${read_env_title}
-    Write Bare    ${AB_REGION}
+    Write Bare    ${REGION}
     Send Enter
     Write Bare    ${REG_USERNAME}
     Move Next Field
@@ -39,7 +39,7 @@ Customer Records Information System 2 / Update: AB
     Log To Console    ${\n}Step2- Login into CRIS Application is successful.
     Should Be Equal As Strings    ${CRIS_APP_TITLE}    ${read_app_Title}
     Log To Console    ${\n}Step3- Open BSC Screen to verify CRIS AB.
-    ${AB_TN}=    evaluate    ${AB_PRE_TN}${AB_POST_TN}
+    ${AB_TN}=    evaluate    ${AB_PRE_TN}${POST_TN}
     Write Bare    ${AB_TN}
     Move Next Field
     Write Bare    ${SCREEN}
@@ -54,7 +54,7 @@ Customer Records Information System 2 / Update: AB
 
     #2. Verify TN Number
     ${read_screen_tn}    Read    01    007    7
-    Should Be Equal As Strings    ${AB_POST_TN}    ${read_screen_tn}    strip_spaces=${True}
+    Should Be Equal As Strings    ${POST_TN}    ${read_screen_tn}    strip_spaces=${True}
 
     Log To Console    ${\n}Step4- CRIS AB Health Check is verified.
     Send PF    1
