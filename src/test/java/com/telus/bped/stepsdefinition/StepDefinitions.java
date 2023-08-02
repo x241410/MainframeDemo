@@ -1302,24 +1302,25 @@ public class StepDefinitions extends BaseTest {
 	private HashMap<String, String> getEnviornmentVariablesForApplication(String applicationName) {
 		JSONObject userAccess = userAccessVar.getJSONObject(SystemProperties.EXECUTION_ENVIRONMENT);
 
-
 		switch (applicationName) {
 		case "CRISAB":
 		case "CAMSAB":
-			
+		case "CRIS3AB":	
 		case "CAMSBC":
 		case "CRISBC":
 		case "CRIS3BC":
 		{
 			String tn_number=null;
+			String region=null;
 			if (applicationName.contains("CAMSAB")||applicationName.contains("CRISAB")||applicationName.contains("CRIS3AB"))
 			{
-				tn_number= EncryptionUtils.decode(userAccess.getString("AB_TN_NUMBER"));
+				tn_number= EncryptionUtils.decode(userAccess.getString("POST_TN_AB"));
+				region = EncryptionUtils.decode(userAccess.getString("TPX_AB_REGION"));
 			}else
 			{
-				tn_number= EncryptionUtils.decode(userAccess.getString("BC_TN_NUMBER"));
+				tn_number= EncryptionUtils.decode(userAccess.getString("POST_TN_BC"));
+				region = EncryptionUtils.decode(userAccess.getString("TPX_BC_REGION"));
 			}
-			String region = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION"));
 			String region_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION_USERNAME"));// .getString("TPX_AB_IMSE_ENV_USERNAME");
 			String region_pass = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION_PASSWORD"));
 			String cris_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_CRIS_USERNAME"));

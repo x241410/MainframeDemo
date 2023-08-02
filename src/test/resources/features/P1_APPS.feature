@@ -131,6 +131,10 @@ Feature: BPED Apps HealthCheck
   @Mainframe @ALLAPPS @P1-APPS @CRISM
   Scenario: Customer Records Information System 1 / Inquiry: AB
     Given Test "CRISAB" Applications
+    
+ 	@Mainframe @ALLAPPS @CRIS3:BC @P1-APPS
+  Scenario: CRIS3: Customer Records Information System 3 / Service Order System: AB
+    Given Test "CRIS3AB" Applications
 
   @Mainframe @ALLAPPS @SOECS @P1-APPS
   Scenario: Service Order Entry and Control System
@@ -151,4 +155,6 @@ Feature: BPED Apps HealthCheck
 	@Mainframe @ALLAPPS @CRIS3:BC @P1-APPS
   Scenario: CRIS3: Customer Records Information System 3 / Service Order System: BC
     Given Test "CRIS3BC" Applications
+    
+   
 
