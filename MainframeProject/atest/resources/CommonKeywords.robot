@@ -5,7 +5,7 @@ Library           OperatingSystem
 Library           String
 Library           Screenshot
 Library           ../utils/genericUtils.py
-Resource          mainframe_variables.robot
+Resource          ../mainframe_variables.robot
 Resource          BaseKeywords.robot
 
 *** Keywords ***

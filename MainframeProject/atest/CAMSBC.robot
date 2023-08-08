@@ -7,7 +7,7 @@ Library           Dialogs
 Library           OperatingSystem
 Library           String
 Library           Screenshot
-Resource          resources/mainframe_variables.robot
+Resource          mainframe_variables.robot
 Resource          resources/CommonKeywords.robot
 *** Test Cases ***
 CAMS: BC
