@@ -23,6 +23,7 @@ ${CRIS_APP_LOGINPAGE}    Customer Records Information System
 
 #CAMS TC
 ${CAMS_COLLECTION_SCREEN_PAGE}    Collection Screen
+${CAMS_SCREEN}    swi
 
 #For BCTIMSC
 ${LOGIN_ALERT}    SIGN COMMAND COMPLETED
