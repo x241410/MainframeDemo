@@ -7,8 +7,7 @@ Library           Dialogs
 Library           OperatingSystem
 Library           String
 Library           Screenshot
-Library           ./utils.py
-Resource          mainframe_variables.robot
+Resource          resources/mainframe_variables.robot
 *** Test Cases ***
 Service Order Entry and Control System
 

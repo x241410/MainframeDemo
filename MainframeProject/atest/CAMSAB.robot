@@ -7,9 +7,8 @@ Library           Dialogs
 Library           OperatingSystem
 Library           String
 Library           Screenshot
-Library           ./utils.py
-Resource          mainframe_variables.robot
-Resource          CommonKeywords.robot
+Resource          resources/mainframe_variables.robot
+Resource          resources/CommonKeywords.robot
 *** Test Cases ***
 CAMS: AB
 

@@ -1,10 +1,9 @@
 *** Settings ***
-Library           ../Mainframe3270/
+Library           ../../Mainframe3270/
 Library           Dialogs
 Library           OperatingSystem
 Library           String
 Library           Screenshot
-Library           ./utils.py
 
 *** Keywords ***
 Connect to region

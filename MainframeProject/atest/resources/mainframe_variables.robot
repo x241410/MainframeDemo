@@ -37,4 +37,3 @@ ${SCREEN_TITLE}    **(BSC) basic information**
 #For IMSC
 ${AB_PRE_TN}    403
 ${POST_TN}
-

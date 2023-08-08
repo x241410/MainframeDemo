@@ -1,14 +1,12 @@
 *** Settings ***
-Resource          mainframe_variables.robot
-Resource          BaseKeywords.robot
-Library    BuiltIn
-Library           ../Mainframe3270/
+Library           ../../Mainframe3270/
 Library           Dialogs
 Library           OperatingSystem
 Library           String
 Library           Screenshot
-Library           ./utils.py
-
+Library           ../utils/genericUtils.py
+Resource          mainframe_variables.robot
+Resource          BaseKeywords.robot
 
 *** Keywords ***
 ##Keywords for AB region Login
@@ -18,8 +16,9 @@ Login Into The Mainframe Region AB and verify
 
 Connect to AB Region
     Log Reporting    Step1- Login into the TPX AB in ${REGION} region
-    Capture Screen    LAUNCH.jpg               
+    Capture Screen    LAUNCH.jpg             
     Verify actual and expected string    19    013    41    ${WELCOME_TITLE}
+    Log Reporting    Region page displayed successfully
     Connect to region    ${REGION}
 
 Login into the AB Region
@@ -42,17 +41,20 @@ Enter CRIS3 Application name and verify
     Log Reporting    Step2- Login into CRIS3 Application
     Write Text and Enter    /for cris3
     Verify actual and expected string    17    031    35    ${CRIS_APP_LOGINPAGE}
+    Log Reporting    CRIS3 login page displayed successfully
     Capture Screen        LOGINPAGE.jpg
 	
 Enter CRIS Application name and verify 
     Log Reporting    Step2- Login into CRIS Application
     Write Text and Enter    /for cris
     Verify actual and expected string    17    031    35    ${CRIS_APP_LOGINPAGE}
+    Log Reporting    CRIS login page displayed successfully
     Capture Screen        LOGINPAGE.jpg
     
 Login into the Application with valid credentials
     Login Into Application    ${APP_USERNAME}    ${APP_PASSWORD}
     Verify actual and expected string    01    027    13    ${CRIS_APP_TITLE}
+    Log Reporting    Homepage displayed successfully
     Capture Screen        DASHBOARD.jpg
 
 ##Keywords for AB BSC verification
@@ -84,13 +86,16 @@ Connect to BC Region
     Log Reporting    Step1- Login into the TPX BC in ${REGION} region
     Capture Screen        LAUNCH.jpg
     Verify actual and expected string    04    002    20    ${REGION_TITLE}
+    Log Reporting    Region page displayed successfully
     Connect to region    ${REGION}
 	
 Login into the BC Region
     Write Text and Enter    /for signon
     Verify actual and expected string    01    025    05    ${REGION_LOGIN_TITLE}
+    Log Reporting    Region sign in page displayed.
     Login Into Region    ${REG_USERNAME}    ${REG_PASSWORD}    03    028    053
     Verify actual and expected string    20    020    22    ${LOGIN_ALERT}
+    Log Reporting    Region logged in successfully
     Capture Screen        REGION_LOGIN.jpg
     ${PRESS_ESC}=    evaluate    utils.clearScreen()    modules=utils
     Sleep    3s
@@ -122,6 +127,7 @@ Open CAMS Collection Screen to verify Health Check
     Write Text on specific position    ${CAMS_SCREEN}    23    032
     Send Enter
     Verify actual and expected string    01    031    17    ${CAMS_COLLECTION_SCREEN_PAGE}
+    Log Reporting    Collection Screen displayed successfully.
     Capture Screen    SS4_CAMSAB_PAGE.jpg
 
 Verify BSC Screen
@@ -130,14 +136,15 @@ Verify BSC Screen
     #Invalid TPX/NPP verification
     IF    "${read_screen_title}" == "${SCREEN_TITLE}"
         Compare Two String    ${SCREEN_TITLE}    ${read_screen_title}
+        Log Reporting    BSC Screen Displayed successfully
     ELSE
         Assertion Fail    Alert- Please Enter valid TN Number
     END
 
 Verify TN Number
-    #2. Verify screen name
-    ${read_screen_tn}    Read Text    01    007    7
-    Compare Two String    ${POST_TN}    ${read_screen_tn}
+    #2. Verify TN number name
+    Verify actual and expected string    01    007    7    ${POST_TN}
+    Log Reporting    TN number is displayed.
     Log Reporting    ${TEST_NAME} Health Check is verified.
 
 Logout CRIS Application
@@ -153,7 +160,6 @@ Capture Screen
     [Arguments]    ${ssname}
     ${suite_source}    Get Variable Value    ${SUITE SOURCE}
     ${file_name}    Evaluate    os.path.basename($suite_source).split('.')[0]
-    Log Reporting    ${file_name}
     Screenshot.Take Screenshot    ${file_name}_${ssname}
 
 Suite Setup for TPX_AB
