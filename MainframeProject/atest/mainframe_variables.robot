@@ -3,7 +3,7 @@ ${VISIBLE}               True
 ${TPX_AB}             sys1tcp.tsl.telus.com
 ${TPX_BC}             bct1tcp.tsl.telus.com
 ${HOST_soecs}            soecs.tsl.telus.com
-${FOLDER}               ${CURDIR}${/}reports
+${FOLDER}               ${CURDIR}${/}screenshots
 
 # Region details
 ${REGION}
