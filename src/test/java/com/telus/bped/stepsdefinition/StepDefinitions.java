@@ -98,8 +98,8 @@ public class StepDefinitions extends BaseTest {
 	public static void captureScreenshots(String fileName) {
 
 		try {
-			String ssPath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path");
-			String ssDirectory = System.getProperty("user.dir") + ssPath;
+			String ssPath = SystemProperties.getStringValue("mainframe.build.report.artifact.path");
+			String ssDirectory = System.getProperty("user.dir")+"//"+ ssPath;
 			Reporting.logReporter(Status.INFO, "ssPath Is "+ssDirectory);
 			File f = new File(ssDirectory);
 			GenericUtils.getAllImagesHelper(f, fileName);
