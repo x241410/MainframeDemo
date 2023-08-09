@@ -99,8 +99,8 @@ public class StepDefinitions extends BaseTest {
 
 		try {
 			String ssPath = SystemProperties.getStringValue("mainframe.build.report.artifact.path");
-			String ssDirectory = System.getProperty("user.dir")+"//"+ ssPath;
-			Reporting.logReporter(Status.INFO, "ssPath Is "+ssDirectory);
+			String ssDirectory = System.getProperty("user.dir") + "/" + ssPath;
+			Reporting.logReporter(Status.INFO, "ssPath Is " + ssDirectory);
 			File f = new File(ssDirectory);
 			GenericUtils.getAllImagesHelper(f, fileName);
 		} catch (IOException e) {
@@ -1268,26 +1268,28 @@ public class StepDefinitions extends BaseTest {
 
 	@Given("Test {string} Applications")
 	public void verifyMainframeApp(String applicationName) throws IOException {
-		
+
 		MainframeUtils MainframeUtils = new MainframeUtils();
-		//MainframeUtils.delScreenshotDir();
+		// MainframeUtils.delScreenshotDir();
 		String robotFilePath = System.getProperty("user.dir") + File.separator + "MainframeProject" + File.separator
 				+ "Tests" + File.separator + applicationName + ".robot";
-		
-		//String buildUrl = System.getenv("BUILD_URL");
+
+		// String buildUrl = System.getenv("BUILD_URL");
 		String buildUrl = System.getenv("BUILD_URL");
 		String wsUrl = buildUrl.split("BPED_Mainframe_Test")[0].concat("BPED_Mainframe_Test/ws/");
-		String reportFilePath = SystemProperties.getStringValue("mainframe.build.report.artifact.path")+applicationName+"_Report"+".html";
-		String logFilePath = SystemProperties.getStringValue("mainframe.build.report.artifact.path")+applicationName+"_Log"+".html";
-		String reportFileArtifectPath =wsUrl + reportFilePath;
-		String logFileArtifectPath =wsUrl + logFilePath;
-		
+		String reportFilePath = SystemProperties.getStringValue("mainframe.build.report.artifact.path")
+				+ applicationName + "_Report" + ".html";
+		String logFilePath = SystemProperties.getStringValue("mainframe.build.report.artifact.path") + applicationName
+				+ "_Log" + ".html";
+		String reportFileArtifectPath = wsUrl + reportFilePath;
+		String logFileArtifectPath = wsUrl + logFilePath;
+
 		try {
 			String command = MainframeUtils.generateCommand(getEnviornmentVariablesForApplication(applicationName),
-					robotFilePath, reportFilePath, reportFileArtifectPath,logFilePath,logFileArtifectPath);
-		
+					robotFilePath, reportFilePath, reportFileArtifectPath, logFilePath, logFileArtifectPath);
+
 			MainframeUtils.launchMainframeApplication(command);
-			
+
 		} catch (Exception e) {
 			Reporting.logReporter(Status.INFO,
 					"Unable to validate " + applicationName + " application health check" + e);
@@ -1308,20 +1310,18 @@ public class StepDefinitions extends BaseTest {
 		switch (applicationName) {
 		case "CRISAB":
 		case "CAMSAB":
-		case "CRIS3AB":	
+		case "CRIS3AB":
 		case "CAMSBC":
 		case "CRISBC":
-		case "CRIS3BC":
-		{
-			String tn_number=null;
-			String region=null;
-			if (applicationName.contains("CAMSAB")||applicationName.contains("CRISAB")||applicationName.contains("CRIS3AB"))
-			{
-				tn_number= EncryptionUtils.decode(userAccess.getString("POST_TN_AB"));
+		case "CRIS3BC": {
+			String tn_number = null;
+			String region = null;
+			if (applicationName.contains("CAMSAB") || applicationName.contains("CRISAB")
+					|| applicationName.contains("CRIS3AB")) {
+				tn_number = EncryptionUtils.decode(userAccess.getString("POST_TN_AB"));
 				region = EncryptionUtils.decode(userAccess.getString("TPX_AB_REGION"));
-			}else
-			{
-				tn_number= EncryptionUtils.decode(userAccess.getString("POST_TN_BC"));
+			} else {
+				tn_number = EncryptionUtils.decode(userAccess.getString("POST_TN_BC"));
 				region = EncryptionUtils.decode(userAccess.getString("TPX_BC_REGION"));
 			}
 			String region_username = EncryptionUtils.decode(userAccess.getString("TPX_AB_BC_REGION_USERNAME"));// .getString("TPX_AB_IMSE_ENV_USERNAME");
