@@ -156,5 +156,30 @@ Feature: BPED Apps HealthCheck
   Scenario: CRIS3: Customer Records Information System 3 / Service Order System: BC
     Given Test "CRIS3BC" Applications
     
+     #Extra TC for AB
+	@Mainframe @ALLAPPS @P1-APPS @CRISAB
+  Scenario: Customer Records Information System 2 / Update: AB
+    Given Test "CRISAB" Applications
+    
+  @Mainframe @ALLAPPS @P1-APPS @CRISAB
+  Scenario: Customer Data Base System: AB
+    Given Test "CRISAB" Applications
+    
+  @Mainframe @ALLAPPS @CAMSAB @P1-APPS @TRIADAB
+  Scenario: Triad: AB
+    Given Test "CAMSAB" Applications
+    
+     #Extra TC for BC
+	@Mainframe @ALLAPPS @CAMSBC @P1-APPS	@TRIADAB
+  Scenario: Triad: BC
+    Given Test "CAMSBC" Applications
+    
+  @Mainframe @ALLAPPS @CRISBC @P1-APPS	@CRISBC
+  Scenario: Customer Records Information System 2 / Update: BC
+    Given Test "CRISBC" Applications
+
+	@Mainframe @ALLAPPS @CRIS3BC @P1-APPS	@CRISBC 
+  Scenario: Customer Data Base System: BC
+    Given Test "CRISBC" Applications
    
 
