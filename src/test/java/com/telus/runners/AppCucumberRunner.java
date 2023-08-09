@@ -9,6 +9,7 @@ import com.jayway.jsonpath.JsonPath;
 import com.telus.bped.steps.LoginPageSteps;
 import com.telus.bped.utils.GoogleSheetData;
 import com.telus.bped.utils.GoogleSheetsUtils;
+import com.telus.bped.utils.MainframeUtils;
 import com.test.cucumber.AbstractTestNGCucumberTests;
 import com.test.reporting.Reporting;
 import com.test.ui.actions.WebDriverSteps;
@@ -42,7 +43,9 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-
+		
+		MainframeUtils MainframeUtils = new MainframeUtils();
+		MainframeUtils.delScreenshotDir();
 	}
 
 	@AfterSuite
