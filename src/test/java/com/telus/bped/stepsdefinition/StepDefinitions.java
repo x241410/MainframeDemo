@@ -1268,7 +1268,7 @@ public class StepDefinitions extends BaseTest {
 	public void verifyMainframeApp(String applicationName) throws IOException {
 		
 		MainframeUtils MainframeUtils = new MainframeUtils();
-		//MainframeUtils.delScreenshotDir();
+		MainframeUtils.delScreenshotDir();
 		String robotFilePath = System.getProperty("user.dir") + File.separator + "MainframeProject" + File.separator
 				+ "Tests" + File.separator + applicationName + ".robot";
 		
