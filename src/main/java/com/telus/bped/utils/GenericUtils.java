@@ -176,7 +176,7 @@ public class GenericUtils {
 
 			}
 		} catch (Exception e) {
-			Reporting.logReporter(Status.INFO, "Directory not found");
+			Reporting.logReporter(Status.INFO, "Screenshot directory not found");
 		}
 	}
 	
