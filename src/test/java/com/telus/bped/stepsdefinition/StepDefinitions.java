@@ -100,7 +100,6 @@ public class StepDefinitions extends BaseTest {
 		try {
 			String ssPath = SystemProperties.getStringValue("mainframe.build.report.artifact.path");
 			String ssDirectory = System.getProperty("user.dir") + "/" + ssPath;
-			Reporting.logReporter(Status.INFO, "ssPath Is " + ssDirectory);
 			File f = new File(ssDirectory);
 			GenericUtils.getAllImagesHelper(f, fileName);
 		} catch (IOException e) {
