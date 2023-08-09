@@ -267,9 +267,10 @@ public class MainframeUtils {
 	
 	public void delScreenshotDir() {
 		try {
-			String screenshotPath = SystemProperties.getStringValue("mainframe.build.report.artifact.path");
+			String screenshotPath = SystemProperties.getStringValue("mainframe.build.screenshots.artifact.path");
 			String ScreenshotsPath = System.getProperty("user.dir")+screenshotPath;	
 			String ScreenshotsDirPath= ScreenshotsPath.replaceAll("\\.", "");
+			
 			Reporting.logReporter(Status.INFO,"Screenshot folder is"+ ScreenshotsDirPath);
 			FileUtils.cleanDirectory(new File(ScreenshotsDirPath));
 		} catch (Exception e) {
