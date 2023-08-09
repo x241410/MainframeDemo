@@ -23,6 +23,7 @@ import org.testng.Assert;
 import com.test.reporting.Reporting;
 import com.test.ui.actions.Validate;
 import com.test.utils.Status;
+import com.test.utils.SystemProperties;
 
 public class MainframeUtils {
 
@@ -259,6 +260,17 @@ public class MainframeUtils {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void delScreenshotDir() {
+		try {
+			String screenshotPath = SystemProperties.getStringValue("mainframe.build.report.artifact.path");
+			String ScreenshotsDir = System.getProperty("user.dir")+"/"+screenshotPath;
+			Reporting.logReporter(Status.INFO,"Screenshot folder is"+ ScreenshotsDir);
+			FileUtils.cleanDirectory(new File(ScreenshotsDir));
+		} catch (Exception e) {
+			throw new RuntimeException(e);	
+		}
 	}
 
 }
