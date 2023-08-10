@@ -16,7 +16,7 @@ CRIS SS: Customer Records Information System Special Services
 
     Login Into the CRIS SS Application and verify
 
-    Open CRIS BC BSC page to verify Health Check
+    Open CRIS SS BC SBSC page to verify Health Check
     
     Logout CRIS Application
 

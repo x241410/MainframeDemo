@@ -143,7 +143,7 @@ Enter required details of CRIS SS to navigate to SBSC screen
 Verify SBSC CRISS SS Screen
     
 
-Open CRIS SS BC BSC page to verify Health Check
+Open CRIS SS BC SBSC page to verify Health Check
     Log Reporting    Step3- Open BSC Screen to verify CRIS SS BC.
     Enter required details of CRIS SS to navigate to SBSC screen
     Verify SBSC CRISS SS Screen
