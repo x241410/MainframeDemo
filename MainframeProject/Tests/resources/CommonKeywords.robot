@@ -36,7 +36,10 @@ Login Into the CRIS Application and verify
 	Enter CRIS Application name and verify
 	Login into the Application with valid credentials
 
-
+Login Into the CRIS SS Application and verify
+	Enter CRIS SS Application name and verify
+    Login into the CRIS SS Application with valid credentials
+    
 Enter CRIS3 Application name and verify
     Log Reporting    Step2- Login into CRIS3 Application
     Write Text and Enter    /for cris3
@@ -50,10 +53,23 @@ Enter CRIS Application name and verify
     Verify actual and expected string    17    031    35    ${CRIS_APP_LOGINPAGE}
     Log Reporting    CRIS login page displayed successfully
     Capture Screen        LOGINPAGE.jpg
+
+Enter CRIS SS Application name and verify
+    Log Reporting    Step2- Login into CRIS SS Application
+    Write Text and Enter    /for cris ss
+    Verify actual and expected string    17    031    35    ${CRIS_APP_LOGINPAGE}
+    Log Reporting    CRIS SS login page displayed successfully
+    Capture Screen        LOGINPAGE.jpg
     
 Login into the Application with valid credentials
     Login Into Application    ${APP_USERNAME}    ${APP_PASSWORD}
     Verify actual and expected string    01    027    13    ${CRIS_APP_TITLE}
+    Log Reporting    Homepage displayed successfully
+    Capture Screen        DASHBOARD.jpg
+
+Login into the CRIS SS Application with valid credentials
+    # Login Into Application    ${APP_USERNAME}    ${APP_PASSWORD}
+    # Verify actual and expected string    01    027    13    ${CRIS_APP_TITLE}
     Log Reporting    Homepage displayed successfully
     Capture Screen        DASHBOARD.jpg
 
@@ -108,6 +124,7 @@ Enter required details of BC region to navigate to BSC screen
     Write Text and Enter    ${MONTH}
     Capture Screen        BSC_PAGE.jpg
 
+
 Open CRIS BC BSC page to verify Health Check
     Log Reporting    Step3- Open BSC Screen to verify CRIS BC.
     Enter required details of BC region to navigate to BSC screen
@@ -119,6 +136,17 @@ Open CRIS3 BC BSC page to verify Health Check
     Enter required details of BC region to navigate to BSC screen
     Verify BSC Screen
     Verify TN Number
+
+Enter required details of CRIS SS to navigate to SBSC screen
+
+
+Verify SBSC CRISS SS Screen
+    
+
+Open CRIS SS BC BSC page to verify Health Check
+    Log Reporting    Step3- Open BSC Screen to verify CRIS SS BC.
+    Enter required details of CRIS SS to navigate to SBSC screen
+    Verify SBSC CRISS SS Screen
 
 ##Common Keywords for All testcases
 
@@ -146,6 +174,7 @@ Verify TN Number
     Verify actual and expected string    01    007    7    ${POST_TN}
     Log Reporting    TN number is displayed.
     Log Reporting    ${TEST_NAME} Health Check is verified.
+
 
 Logout CRIS Application
     Send PF    1
