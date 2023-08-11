@@ -40,6 +40,5 @@ ${POST_TN}
 
 
 # For SOECS
-
-@{SOECS_LOGINPAGE}    Welcome to OpenVMS    
+@{SOECS_LOGINPAGE}    Welcome to OpenVMS   
 @{SOECS_HOMEPAGE}    TELUS COMMUNICATIONS INC.

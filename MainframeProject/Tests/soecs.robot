@@ -12,9 +12,11 @@ Resource          resources/CommonKeywords.robot
 *** Test Cases ***
 Service Order Entry and Control System
 
-    Login into the SOECS application and verify dashboard is displayed
+    Login into SOECS application
 
-    Logout SOECS application and verify
+    Verify SOECS homepage is displayed
+
+    Logout from SOECS application
 
 
 *** Keywords ***

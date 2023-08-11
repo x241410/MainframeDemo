@@ -83,4 +83,4 @@ Verify Page Contain Text
     [Arguments]    ${text}
     Wait Field Detected
     Page Should Contain Any String    ${text}
-    Log To Console    ${\n}Page contains ${text} as expected.
+    Log To Console    ${\n}Page contains expected value ${text}

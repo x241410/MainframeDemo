@@ -208,21 +208,24 @@ Suite Setup for TPX_BC
     Sleep    3s
 
 #Soecs Application Keywords    
-Login Into SOECS Application
+Login SOECS Application
     Write Text and Enter    ${SOECS_username}
     Write Text and Enter    ${SOECS_password}
     sleep    3s
 
-Login into the SOECS application and verify dashboard is displayed
-    Log Reporting    Step1- Login into the SOECS Application
+Login into SOECS application
+    Log Reporting    Step1- Login into the SOECS Application with valid credentials.
     Capture Screen    LAUNCH_PAGE.jpg
     Verify Page Contain Text    ${SOECS_LOGINPAGE}
-    Login Into SOECS Application
+    Login SOECS Application
     
-Logout SOECS application and verify
-    Log Reporting    Step2- SOECS Application logout
+ Verify SOECS homepage is displayed
+    Log Reporting    Step2- Verify SOECS Application homepage.
     Verify Page Contain Text    ${SOECS_HOMEPAGE}
-    Capture Screen    DASHBOARD.jpg
+    Capture Screen    HOMEPAGE.jpg
+
+Logout from SOECS application
+    Log Reporting    Step3- Perform logout from SOECS application.
     Write Text and Enter    3
     Capture Screen        LOGOUT_PAGE.jpg
 
