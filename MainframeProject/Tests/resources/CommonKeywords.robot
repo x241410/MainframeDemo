@@ -207,5 +207,33 @@ Suite Setup for TPX_BC
     Change Wait Time After Write    0.4
     Sleep    3s
 
+#Soecs Application Keywords    
+Login Into SOECS Application
+    Write Text and Enter    ${SOECS_username}
+    Write Text and Enter    ${SOECS_password}
+    sleep    3s
+
+Login into the SOECS application and verify dashboard is displayed
+    Log Reporting    Step1- Login into the SOECS Application
+    Capture Screen    LAUNCH_PAGE.jpg
+    Verify Page Contain Text    ${SOECS_LOGINPAGE}
+    Login Into SOECS Application
+    
+Logout SOECS application and verify
+    Log Reporting    Step2- SOECS Application logout
+    Verify Page Contain Text    ${SOECS_HOMEPAGE}
+    Capture Screen    DASHBOARD.jpg
+    Write Text and Enter    3
+    Capture Screen        LOGOUT_PAGE.jpg
+
+Suite Setup for SOECS
+    Open Connection    ${HOST_soecs}
+    Create Directory    ${FOLDER}
+    Set Screenshot Directory    ${FOLDER}
+    Change Wait Time    0.4
+    Change Wait Time After Write    0.4
+    Sleep    3s
+
+
     
 

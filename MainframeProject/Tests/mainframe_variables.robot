@@ -16,8 +16,8 @@ ${WELCOME_TITLE}    PLEASE ENTER THE NAME OF YOUR APPLICATION
 #Application Details
 ${APP_USERNAME}
 ${APP_PASSWORD}
-${SOECS_username}    
-${SOECS_password}   
+${SOECS_username}
+${SOECS_password}
 ${CRIS_APP_TITLE}    CRIS BULLETIN
 ${CRIS_APP_LOGINPAGE}    Customer Records Information System
 
@@ -37,3 +37,9 @@ ${SCREEN_TITLE}    **(BSC) basic information**
 #For IMSC
 ${AB_PRE_TN}    403
 ${POST_TN}
+
+
+# For SOECS
+
+@{SOECS_LOGINPAGE}    Welcome to OpenVMS    
+@{SOECS_HOMEPAGE}    TELUS COMMUNICATIONS INC.

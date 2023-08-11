@@ -8,31 +8,18 @@ Library           OperatingSystem
 Library           String
 Library           Screenshot
 Resource          mainframe_variables.robot
+Resource          resources/CommonKeywords.robot
 *** Test Cases ***
 Service Order Entry and Control System
 
-    Log To Console    ${\n}Step1- Login into the SOECS Application
-    Screenshot.Take Screenshot        SS1_SOECS_LAUNCH_PAGE.jpg
-    Write Bare    ${SOECS_username}
-    Send Enter
-    Write Bare    ${SOECS_password}
-    Send Enter
-    sleep    2s
-    Screenshot.Take Screenshot        SS2_SOECS_DASHBOARD.jpg
-    Log To Console    ${\n}Step2- SOECS Application logout
-    Write Bare in Position    3    23    057
-    Send Enter
-    Screenshot.Take Screenshot        SS3_SOECS_LOGOUT_PAGE.jpg
+    Login into the SOECS application and verify dashboard is displayed
+
+    Logout SOECS application and verify
+
 
 *** Keywords ***
-
 Suite Setup
-    Open Connection    ${HOST_soecs}
-    Create Directory    ${FOLDER}
-    Set Screenshot Directory    ${FOLDER}
-    Change Wait Time    0.4
-    Change Wait Time After Write    0.4
-    Sleep    3s
+    Suite Setup for SOECS
 
 Suite Teardown
     Close Connection
