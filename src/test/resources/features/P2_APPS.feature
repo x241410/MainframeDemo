@@ -130,3 +130,23 @@ Feature: BPED Apps HealthCheck
     Then verify BRS application logged in successfully
     And search BRS Pilot Number
     Then verify BRS retrieve the bill
+
+  #================
+  #Mainframe Apps
+  #================
+  
+  @Mainframe @ALLAPPS @CAMSAB @P2-APPS
+  Scenario: CAMS: AB
+    Given Test "CAMSAB" Applications
+    
+  @Mainframe @ALLAPPS @CAMSBC @P2-APPS
+  Scenario: CAMS: BC
+    Given Test "CAMSBC" Applications
+    
+  @Mainframe @ALLAPPS  @TRIADAB @P2-APPS
+  Scenario: Triad: AB
+    Given Test "CAMSAB" Applications
+
+	@Mainframe @ALLAPPS @TRIADBC @P2-APPS	
+  Scenario: Triad: BC
+    Given Test "CAMSBC" Applications

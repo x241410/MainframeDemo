@@ -120,15 +120,10 @@ Feature: BPED Apps HealthCheck
     Then verify GOnet Billing Engine Homepage is displayed
     Then verify all servers are running
     
-#  @Mainframe @ALLAPPS @P1-APPS
-#  Scenario: Customer Records Information System 1 / Inquiry: AB
-#    Given Test Mainframe Applications
-#
-#  @Mainframe @ALLAPPS @SOECS @P1-APPS
-#  Scenario: Service Order Entry and Control System
-#    Given Test SOECS Applications
-#
-  @Mainframe @ALLAPPS @P1-APPS @CRISAB
+  #================
+  #Mainframe Apps
+  #================
+  @Mainframe @ALLAPPS @P1-APPS @CRIS1AB
   Scenario: Customer Records Information System 1 / Inquiry: AB
     Given Test "CRISAB" Applications
     
@@ -139,16 +134,8 @@ Feature: BPED Apps HealthCheck
   @Mainframe @ALLAPPS @SOECS @P1-APPS
   Scenario: Service Order Entry and Control System
     Given Test "SOECS" Applications
-
-	@Mainframe @ALLAPPS @CAMSAB @P1-APPS
-  Scenario: CAMS: AB
-    Given Test "CAMSAB" Applications
     
-  @Mainframe @ALLAPPS @CAMSBC @P1-APPS
-  Scenario: CAMS: BC
-    Given Test "CAMSBC" Applications
-    
-  @Mainframe @ALLAPPS @CRISBC @P1-APPS
+  @Mainframe @ALLAPPS @CRIS1BC @P1-APPS
   Scenario: Customer Records Information System 1 / Inquiry: BC
     Given Test "CRISBC" Applications
 
@@ -156,29 +143,21 @@ Feature: BPED Apps HealthCheck
   Scenario: CRIS3: Customer Records Information System 3 / Service Order System: BC
     Given Test "CRIS3BC" Applications
     
-     #Additional TC for AB
-	@Mainframe @ALLAPPS @P1-APPS @CRISAB
+	#Additional TC's
+	@Mainframe @ALLAPPS @P1-APPS @CRIS2AB
   Scenario: Customer Records Information System 2 / Update: AB
     Given Test "CRISAB" Applications
     
-  @Mainframe @ALLAPPS @P1-APPS @CRISAB
+  @Mainframe @ALLAPPS @P1-APPS @CDBSAB
   Scenario: Customer Data Base System: AB
     Given Test "CRISAB" Applications
     
-  @Mainframe @ALLAPPS @CAMSAB @P1-APPS @TRIADAB
-  Scenario: Triad: AB
-    Given Test "CAMSAB" Applications
     
-     #Additional TC for BC
-	@Mainframe @ALLAPPS @CAMSBC @P1-APPS	@TRIADAB
-  Scenario: Triad: BC
-    Given Test "CAMSBC" Applications
-    
-  @Mainframe @ALLAPPS @CRISBC @P1-APPS	@CRISBC
+  @Mainframe @ALLAPPS @CRISBC @P1-APPS	@CRIS2BC
   Scenario: Customer Records Information System 2 / Update: BC
     Given Test "CRISBC" Applications
 
-	@Mainframe @ALLAPPS @CRIS3BC @P1-APPS	@CRISBC 
+	@Mainframe @ALLAPPS @CRIS3BC @P1-APPS	@CDBSBC
   Scenario: Customer Data Base System: BC
     Given Test "CRISBC" Applications
    
