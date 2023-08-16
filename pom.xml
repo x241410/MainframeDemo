@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>telus-automation</groupId>
-    <artifactId>cdo-test-bped-apps-healthcheck</artifactId>
+    <artifactId>cdo-test-mainframe-core-integration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>bpedhealthckeck</name>
+    <name>mainframe-core-integration</name>
     <url>http://maven.apache.org</url>
 
 

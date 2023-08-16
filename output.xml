@@ -1,138 +1,607 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.10.11 on win32)" generated="20230628 14:00:51.065" rpa="false" schemaversion="3">
-<suite id="s1" name="Soecs" source="D:\BPED_MAINFRAME\LATEST_MAINFRAME_DEMO\MainframeDemo\MainframeProject\atest\soecs.robot">
+<robot generator="Robot 6.0.2 (Python 3.10.11 on win32)" generated="20230816 11:48:06.517" rpa="false" schemaversion="3">
+<suite id="s1" name="CRISAB" source="C:\Users\mukesh.pandit\Desktop\MainframeDemo\Mainframe_Hybrid_Core\MainframeProject\Tests\CRISAB.robot">
 <kw name="Suite Setup" type="SETUP">
+<kw name="Suite Setup for TPX_AB" library="CommonKeywords">
 <kw name="Open Connection" library="Mainframe3270">
-<arg>${HOST_soecs}</arg>
+<arg>${TPX_AB}</arg>
 <doc>Create a connection to an IBM3270 mainframe with the default port 23.
 To establish a connection, only the hostname is required. Optional parameters include logical unit name (LU) and port.</doc>
-<status status="PASS" starttime="20230628 14:00:51.256" endtime="20230628 14:00:51.873"/>
+<status status="PASS" starttime="20230816 11:48:07.190" endtime="20230816 11:48:08.410"/>
 </kw>
 <kw name="Create Directory" library="OperatingSystem">
 <arg>${FOLDER}</arg>
 <doc>Creates the specified directory.</doc>
-<msg timestamp="20230628 14:00:51.874" level="INFO" html="true">Directory '&lt;a href="file://D:\BPED_MAINFRAME\LATEST_MAINFRAME_DEMO\MainframeDemo\mainframeScreenshots"&gt;D:\BPED_MAINFRAME\LATEST_MAINFRAME_DEMO\MainframeDemo\mainframeScreenshots&lt;/a&gt;' already exists.</msg>
-<status status="PASS" starttime="20230628 14:00:51.873" endtime="20230628 14:00:51.874"/>
+<msg timestamp="20230816 11:48:08.411" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\mukesh.pandit\Desktop\MainframeDemo\Mainframe_Hybrid_Core\MainframeProject\Tests\screenshots"&gt;C:\Users\mukesh.pandit\Desktop\MainframeDemo\Mainframe_Hybrid_Core\MainframeProject\Tests\screenshots&lt;/a&gt;' already exists.</msg>
+<status status="PASS" starttime="20230816 11:48:08.410" endtime="20230816 11:48:08.411"/>
 </kw>
 <kw name="Set Screenshot Directory" library="Screenshot">
 <arg>${FOLDER}</arg>
 <doc>Sets the directory where screenshots are saved.</doc>
-<status status="PASS" starttime="20230628 14:00:51.874" endtime="20230628 14:00:51.876"/>
+<status status="PASS" starttime="20230816 11:48:08.411" endtime="20230816 11:48:08.412"/>
 </kw>
 <kw name="Change Wait Time" library="Mainframe3270">
 <arg>0.4</arg>
 <doc>To give time for the mainframe screen to be "drawn" and receive the next commands, a "wait time" has been
 created, which by default is set to 0.5 seconds. This is a sleep applied AFTER the following keywords:</doc>
-<status status="PASS" starttime="20230628 14:00:51.876" endtime="20230628 14:00:51.876"/>
+<status status="PASS" starttime="20230816 11:48:08.412" endtime="20230816 11:48:08.413"/>
 </kw>
 <kw name="Change Wait Time After Write" library="Mainframe3270">
 <arg>0.4</arg>
 <doc>To give the user time to see what is happening inside the mainframe, a "wait time after write" has
 been created, which by default is set to 0 seconds. This is a sleep applied AFTER sending a string in these
 keywords:</doc>
-<status status="PASS" starttime="20230628 14:00:51.876" endtime="20230628 14:00:51.876"/>
+<status status="PASS" starttime="20230816 11:48:08.413" endtime="20230816 11:48:08.413"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>3s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230628 14:00:54.891" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230628 14:00:51.876" endtime="20230628 14:00:54.891"/>
+<msg timestamp="20230816 11:48:11.423" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230816 11:48:08.413" endtime="20230816 11:48:11.424"/>
 </kw>
-<status status="PASS" starttime="20230628 14:00:51.256" endtime="20230628 14:00:54.891"/>
+<status status="PASS" starttime="20230816 11:48:07.189" endtime="20230816 11:48:11.425"/>
 </kw>
-<test id="s1-t1" name="Service Order Entry and Control System" line="13">
+<status status="PASS" starttime="20230816 11:48:07.189" endtime="20230816 11:48:11.425"/>
+</kw>
+<test id="s1-t1" name="Customer Records Information System 2 / Update: AB" line="13">
+<kw name="Login Into The Mainframe Region AB and verify" library="CommonKeywords">
+<kw name="Connect to AB Region" library="CommonKeywords">
+<kw name="Log Reporting" library="BaseKeywords">
+<arg>Step1- Login into the TPX AB in ${REGION} region</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}${LogMessage}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:11.431" endtime="20230816 11:48:11.433"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:11.430" endtime="20230816 11:48:11.433"/>
+</kw>
+<kw name="Capture Screen" library="CommonKeywords">
+<arg>LAUNCH.jpg</arg>
+<kw name="Get Variable Value" library="BuiltIn">
+<var>${suite_source}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<msg timestamp="20230816 11:48:11.436" level="INFO">${suite_source} = C:\Users\mukesh.pandit\Desktop\MainframeDemo\Mainframe_Hybrid_Core\MainframeProject\Tests\CRISAB.robot</msg>
+<status status="PASS" starttime="20230816 11:48:11.435" endtime="20230816 11:48:11.436"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${file_name}</var>
+<arg>os.path.basename($suite_source).split('.')[0]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230816 11:48:11.448" level="INFO">${file_name} = CRISAB</msg>
+<status status="PASS" starttime="20230816 11:48:11.436" endtime="20230816 11:48:11.448"/>
+</kw>
 <kw name="Take Screenshot" library="Screenshot">
-<var>${screenLoc}</var>
-<arg>SOECS_first.jpg</arg>
+<arg>${file_name}_${ssname}</arg>
 <doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
-<msg timestamp="20230628 14:00:54.965" level="INFO" html="true">&lt;a href="mainframeScreenshots/SOECS_first.jpg"&gt;&lt;img src="mainframeScreenshots/SOECS_first.jpg" width="800px"&gt;&lt;/a&gt;</msg>
-<msg timestamp="20230628 14:00:54.965" level="INFO">${screenLoc} = D:\BPED_MAINFRAME\LATEST_MAINFRAME_DEMO\MainframeDemo\mainframeScreenshots\SOECS_first.jpg</msg>
-<status status="PASS" starttime="20230628 14:00:54.892" endtime="20230628 14:00:54.965"/>
+<msg timestamp="20230816 11:48:11.544" level="INFO" html="true">&lt;a href="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_LAUNCH.jpg"&gt;&lt;img src="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_LAUNCH.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230816 11:48:11.448" endtime="20230816 11:48:11.544"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:11.433" endtime="20230816 11:48:11.544"/>
+</kw>
+<kw name="Verify actual and expected string" library="BaseKeywords">
+<arg>19</arg>
+<arg>013</arg>
+<arg>41</arg>
+<arg>${WELCOME_TITLE}</arg>
+<kw name="Read" library="Mainframe3270">
+<var>${actualStr}</var>
+<arg>${ypos}</arg>
+<arg>${xpos}</arg>
+<arg>${length}</arg>
+<doc>Get a string of ``length`` at screen co-ordinates ``ypos`` / ``xpos``.</doc>
+<msg timestamp="20230816 11:48:11.548" level="INFO">${actualStr} = PLEASE ENTER THE NAME OF YOUR APPLICATION</msg>
+<status status="PASS" starttime="20230816 11:48:11.545" endtime="20230816 11:48:11.548"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${screenLoc}</arg>
+<arg>${\n}Actual value: ${actualStr} and Expected value: ${expectedStr}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230628 14:00:54.966" endtime="20230628 14:00:54.966"/>
+<status status="PASS" starttime="20230816 11:48:11.548" endtime="20230816 11:48:11.548"/>
 </kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${actualStr}</arg>
+<arg>${expectedStr}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230816 11:48:11.549" endtime="20230816 11:48:11.549"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:11.544" endtime="20230816 11:48:11.549"/>
+</kw>
+<kw name="Log Reporting" library="BaseKeywords">
+<arg>Region page displayed successfully</arg>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${\n}Step1- Login into the SOECS Application</arg>
+<arg>${\n}${LogMessage}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230628 14:00:54.966" endtime="20230628 14:00:54.966"/>
+<status status="PASS" starttime="20230816 11:48:11.550" endtime="20230816 11:48:11.550"/>
 </kw>
-<kw name="Take Screenshot" library="Screenshot">
-<arg>SOECS_launchSOECS.jpg</arg>
-<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
-<msg timestamp="20230628 14:00:55.025" level="INFO" html="true">&lt;a href="mainframeScreenshots/SOECS_launchSOECS.jpg"&gt;&lt;img src="mainframeScreenshots/SOECS_launchSOECS.jpg" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230628 14:00:54.966" endtime="20230628 14:00:55.025"/>
+<status status="PASS" starttime="20230816 11:48:11.549" endtime="20230816 11:48:11.550"/>
 </kw>
+<kw name="Connect to region" library="BaseKeywords">
+<arg>${REGION}</arg>
 <kw name="Write Bare" library="Mainframe3270">
-<arg>${SOECS_username}</arg>
+<arg>${region}</arg>
 <doc>Send only the string to the screen at the current cursor location.</doc>
-<status status="PASS" starttime="20230628 14:00:55.025" endtime="20230628 14:00:55.434"/>
+<status status="PASS" starttime="20230816 11:48:11.551" endtime="20230816 11:48:11.965"/>
 </kw>
 <kw name="Send Enter" library="Mainframe3270">
 <doc>Send an Enter to the screen.</doc>
-<status status="PASS" starttime="20230628 14:00:55.434" endtime="20230628 14:00:55.852"/>
+<status status="PASS" starttime="20230816 11:48:11.965" endtime="20230816 11:48:13.207"/>
 </kw>
-<kw name="Write Bare" library="Mainframe3270">
-<arg>${SOECS_password}</arg>
-<doc>Send only the string to the screen at the current cursor location.</doc>
-<status status="PASS" starttime="20230628 14:00:55.852" endtime="20230628 14:00:56.257"/>
+<status status="PASS" starttime="20230816 11:48:11.550" endtime="20230816 11:48:13.207"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:11.429" endtime="20230816 11:48:13.207"/>
+</kw>
+<kw name="Login into the AB Region" library="CommonKeywords">
+<kw name="Login Into Region" library="BaseKeywords">
+<arg>${REG_USERNAME}</arg>
+<arg>${REG_PASSWORD}</arg>
+<arg>17</arg>
+<arg>015</arg>
+<arg>034</arg>
+<kw name="Write Bare In Position" library="Mainframe3270">
+<arg>${username}</arg>
+<arg>${ypos}</arg>
+<arg>${xpos}</arg>
+<doc>Send only the string to the screen at screen co-ordinates ``ypos`` / ``xpos``.</doc>
+<status status="PASS" starttime="20230816 11:48:13.209" endtime="20230816 11:48:13.622"/>
+</kw>
+<kw name="Write Bare In Position" library="Mainframe3270">
+<arg>${password}</arg>
+<arg>${ypos}</arg>
+<arg>${pxpos}</arg>
+<doc>Send only the string to the screen at screen co-ordinates ``ypos`` / ``xpos``.</doc>
+<status status="PASS" starttime="20230816 11:48:13.623" endtime="20230816 11:48:14.042"/>
 </kw>
 <kw name="Send Enter" library="Mainframe3270">
 <doc>Send an Enter to the screen.</doc>
-<status status="PASS" starttime="20230628 14:00:56.257" endtime="20230628 14:00:56.661"/>
+<status status="PASS" starttime="20230816 11:48:14.044" endtime="20230816 11:48:14.743"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:13.208" endtime="20230816 11:48:14.743"/>
+</kw>
+<kw name="Write Text and Enter" library="BaseKeywords">
+<arg>${SELECT_NEWS}</arg>
+<kw name="Write Bare" library="Mainframe3270">
+<arg>${text}</arg>
+<doc>Send only the string to the screen at the current cursor location.</doc>
+<status status="PASS" starttime="20230816 11:48:14.744" endtime="20230816 11:48:15.160"/>
+</kw>
+<kw name="Send Enter" library="Mainframe3270">
+<doc>Send an Enter to the screen.</doc>
+<status status="PASS" starttime="20230816 11:48:15.160" endtime="20230816 11:48:15.871"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:14.743" endtime="20230816 11:48:15.871"/>
+</kw>
+<kw name="Capture Screen" library="CommonKeywords">
+<arg>LOGIN.jpg</arg>
+<kw name="Get Variable Value" library="BuiltIn">
+<var>${suite_source}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<msg timestamp="20230816 11:48:15.873" level="INFO">${suite_source} = C:\Users\mukesh.pandit\Desktop\MainframeDemo\Mainframe_Hybrid_Core\MainframeProject\Tests\CRISAB.robot</msg>
+<status status="PASS" starttime="20230816 11:48:15.871" endtime="20230816 11:48:15.873"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${file_name}</var>
+<arg>os.path.basename($suite_source).split('.')[0]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230816 11:48:15.874" level="INFO">${file_name} = CRISAB</msg>
+<status status="PASS" starttime="20230816 11:48:15.873" endtime="20230816 11:48:15.874"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<arg>${file_name}_${ssname}</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20230816 11:48:15.975" level="INFO" html="true">&lt;a href="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_LOGIN.jpg"&gt;&lt;img src="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_LOGIN.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230816 11:48:15.874" endtime="20230816 11:48:15.975"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:15.871" endtime="20230816 11:48:15.975"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:13.208" endtime="20230816 11:48:15.975"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:11.428" endtime="20230816 11:48:15.975"/>
+</kw>
+<kw name="Login Into the CRIS Application and verify" library="CommonKeywords">
+<kw name="Enter CRIS Application name and verify" library="CommonKeywords">
+<kw name="Log Reporting" library="BaseKeywords">
+<arg>Step2- Login into CRIS Application</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}${LogMessage}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:15.977" endtime="20230816 11:48:15.977"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:15.976" endtime="20230816 11:48:15.977"/>
+</kw>
+<kw name="Write Text and Enter" library="BaseKeywords">
+<arg>/for cris</arg>
+<kw name="Write Bare" library="Mainframe3270">
+<arg>${text}</arg>
+<doc>Send only the string to the screen at the current cursor location.</doc>
+<status status="PASS" starttime="20230816 11:48:15.979" endtime="20230816 11:48:16.381"/>
+</kw>
+<kw name="Send Enter" library="Mainframe3270">
+<doc>Send an Enter to the screen.</doc>
+<status status="PASS" starttime="20230816 11:48:16.381" endtime="20230816 11:48:17.081"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:15.978" endtime="20230816 11:48:17.081"/>
+</kw>
+<kw name="Verify actual and expected string" library="BaseKeywords">
+<arg>17</arg>
+<arg>031</arg>
+<arg>35</arg>
+<arg>${CRIS_APP_LOGINPAGE}</arg>
+<kw name="Read" library="Mainframe3270">
+<var>${actualStr}</var>
+<arg>${ypos}</arg>
+<arg>${xpos}</arg>
+<arg>${length}</arg>
+<doc>Get a string of ``length`` at screen co-ordinates ``ypos`` / ``xpos``.</doc>
+<msg timestamp="20230816 11:48:17.085" level="INFO">${actualStr} = Customer Records Information System</msg>
+<status status="PASS" starttime="20230816 11:48:17.082" endtime="20230816 11:48:17.085"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}Actual value: ${actualStr} and Expected value: ${expectedStr}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:17.085" endtime="20230816 11:48:17.085"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${actualStr}</arg>
+<arg>${expectedStr}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230816 11:48:17.085" endtime="20230816 11:48:17.086"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:17.081" endtime="20230816 11:48:17.086"/>
+</kw>
+<kw name="Log Reporting" library="BaseKeywords">
+<arg>CRIS login page displayed successfully</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}${LogMessage}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:17.087" endtime="20230816 11:48:17.088"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:17.086" endtime="20230816 11:48:17.088"/>
+</kw>
+<kw name="Capture Screen" library="CommonKeywords">
+<arg>LOGINPAGE.jpg</arg>
+<kw name="Get Variable Value" library="BuiltIn">
+<var>${suite_source}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<msg timestamp="20230816 11:48:17.089" level="INFO">${suite_source} = C:\Users\mukesh.pandit\Desktop\MainframeDemo\Mainframe_Hybrid_Core\MainframeProject\Tests\CRISAB.robot</msg>
+<status status="PASS" starttime="20230816 11:48:17.088" endtime="20230816 11:48:17.089"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${file_name}</var>
+<arg>os.path.basename($suite_source).split('.')[0]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230816 11:48:17.090" level="INFO">${file_name} = CRISAB</msg>
+<status status="PASS" starttime="20230816 11:48:17.089" endtime="20230816 11:48:17.090"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<arg>${file_name}_${ssname}</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20230816 11:48:17.175" level="INFO" html="true">&lt;a href="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_LOGINPAGE.jpg"&gt;&lt;img src="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_LOGINPAGE.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230816 11:48:17.090" endtime="20230816 11:48:17.175"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:17.088" endtime="20230816 11:48:17.175"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:15.976" endtime="20230816 11:48:17.175"/>
+</kw>
+<kw name="Login into the Application with valid credentials" library="CommonKeywords">
+<kw name="Login Into Application" library="BaseKeywords">
+<arg>${APP_USERNAME}</arg>
+<arg>${APP_PASSWORD}</arg>
+<kw name="Write Bare" library="Mainframe3270">
+<arg>${username}</arg>
+<doc>Send only the string to the screen at the current cursor location.</doc>
+<status status="PASS" starttime="20230816 11:48:17.176" endtime="20230816 11:48:17.593"/>
+</kw>
+<kw name="Write Bare" library="Mainframe3270">
+<arg>${password}</arg>
+<doc>Send only the string to the screen at the current cursor location.</doc>
+<status status="PASS" starttime="20230816 11:48:17.593" endtime="20230816 11:48:18.000"/>
+</kw>
+<kw name="Send Enter" library="Mainframe3270">
+<doc>Send an Enter to the screen.</doc>
+<status status="PASS" starttime="20230816 11:48:18.000" endtime="20230816 11:48:18.697"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:17.176" endtime="20230816 11:48:18.698"/>
+</kw>
+<kw name="Verify actual and expected string" library="BaseKeywords">
+<arg>01</arg>
+<arg>027</arg>
+<arg>13</arg>
+<arg>${CRIS_APP_TITLE}</arg>
+<kw name="Read" library="Mainframe3270">
+<var>${actualStr}</var>
+<arg>${ypos}</arg>
+<arg>${xpos}</arg>
+<arg>${length}</arg>
+<doc>Get a string of ``length`` at screen co-ordinates ``ypos`` / ``xpos``.</doc>
+<msg timestamp="20230816 11:48:18.702" level="INFO">${actualStr} = CRIS BULLETIN</msg>
+<status status="PASS" starttime="20230816 11:48:18.699" endtime="20230816 11:48:18.702"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}Actual value: ${actualStr} and Expected value: ${expectedStr}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:18.702" endtime="20230816 11:48:18.702"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${actualStr}</arg>
+<arg>${expectedStr}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230816 11:48:18.702" endtime="20230816 11:48:18.703"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:18.698" endtime="20230816 11:48:18.703"/>
+</kw>
+<kw name="Log Reporting" library="BaseKeywords">
+<arg>Homepage displayed successfully</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}${LogMessage}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:18.705" endtime="20230816 11:48:18.705"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:18.704" endtime="20230816 11:48:18.705"/>
+</kw>
+<kw name="Capture Screen" library="CommonKeywords">
+<arg>DASHBOARD.jpg</arg>
+<kw name="Get Variable Value" library="BuiltIn">
+<var>${suite_source}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<msg timestamp="20230816 11:48:18.707" level="INFO">${suite_source} = C:\Users\mukesh.pandit\Desktop\MainframeDemo\Mainframe_Hybrid_Core\MainframeProject\Tests\CRISAB.robot</msg>
+<status status="PASS" starttime="20230816 11:48:18.706" endtime="20230816 11:48:18.707"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${file_name}</var>
+<arg>os.path.basename($suite_source).split('.')[0]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230816 11:48:18.708" level="INFO">${file_name} = CRISAB</msg>
+<status status="PASS" starttime="20230816 11:48:18.707" endtime="20230816 11:48:18.708"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<arg>${file_name}_${ssname}</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20230816 11:48:18.813" level="INFO" html="true">&lt;a href="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_DASHBOARD.jpg"&gt;&lt;img src="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_DASHBOARD.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230816 11:48:18.708" endtime="20230816 11:48:18.813"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:18.705" endtime="20230816 11:48:18.814"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:17.175" endtime="20230816 11:48:18.814"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:15.975" endtime="20230816 11:48:18.815"/>
+</kw>
+<kw name="Open CRIS AB BSC page to verify Health Check" library="CommonKeywords">
+<kw name="Log Reporting" library="BaseKeywords">
+<arg>Step3- Open BSC Screen to verify CRIS AB.</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}${LogMessage}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:18.816" endtime="20230816 11:48:18.816"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:18.815" endtime="20230816 11:48:18.816"/>
+</kw>
+<kw name="Enter required details of AB region to navigate to BSC screen" library="CommonKeywords">
+<kw name="Add Two String value" library="BaseKeywords">
+<var>${TN}</var>
+<arg>${AB_PRE_TN}</arg>
+<arg>${POST_TN}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${string}</var>
+<arg>${str1}${str2}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230816 11:48:18.818" level="INFO">${string} = 4036096202</msg>
+<status status="PASS" starttime="20230816 11:48:18.818" endtime="20230816 11:48:18.818"/>
+</kw>
+<msg timestamp="20230816 11:48:18.818" level="INFO">${TN} = 4036096202</msg>
+<status status="PASS" starttime="20230816 11:48:18.817" endtime="20230816 11:48:18.819"/>
+</kw>
+<kw name="Write Text and Move to next field" library="BaseKeywords">
+<arg>${TN}</arg>
+<kw name="Write Bare" library="Mainframe3270">
+<arg>${text}</arg>
+<doc>Send only the string to the screen at the current cursor location.</doc>
+<status status="PASS" starttime="20230816 11:48:18.819" endtime="20230816 11:48:19.222"/>
+</kw>
+<kw name="Move Next Field" library="Mainframe3270">
+<doc>Move the cursor to the next input field. Equivalent to pressing the Tab key.</doc>
+<status status="PASS" starttime="20230816 11:48:19.222" endtime="20230816 11:48:19.224"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:18.819" endtime="20230816 11:48:19.224"/>
+</kw>
+<kw name="Write Text" library="BaseKeywords">
+<arg>${SCREEN}</arg>
+<kw name="Write Bare" library="Mainframe3270">
+<arg>${text}</arg>
+<doc>Send only the string to the screen at the current cursor location.</doc>
+<status status="PASS" starttime="20230816 11:48:19.224" endtime="20230816 11:48:19.639"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:19.224" endtime="20230816 11:48:19.640"/>
+</kw>
+<kw name="Write Text and Enter" library="BaseKeywords">
+<arg>${MONTH}</arg>
+<kw name="Write Bare" library="Mainframe3270">
+<arg>${text}</arg>
+<doc>Send only the string to the screen at the current cursor location.</doc>
+<status status="PASS" starttime="20230816 11:48:19.644" endtime="20230816 11:48:20.061"/>
+</kw>
+<kw name="Send Enter" library="Mainframe3270">
+<doc>Send an Enter to the screen.</doc>
+<status status="PASS" starttime="20230816 11:48:20.062" endtime="20230816 11:48:20.832"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:19.642" endtime="20230816 11:48:20.833"/>
+</kw>
+<kw name="Capture Screen" library="CommonKeywords">
+<arg>BSC_PAGE.jpg</arg>
+<kw name="Get Variable Value" library="BuiltIn">
+<var>${suite_source}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<msg timestamp="20230816 11:48:20.835" level="INFO">${suite_source} = C:\Users\mukesh.pandit\Desktop\MainframeDemo\Mainframe_Hybrid_Core\MainframeProject\Tests\CRISAB.robot</msg>
+<status status="PASS" starttime="20230816 11:48:20.834" endtime="20230816 11:48:20.835"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${file_name}</var>
+<arg>os.path.basename($suite_source).split('.')[0]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230816 11:48:20.837" level="INFO">${file_name} = CRISAB</msg>
+<status status="PASS" starttime="20230816 11:48:20.836" endtime="20230816 11:48:20.837"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<arg>${file_name}_${ssname}</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20230816 11:48:20.918" level="INFO" html="true">&lt;a href="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_BSC_PAGE.jpg"&gt;&lt;img src="../../../Users/mukesh.pandit/Desktop/MainframeDemo/Mainframe_Hybrid_Core/MainframeProject/Tests/screenshots/CRISAB_BSC_PAGE.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230816 11:48:20.838" endtime="20230816 11:48:20.919"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:20.833" endtime="20230816 11:48:20.919"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:18.816" endtime="20230816 11:48:20.919"/>
+</kw>
+<kw name="Verify BSC Screen" library="CommonKeywords">
+<kw name="Read Text" library="BaseKeywords">
+<var>${read_screen_title}</var>
+<arg>01</arg>
+<arg>035</arg>
+<arg>27</arg>
+<kw name="Read" library="Mainframe3270">
+<var>${string}</var>
+<arg>${ypos}</arg>
+<arg>${xpos}</arg>
+<arg>${length}</arg>
+<doc>Get a string of ``length`` at screen co-ordinates ``ypos`` / ``xpos``.</doc>
+<msg timestamp="20230816 11:48:20.921" level="INFO">${string} = **(BSC) basic information**</msg>
+<status status="PASS" starttime="20230816 11:48:20.920" endtime="20230816 11:48:20.921"/>
+</kw>
+<msg timestamp="20230816 11:48:20.922" level="INFO">${read_screen_title} = **(BSC) basic information**</msg>
+<status status="PASS" starttime="20230816 11:48:20.919" endtime="20230816 11:48:20.922"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${read_screen_title}&quot; == &quot;${SCREEN_TITLE}&quot;">
+<kw name="Compare Two String" library="BaseKeywords">
+<arg>${SCREEN_TITLE}</arg>
+<arg>${read_screen_title}</arg>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${Actual}</arg>
+<arg>${Expected}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230816 11:48:20.922" endtime="20230816 11:48:20.923"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:20.922" endtime="20230816 11:48:20.923"/>
+</kw>
+<kw name="Log Reporting" library="BaseKeywords">
+<arg>BSC Screen Displayed successfully</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}${LogMessage}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:20.923" endtime="20230816 11:48:20.924"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:20.923" endtime="20230816 11:48:20.924"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:20.922" endtime="20230816 11:48:20.924"/>
+</branch>
+<branch type="ELSE">
+<kw name="Assertion Fail" library="BaseKeywords">
+<arg>Alert- Please Enter valid TN Number</arg>
+<status status="NOT RUN" starttime="20230816 11:48:20.924" endtime="20230816 11:48:20.924"/>
+</kw>
+<status status="NOT RUN" starttime="20230816 11:48:20.924" endtime="20230816 11:48:20.924"/>
+</branch>
+<status status="PASS" starttime="20230816 11:48:20.922" endtime="20230816 11:48:20.924"/>
+</if>
+<status status="PASS" starttime="20230816 11:48:20.919" endtime="20230816 11:48:20.924"/>
+</kw>
+<kw name="Verify TN Number" library="CommonKeywords">
+<kw name="Verify actual and expected string" library="BaseKeywords">
+<arg>01</arg>
+<arg>007</arg>
+<arg>7</arg>
+<arg>${POST_TN}</arg>
+<kw name="Read" library="Mainframe3270">
+<var>${actualStr}</var>
+<arg>${ypos}</arg>
+<arg>${xpos}</arg>
+<arg>${length}</arg>
+<doc>Get a string of ``length`` at screen co-ordinates ``ypos`` / ``xpos``.</doc>
+<msg timestamp="20230816 11:48:20.927" level="INFO">${actualStr} = 6096202</msg>
+<status status="PASS" starttime="20230816 11:48:20.925" endtime="20230816 11:48:20.927"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}Actual value: ${actualStr} and Expected value: ${expectedStr}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:20.927" endtime="20230816 11:48:20.927"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${actualStr}</arg>
+<arg>${expectedStr}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230816 11:48:20.927" endtime="20230816 11:48:20.928"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:20.925" endtime="20230816 11:48:20.928"/>
+</kw>
+<kw name="Log Reporting" library="BaseKeywords">
+<arg>TN number is displayed.</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}${LogMessage}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:20.928" endtime="20230816 11:48:20.928"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:20.928" endtime="20230816 11:48:20.929"/>
+</kw>
+<kw name="Log Reporting" library="BaseKeywords">
+<arg>${TEST_NAME} Health Check is verified.</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}${LogMessage}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230816 11:48:20.929" endtime="20230816 11:48:20.929"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:20.929" endtime="20230816 11:48:20.930"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:20.924" endtime="20230816 11:48:20.930"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:18.815" endtime="20230816 11:48:20.930"/>
+</kw>
+<kw name="Logout CRIS Application" library="CommonKeywords">
+<kw name="Send PF" library="Mainframe3270">
+<arg>1</arg>
+<doc>Send a Program Function to the screen.</doc>
+<status status="PASS" starttime="20230816 11:48:20.930" endtime="20230816 11:48:21.652"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>2s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230628 14:00:58.668" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20230628 14:00:56.661" endtime="20230628 14:00:58.669"/>
+<msg timestamp="20230816 11:48:23.656" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230816 11:48:21.652" endtime="20230816 11:48:23.656"/>
 </kw>
-<kw name="Take Screenshot" library="Screenshot">
-<arg>SOECS_Dashboard.jpg</arg>
-<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
-<msg timestamp="20230628 14:00:58.731" level="INFO" html="true">&lt;a href="mainframeScreenshots/SOECS_Dashboard.jpg"&gt;&lt;img src="mainframeScreenshots/SOECS_Dashboard.jpg" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230628 14:00:58.669" endtime="20230628 14:00:58.731"/>
+<status status="PASS" starttime="20230816 11:48:20.930" endtime="20230816 11:48:23.656"/>
 </kw>
-<kw name="Write Bare In Position" library="Mainframe3270">
-<arg>3</arg>
-<arg>23</arg>
-<arg>057</arg>
-<doc>Send only the string to the screen at screen co-ordinates ``ypos`` / ``xpos``.</doc>
-<status status="PASS" starttime="20230628 14:00:58.731" endtime="20230628 14:00:59.135"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${\n}Step2- SOECS Application logout successfully</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230628 14:00:59.135" endtime="20230628 14:00:59.135"/>
-</kw>
-<kw name="Send Enter" library="Mainframe3270">
-<doc>Send an Enter to the screen.</doc>
-<status status="PASS" starttime="20230628 14:00:59.136" endtime="20230628 14:00:59.542"/>
-</kw>
-<status status="PASS" starttime="20230628 14:00:54.891" endtime="20230628 14:00:59.542"/>
+<status status="PASS" starttime="20230816 11:48:11.426" endtime="20230816 11:48:23.657"/>
 </test>
 <kw name="Suite Teardown" type="TEARDOWN">
+<kw name="Logout CRIS Application" library="CommonKeywords">
 <kw name="Send PF" library="Mainframe3270">
 <arg>1</arg>
 <doc>Send a Program Function to the screen.</doc>
-<status status="PASS" starttime="20230628 14:00:59.543" endtime="20230628 14:00:59.959"/>
+<status status="PASS" starttime="20230816 11:48:23.659" endtime="20230816 11:48:24.354"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230816 11:48:26.358" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230816 11:48:24.354" endtime="20230816 11:48:26.358"/>
+</kw>
+<status status="PASS" starttime="20230816 11:48:23.658" endtime="20230816 11:48:26.358"/>
 </kw>
 <kw name="Close Connection" library="Mainframe3270">
 <doc>Disconnect from the host.</doc>
-<status status="PASS" starttime="20230628 14:00:59.959" endtime="20230628 14:00:59.961"/>
+<status status="PASS" starttime="20230816 11:48:26.359" endtime="20230816 11:48:26.360"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>1s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230628 14:01:00.978" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20230628 14:00:59.962" endtime="20230628 14:01:00.978"/>
+<msg timestamp="20230816 11:48:27.369" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230816 11:48:26.361" endtime="20230816 11:48:27.369"/>
 </kw>
-<status status="PASS" starttime="20230628 14:00:59.543" endtime="20230628 14:01:00.978"/>
+<status status="PASS" starttime="20230816 11:48:23.658" endtime="20230816 11:48:27.369"/>
 </kw>
-<doc>These tests verify SOECS application is Up or Not</doc>
-<status status="PASS" starttime="20230628 14:00:51.067" endtime="20230628 14:01:00.978"/>
+<doc>This test will verify CRIS AB application is Up or Not</doc>
+<status status="PASS" starttime="20230816 11:48:06.522" endtime="20230816 11:48:27.369"/>
 </suite>
 <statistics>
 <total>
@@ -141,7 +610,7 @@ keywords:</doc>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Soecs">Soecs</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="CRISAB">CRISAB</stat>
 </suite>
 </statistics>
 <errors>

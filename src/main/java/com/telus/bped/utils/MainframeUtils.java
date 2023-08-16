@@ -68,9 +68,11 @@ public class MainframeUtils {
 	 * @param EnvVariables
 	 * @param robotFilePath
 	 */
-	public void launchMainframeApplication(HashMap<String, String> EnvVariables, String robotFilePath, String reportFilePath, String reportFileArtifectPath,String logFilePath,String logFileArtifectPath) {
+	public void launchMainframeApplication(HashMap<String, String> EnvVariables, String robotFilePath,
+			String reportFilePath, String reportFileArtifectPath, String logFilePath, String logFileArtifectPath) {
 
-		String command = generateCommand(EnvVariables, robotFilePath,reportFilePath, reportFileArtifectPath,logFilePath, logFileArtifectPath);
+		String command = generateCommand(EnvVariables, robotFilePath, reportFilePath, reportFileArtifectPath,
+				logFilePath, logFileArtifectPath);
 
 		try {
 			Process proc = Runtime.getRuntime().exec(command);
@@ -89,15 +91,15 @@ public class MainframeUtils {
 			while ((s = stdInput.readLine()) != null) {
 				Reporting.logReporter(Status.INFO, s);
 			}
-			
-			
+
 		} catch (Exception e) {
 			Assert.fail("Unable to launch session");
 			e.printStackTrace();
 		}
 	}
 
-	public String generateCommand(HashMap<String, String> envVariables, String robotFilePath, String reportFilePath, String reportFileArtifectPath,String logFilePath, String logFileArtifectPath) {
+	public String generateCommand(HashMap<String, String> envVariables, String robotFilePath, String reportFilePath,
+			String reportFileArtifectPath, String logFilePath, String logFileArtifectPath) {
 		String cmd = "";
 		if (envVariables.size() > 0) {
 			String envvariables = "";
@@ -105,9 +107,11 @@ public class MainframeUtils {
 			for (String a : envVariables.keySet()) {
 				envvariables = envvariables + "--variable " + a + ":" + envVariables.get(a) + " ";
 			}
-			cmd = "cmd /c \"python -m robot --Log "+logFilePath+" --Report "+reportFilePath+" " + envvariables + " " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Log " + logFilePath + " --Report " + reportFilePath + " " + envvariables
+					+ " " + robotFilePath;
 		} else {
-			cmd = "cmd /c \"python -m robot --Log "+logFileArtifectPath+" --Report "+reportFileArtifectPath+" " + robotFilePath;
+			cmd = "cmd /c \"python -m robot --Log " + logFileArtifectPath + " --Report " + reportFileArtifectPath + " "
+					+ robotFilePath;
 		}
 
 		return cmd;
@@ -139,8 +143,6 @@ public class MainframeUtils {
 			e.printStackTrace();
 		}
 	}
-
-	
 
 	/**
 	 * This method will Delete a Directory
@@ -261,18 +263,25 @@ public class MainframeUtils {
 		}
 
 	}
-	
+
 //	public static void main(String[] args) {
-		
-	
+
 	public void delScreenshotDir() {
 		try {
 			String screenshotPath = SystemProperties.getStringValue("mainframe.build.report.artifact.path");
-			String ScreenshotsPath = System.getProperty("user.dir")+screenshotPath;	
-			String ScreenshotsDirPath= ScreenshotsPath.replaceAll("\\.", "");
+
+			// For local runs, uncomment below
+			// String ScreenshotsDirPath = System.getProperty("user.dir")+screenshotPath;
+
+			// For Jenkins
+
+			String ScreenshotsPath = System.getProperty("user.dir") + screenshotPath;
+			String ScreenshotsDirPath = ScreenshotsPath.replaceAll("\\.", "");
+
+			Reporting.logReporter(Status.INFO, "Screenshot folder is" + ScreenshotsDirPath);
 			FileUtils.cleanDirectory(new File(ScreenshotsDirPath));
 		} catch (Exception e) {
-			throw new RuntimeException(e);	
+			throw new RuntimeException(e);
 		}
 	}
 

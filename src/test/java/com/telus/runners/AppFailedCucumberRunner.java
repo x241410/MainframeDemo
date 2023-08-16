@@ -10,7 +10,6 @@ import io.cucumber.testng.CucumberOptions;
 		glue = {"com.telus.bped.stepsdefinition"}
 		,plugin = { "pretty"
 				  , "com.test.cucumber.ExtentCucumberAdapter:",
-				     "com.telus.cucumber.plugin.ReportPortalCucumberPlugin",					
 			        "rerun:target/rerun.txt" }
 		,monochrome = true,				
 				features = { "@target/rerun.txt" }

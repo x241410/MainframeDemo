@@ -78,9 +78,3 @@ Get Current File Name Without Extension
     ${suite_source}    Get Variable Value    ${SUITE SOURCE}
     ${file_name}    Evaluate    os.path.basename($suite_source).split('.')[0]
     [Return]    ${file_name}
-
-Verify Page Contain Text
-    [Arguments]    ${text}
-    Wait Field Detected
-    Page Should Contain Any String    ${text}
-    Log To Console    ${\n}Page contains expected value ${text}
