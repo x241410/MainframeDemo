@@ -5,22 +5,17 @@ import static com.telus.bped.steps.LoginPageSteps.userAccessVar;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.intuit.karate.core.FeatureResult;
-import com.telus.api.test.utils.APIJava;
 import com.telus.bped.steps.LoginPageSteps;
 import com.telus.bped.utils.APIUtils;
 import com.telus.bped.utils.GenericUtils;
 import com.telus.bped.utils.MainframeUtils;
 import com.test.files.interaction.ReadJSON;
 import com.test.reporting.Reporting;
-import com.test.ui.actions.BaseSteps;
 import com.test.ui.actions.BaseTest;
-import com.test.ui.actions.Validate;
 import com.test.utils.EncryptionUtils;
 import com.test.utils.Status;
 import com.test.utils.SystemProperties;
