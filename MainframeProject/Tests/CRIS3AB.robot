@@ -11,7 +11,7 @@ Resource          mainframe_variables.robot
 Resource          resources/CommonKeywords.robot
 *** Test Cases ***
 CRIS3: Customer Records Information System 3 / Service Order System: AB
-
+    [Tags]    REGRESSION    CRIS3AB
     Login Into The Mainframe Region AB and verify
     
     Login Into the CRIS3 Application and verify

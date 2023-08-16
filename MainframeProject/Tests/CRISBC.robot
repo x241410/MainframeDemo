@@ -11,7 +11,7 @@ Resource          mainframe_variables.robot
 Resource          resources/CommonKeywords.robot
 *** Test Cases ***
 Customer Records Information System 1 / Inquiry: BC
-
+    [Tags]    REGRESSION    CRISBC
     Login Into The Mainframe Region BC and verify
 
     Login Into the CRIS Application and verify

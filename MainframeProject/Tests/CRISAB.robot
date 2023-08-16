@@ -11,7 +11,7 @@ Resource          mainframe_variables.robot
 Resource          resources/CommonKeywords.robot
 *** Test Cases ***
 Customer Records Information System 2 / Update: AB
-
+    [Tags]    REGRESSION    CRISAB   
     Login Into The Mainframe Region AB and verify
     
     Login Into the CRIS Application and verify

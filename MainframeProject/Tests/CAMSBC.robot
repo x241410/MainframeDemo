@@ -11,7 +11,7 @@ Resource          mainframe_variables.robot
 Resource          resources/CommonKeywords.robot
 *** Test Cases ***
 CAMS: BC
-
+    [Tags]    REGRESSION    CAMSBC
     Login Into The Mainframe Region BC and verify
 
     Login Into the CRIS Application and verify

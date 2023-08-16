@@ -10,7 +10,7 @@ Library           Screenshot
 Resource          mainframe_variables.robot
 *** Test Cases ***
 Service Order Entry and Control System
-
+    [Tags]    REGRESSION    SOECS
     Log To Console    ${\n}Step1- Login into the SOECS Application
     Screenshot.Take Screenshot        SS1_SOECS_LAUNCH_PAGE.jpg
     Write Bare    ${SOECS_username}
