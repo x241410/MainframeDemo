@@ -63,10 +63,17 @@ jobs:
       with:
           name: Automation-Report
           path: ./report.html
+   
+    - name: Attach Log.html
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+          name: Automation-Log
+          path: ./log.html
           
   analize:
     if: always()
-    name: Analize test result
+    name: Analize test results
     runs-on: windows-latest
     needs: [buildrobotframework]
     
@@ -75,3 +82,8 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: Automation-Report
+
+    - name: Download Automation-Log.html
+      uses: actions/download-artifact@v3
+      with:
+        name: Automation-Log
