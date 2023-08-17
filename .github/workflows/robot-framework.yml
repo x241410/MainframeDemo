@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Robot Tests
+name: RobotTests_WF
 on:
   workflow_dispatch:
  
@@ -38,4 +38,4 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
-        robot Tests/soecs.robot
+        robot ./Tests/soecs.robot
