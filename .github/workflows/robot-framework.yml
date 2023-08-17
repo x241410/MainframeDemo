@@ -48,4 +48,4 @@ jobs:
     - name: Run Robot Framework tests
       run: |
         #robot ./Tests/soecs.robot
-        robot --variable APP_PASSWORD:${APP_PASSWORD} --variable REG_PASSWORD:${REG_PASSWORD} --variable APP_USERNAME:${APP_USERNAME} --variable REGION:imsc --variable REG_USERNAME:${REG_USERNAME} CRIS.robot
+        robot --variable APP_PASSWORD:${APP_PASSWORD} --variable REG_PASSWORD:${REG_PASSWORD} --variable APP_USERNAME:${APP_USERNAME} --variable REGION:imsc --variable REG_USERNAME:${REG_USERNAME} ./Tests/CRIS.robot
