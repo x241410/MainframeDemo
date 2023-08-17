@@ -56,9 +56,22 @@ jobs:
       run: |
         #robot ./Tests/soecs.robot
         robot --variable APP_PASSWORD:${APP_PASSWORD} --variable REG_PASSWORD:${REG_PASSWORD} --variable APP_USERNAME:${APP_USERNAME} --variable REGION:imsc --variable REG_USERNAME:${REG_USERNAME} ./Tests/${{ github.event.inputs.Execution_Tag }}.robot
-
-    - name: Upload test results
-      uses: actions/upload-artifact@v2
+    
+    - name: Attach Report.html
+      if: always()
+      uses: actions/upload-artifact@v3
       with:
-        name: test-reports
-        path: ./report.html
+          name: Automation-Report
+          path: ./report.html
+          
+  analize:
+    if: always()
+    name: Analize test result
+    runs-on: windows-latest
+    needs: [buildrobotframework]
+    
+    steps: 
+    - name: Download Automation-Report.html
+      uses: actions/download-artifact@v3
+      with:
+        name: Automation-Report
