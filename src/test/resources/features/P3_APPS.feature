@@ -38,3 +38,20 @@ Feature: BPED Apps HealthCheck
   Scenario: Lynx Ticket
     Given user login into "lynx"
     Then verify lynx homepage
+    
+    ##########################
+	@Mainframe @ALLAPPS @P3-APPS @PAPSAB
+  Scenario: PreAuthorized Payment System: AB
+    Given Test "PAPSAB" Applications
+    
+  @Mainframe @ALLAPPS @P3-APPS @FPOAB
+  Scenario: Flexible Payment Options: AB
+    Given Test "FPOAB" Applications
+    
+  @Mainframe @ALLAPPS @P3-APPS @PAPSBC
+  Scenario: Flexible Payment Options: AB
+    Given Test "PAPSBC" Applications
+    
+  @Mainframe @ALLAPPS @P3-APPS @FPOBC
+  Scenario: Flexible Payment Options: BC
+    Given Test "FPOBC" Applications
