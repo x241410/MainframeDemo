@@ -113,7 +113,7 @@ Login into the BC Region
     Verify actual and expected string    20    020    22    ${LOGIN_ALERT}
     Log Reporting    Region logged in successfully
     Capture Screen        REGION_LOGIN.jpg
-    ${PRESS_ESC}=    evaluate    utils.clearScreen()    modules=utils
+    ${PRESS_ESC}=    evaluate    genericUtils.clearScreen()    modules=genericUtils
     Sleep    3s
 
 ##Keywords for BC BSC verification
@@ -237,6 +237,90 @@ Suite Setup for SOECS
     Change Wait Time After Write    0.4
     Sleep    3s
 
+Open Flexipay Payment Screen and verify for AB
+    Log Reporting    Step3- Open FLEX screen and verify
+    Enter required details of AB region to navigate to FLEX Page
+    Verify actual and expected string    02    013    7    ${POST_TN}
+    Verify actual and expected string    03    071    3    ${FLEX_SCREEN}
+    Log Reporting    TN and Application name verified successfully.
+
+Enter required details of AB region to navigate to FLEX Page
+    ${TN}    Add Two String value    ${AB_PRE_TN}    ${POST_TN}    
+    Write Text and Move to next field    ${TN}
+    Write Text and Enter    ${FLEX_SCREEN}
+    Capture Screen        FLX_PAGE.jpg
+
+Open Flexipay Payment Screen and verify for BC
+    Log Reporting    Step3- Open FLEX screen and verify
+    Enter required details of BC region to navigate to FLEX Page
+    Verify actual and expected string    02    013    7    ${POST_TN}
+    Verify actual and expected string    03    071    3    ${FLEX_SCREEN}
+    Log Reporting    TN and Application name verified successfully.
+
+Enter required details of BC region to navigate to FLEX Page
+    ${TN}    Add Two String value    ${BC_PRE_TN}    ${POST_TN}    
+    Write Text and Move to next field    ${TN}
+    Write Text and Enter    ${FLEX_SCREEN}
+    Capture Screen        FLX_PAGE.jpg
+
+Open Pre Authorised Payment Details and verify for AB
+    Open PAPI for AB Screen and verify
+    Open PAPD screen and verify
+
+Open PAPI for AB Screen and verify
+    Log Reporting    Step3- Open PAPI Screen to verify PAPI page.
+    Enter required details of AB region to navigate to PAPI Page
+    Verify actual and expected string    01    025    36    ${PAPI_SCREEN}
+    Log Reporting    Screen name verified successfully.
+    Verify actual and expected string    02    010    7    ${POST_TN}
+    Verify actual and expected string    03    021    4    ${START_PAPI}
+    Log Reporting    TN and app name verified successfully.
+    Capture Screen        PAPI_SCREEN.jpg
+    Sleep    1s
+
+Open PAPD screen and verify
+    Log Reporting    Step4- Open PAPD Screen to verify PAPD page.
+    Write Text on specific position    ${START_PAPD}    03    021
+    Send Enter
+    Sleep    1s
+    Verify actual and expected string    01    025    29    ${PAPD_SCREEN}
+    Log Reporting    Screen name verified successfully.
+    Verify actual and expected string    02    010    7    ${POST_TN}
+    Verify actual and expected string    03    021    4    ${START_PAPD}
+    Log Reporting    TN and app name verified successfully.
+    Capture Screen        PAPD_SCREEN.jpg
+
+Enter required details of AB region to navigate to PAPI Page
+    ${TN}    Add Two String value    ${AB_PRE_TN}    ${POST_TN}    
+    Write Text and Move to next field    ${TN}
+    Write Text on specific position    ${INQ_SCREEN}    23    032
+    Write Text on specific position    ${START_PAPI}    23    052
+    Send Enter
+    Capture Screen        PAPI_PAGE.jpg
+
+
+Open Pre Authorised Payment Details and verify for BC
+    Open PAPI Screen for BC and verify
+    Open PAPD screen and verify
+
+Open PAPI Screen for BC and verify
+    Log Reporting    Step3- Open PAPI Screen to verify PAPI page.
+    Enter required details of BC region to navigate to PAPI Page
+    Verify actual and expected string    01    025    36    ${PAPI_SCREEN}
+    Log Reporting    Screen name verified successfully.
+    Verify actual and expected string    02    010    7    ${POST_TN}
+    Verify actual and expected string    03    021    4    PAPI
+    Log Reporting    TN and app name verified successfully.
+    Capture Screen        PAPI_SCREEN.jpg
+    Sleep    1s
+
+Enter required details of BC region to navigate to PAPI Page
+    ${TN}    Add Two String value    ${BC_PRE_TN}    ${POST_TN}    
+    Write Text and Move to next field    ${TN}
+    Write Text on specific position    ${INQ_SCREEN}    23    032
+    Write Text on specific position    ${START_PAPI}    23    052
+    Send Enter
+    Capture Screen        PAPI_PAGE.jpg
 
     
 

@@ -42,3 +42,13 @@ ${POST_TN}
 # For SOECS
 @{SOECS_LOGINPAGE}    Welcome to OpenVMS   
 @{SOECS_HOMEPAGE}    TELUS COMMUNICATIONS INC.
+
+#For FLEX
+${FLEX_SCREEN}    FLX
+
+#For Pre Authorised payment system
+${PAPD_SCREEN}    PRE-AUTHORIZED PAYMENT DETAIL
+${START_PAPD}    PAPD
+${PAPI_SCREEN}    Pre-Authorized Payment Input/Inquiry
+${START_PAPI}    PAPI
+${INQ_SCREEN}    INQ
