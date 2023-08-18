@@ -1312,11 +1312,20 @@ public class StepDefinitions extends BaseTest {
 		case "CRIS3AB":
 		case "CAMSBC":
 		case "CRISBC":
-		case "CRIS3BC": {
+		case "CRIS3BC":
+		case "FPOAB":
+		case "PAPSAB":
+		case "FPOBC":
+		case "PAPSBC":
+			
+		
+		{
 			String tn_number = null;
 			String region = null;
 			if (applicationName.contains("CAMSAB") || applicationName.contains("CRISAB")
-					|| applicationName.contains("CRIS3AB")) {
+					|| applicationName.contains("CRIS3AB") || applicationName.contains("PAPSAB")
+						|| applicationName.contains("FPOAB")) 
+			{
 				tn_number = EncryptionUtils.decode(userAccess.getString("POST_TN_AB"));
 				region = EncryptionUtils.decode(userAccess.getString("TPX_AB_REGION"));
 			} else {
