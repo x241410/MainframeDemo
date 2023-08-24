@@ -15,7 +15,7 @@ public class GoogleSheetData {
 		throw new IllegalStateException("Utility class");
 	}
 
-	private static List<JSONObject> newList = Collections.synchronizedList(new ArrayList<JSONObject>());
+	public static List<JSONObject> newList = Collections.synchronizedList(new ArrayList<JSONObject>());
 
 	public static void writeScenarioStatus(JSONObject obj) {
 		Reporting.logReporter(Status.INFO, " write status data : " + obj);

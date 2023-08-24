@@ -135,18 +135,10 @@ Feature: BPED Apps HealthCheck
   #Mainframe Apps
   #================
   
-  @Mainframe @ALLAPPS @CAMSAB @P2-APPS
-  Scenario: CAMS: AB
-    Given Test "CAMSAB" Applications
+  @Mainframe @P2-APPS-MF @DDSAB @test
+  Scenario: Due Date System: AB
+    Given Test "CRIS3AB" Applications
     
-  @Mainframe @ALLAPPS @CAMSBC @P2-APPS
-  Scenario: CAMS: BC
-    Given Test "CAMSBC" Applications
-    
-  @Mainframe @ALLAPPS  @TRIADAB @P2-APPS
-  Scenario: Triad: AB
-    Given Test "CAMSAB" Applications
-
-	@Mainframe @ALLAPPS @TRIADBC @P2-APPS	
-  Scenario: Triad: BC
-    Given Test "CAMSBC" Applications
+  @Mainframe @P2-APPS-MF @DDSBC @test
+  Scenario: Due Date System: BC
+    Given Test "CRIS3BC" Applications

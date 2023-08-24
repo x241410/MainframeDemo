@@ -123,42 +123,52 @@ Feature: BPED Apps HealthCheck
   #================
   #Mainframe Apps
   #================
-  @Mainframe @ALLAPPS @P1-APPS @CRIS1AB
+  
+  @Mainframe @ALLAPPS @P1-APPS-MF @CRIS1AB @test
   Scenario: Customer Records Information System 1 / Inquiry: AB
     Given Test "CRISAB" Applications
     
- 	@Mainframe @ALLAPPS @CRIS3AB @P1-APPS
+ 	@Mainframe @ALLAPPS @CRIS3AB @P1-APPS-MF
   Scenario: CRIS3: Customer Records Information System 3 / Service Order System: AB
     Given Test "CRIS3AB" Applications
 
-  @Mainframe @ALLAPPS @SOECS @P1-APPS
+  @Mainframe @ALLAPPS @SOECS @P1-APPS-MF
   Scenario: Service Order Entry and Control System
     Given Test "SOECS" Applications
     
-  @Mainframe @ALLAPPS @CRIS1BC @P1-APPS
+  @Mainframe @ALLAPPS @CRIS1BC @P1-APPS-MF
   Scenario: Customer Records Information System 1 / Inquiry: BC
     Given Test "CRISBC" Applications
 
-	@Mainframe @ALLAPPS @CRIS3BC @P1-APPS
+	@Mainframe @ALLAPPS @CRIS3BC @P1-APPS-MF
   Scenario: CRIS3: Customer Records Information System 3 / Service Order System: BC
     Given Test "CRIS3BC" Applications
     
 	#Additional TC's
-	@Mainframe @ALLAPPS @P1-APPS @CRIS2AB
+	@Mainframe @P1-APPS-MF @CRIS2AB @test
   Scenario: Customer Records Information System 2 / Update: AB
     Given Test "CRISAB" Applications
     
-  @Mainframe @ALLAPPS @P1-APPS @CDBSAB
+  @Mainframe @P1-APPS-MF @CDBSAB
   Scenario: Customer Data Base System: AB
     Given Test "CRISAB" Applications
     
-    
-  @Mainframe @ALLAPPS @CRISBC @P1-APPS	@CRIS2BC
+  @Mainframe @CRISBC @P1-APPS-MF	@CRIS2BC
   Scenario: Customer Records Information System 2 / Update: BC
     Given Test "CRISBC" Applications
 
-	@Mainframe @ALLAPPS @CRIS3BC @P1-APPS	@CDBSBC
+	@Mainframe @CRIS3BC @P1-APPS-MF	@CDBSBC
   Scenario: Customer Data Base System: BC
     Given Test "CRISBC" Applications
-   
 
+  @Mainframe	@P1-APPS-MF @CBNAB
+  Scenario: Consolidated Billing Number: AB
+    Given Test "CRISAB" Applications
+		Given Test "CRIS3AB" Applications
+
+	@Mainframe	@P1-APPS-MF @CBNBC
+  Scenario: Consolidated Billing Number: BC
+    Given Test "CRISBC" Applications
+		Given Test "CRIS3BC" Applications
+		
+	
