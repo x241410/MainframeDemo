@@ -483,11 +483,11 @@ public class StepDefinitions extends BaseTest {
 
         Collection<String> tags = scenario.getSourceTagNames();
         Reporting.logReporter(Status.INFO, "LogInfo===> tags: " + tags);
-        if (tags.contains("@P1-APPS")) {
+        if (tags.contains("@P1-APPS") || tags.contains("@P1-APPS-MF")) {
             statusObj.put("P1_APPS", "P1_APPS");
-        } else if (tags.contains("@P2-APPS")) {
+        } else if (tags.contains("@P2-APPS")|| tags.contains("@P2-APPS-MF")) {
             statusObj.put("P2_APPS", "P2_APPS");
-        } else if (tags.contains("@P3-APPS")) {
+        } else if (tags.contains("@P3-APPS") || tags.contains("@P3-APPS-MF")) {
             statusObj.put("P3_APPS", "P3_APPS");
         }
 

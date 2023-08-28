@@ -270,7 +270,11 @@ public class MainframeUtils {
 			String screenshotPath = SystemProperties.getStringValue("mainframe.build.report.artifact.path");
 			String ScreenshotsPath = System.getProperty("user.dir")+screenshotPath;	
 			String ScreenshotsDirPath= ScreenshotsPath.replaceAll("\\.", "");
-			FileUtils.cleanDirectory(new File(ScreenshotsDirPath));
+			if(new File(ScreenshotsDirPath).exists()){
+			FileUtils.cleanDirectory(new File(ScreenshotsDirPath));}
+			else {
+				new File(ScreenshotsDirPath).mkdirs();
+			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);	
 		}
