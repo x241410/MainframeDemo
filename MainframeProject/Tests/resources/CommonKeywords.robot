@@ -171,9 +171,9 @@ Verify BSC Screen
 
 Verify TN Number
     #2. Verify TN number name
-    Verify actual and expected string    01    007    7    ${POST_TN}
+    Verify actual and expected string without log    01    007    7    ${POST_TN}
     Log Reporting    TN number is displayed.
-    Log Reporting    ${TEST_NAME} Health Check is verified.
+    Log Reporting    Health Check is verified.
 
 
 Logout CRIS Application
@@ -240,7 +240,7 @@ Suite Setup for SOECS
 Open Flexipay Payment Screen and verify for AB
     Log Reporting    Step3- Open FLEX screen and verify
     Enter required details of AB region to navigate to FLEX Page
-    Verify actual and expected string    02    013    7    ${POST_TN}
+    Verify actual and expected string without log    02    013    7    ${POST_TN}
     Verify actual and expected string    03    071    3    ${FLEX_SCREEN}
     Log Reporting    TN and Application name verified successfully.
 
@@ -253,7 +253,7 @@ Enter required details of AB region to navigate to FLEX Page
 Open Flexipay Payment Screen and verify for BC
     Log Reporting    Step3- Open FLEX screen and verify
     Enter required details of BC region to navigate to FLEX Page
-    Verify actual and expected string    02    013    7    ${POST_TN}
+    Verify actual and expected string without log    02    013    7    ${POST_TN}
     Verify actual and expected string    03    071    3    ${FLEX_SCREEN}
     Log Reporting    TN and Application name verified successfully.
 
@@ -272,7 +272,7 @@ Open PAPI for AB Screen and verify
     Enter required details of AB region to navigate to PAPI Page
     Verify actual and expected string    01    025    36    ${PAPI_SCREEN}
     Log Reporting    Screen name verified successfully.
-    Verify actual and expected string    02    010    7    ${POST_TN}
+    Verify actual and expected string without log    02    010    7    ${POST_TN}
     Verify actual and expected string    03    021    4    ${START_PAPI}
     Log Reporting    TN and app name verified successfully.
     Capture Screen        PAPI_SCREEN.jpg
@@ -285,7 +285,7 @@ Open PAPD screen and verify
     Sleep    1s
     Verify actual and expected string    01    025    29    ${PAPD_SCREEN}
     Log Reporting    Screen name verified successfully.
-    Verify actual and expected string    02    010    7    ${POST_TN}
+    Verify actual and expected string without log   02    010    7    ${POST_TN}
     Verify actual and expected string    03    021    4    ${START_PAPD}
     Log Reporting    TN and app name verified successfully.
     Capture Screen        PAPD_SCREEN.jpg
@@ -308,7 +308,7 @@ Open PAPI Screen for BC and verify
     Enter required details of BC region to navigate to PAPI Page
     Verify actual and expected string    01    025    36    ${PAPI_SCREEN}
     Log Reporting    Screen name verified successfully.
-    Verify actual and expected string    02    010    7    ${POST_TN}
+    Verify actual and expected string without log    02    010    7    ${POST_TN}
     Verify actual and expected string    03    021    4    PAPI
     Log Reporting    TN and app name verified successfully.
     Capture Screen        PAPI_SCREEN.jpg

@@ -84,3 +84,8 @@ Verify Page Contain Text
     Wait Field Detected
     Page Should Contain Any String    ${text}
     Log To Console    ${\n}Page contains expected value ${text}
+
+Verify actual and expected string without log
+    [Arguments]    ${ypos}    ${xpos}    ${length}    ${expectedStr}
+    ${actualStr}    Read    ${ypos}    ${xpos}    ${length}
+    Should Be Equal As Strings    ${actualStr}    ${expectedStr}
