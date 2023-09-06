@@ -1279,13 +1279,13 @@ public class StepDefinitions extends BaseTest {
         }
         if (status.equals("NOTFOUND")) {
             MainframeUtils MainframeUtils = new MainframeUtils();
-            // MainframeUtils.delScreenshotDir();
+            WebDriverSteps.openApplication("MAINFRAME");
             String robotFilePath = System.getProperty("user.dir") + File.separator + "MainframeProject" + File.separator
                     + "Tests" + File.separator + applicationName + ".robot";
 
-            // String buildUrl = System.getenv("BUILD_URL");
-            String wsUrl = System.getenv("BUILD_URL");
-            //String wsUrl = buildUrl.split("BPED_Mainframe_Test")[0].concat("BPED_Mainframe_Test/ws/");
+            //String buildUrl = System.getenv("BUILD_URL");
+            String buildUrl = System.getenv("BUILD_URL");
+            String wsUrl = buildUrl.split("BPED_Mainframe_Test")[0].concat("BPED_Mainframe_Test/ws/");
             String reportFilePath = SystemProperties.getStringValue("mainframe.build.report.artifact.path")
                     + applicationName + "_Report" + ".html";
             String logFilePath = SystemProperties.getStringValue("mainframe.build.report.artifact.path") + applicationName

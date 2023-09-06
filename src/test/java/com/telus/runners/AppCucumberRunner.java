@@ -18,7 +18,7 @@ import com.test.utils.Status;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = "src/test/resources/features", glue = {
-		"com.telus.bped.stepsdefinition" }, tags = "@Mainframe", plugin = { "pretty",
+		"com.telus.bped.stepsdefinition" }, tags = "@ALLAPPS", plugin = { "pretty",
 				"com.test.cucumber.ExtentCucumberAdapter:", 
 				"com.telus.cucumber.plugin.ReportPortalCucumberPlugin",
 				"rerun:target/rerun.txt" }, monochrome = true, publish = true
@@ -29,7 +29,6 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 	@BeforeSuite
 	public void beforeSuit() {
 
-		WebDriverSteps.openApplication("MAINFRAME");
 		Reporting.logReporter(Status.INFO,
 				"......................................... Befor Suite called ....................................");
 		System.out.println("Info : -- " + GoogleSheetData.getExecutionStatus());

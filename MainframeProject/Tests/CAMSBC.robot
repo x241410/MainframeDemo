@@ -18,13 +18,13 @@ CAMS: BC
 
     Open CAMS Collection Screen to verify Health Check
     
-    Logout CRIS Application
+    Logout CAMS Application
 
 *** Keywords ***
 Suite Setup
     Suite Setup for TPX_BC
 
 Suite Teardown
-    Logout CRIS Application
+    Logout CAMS Application
     Close Connection
     Sleep    1s
