@@ -12,8 +12,10 @@ import com.telus.bped.utils.GoogleSheetsUtils;
 import com.telus.bped.utils.MainframeUtils;
 import com.test.cucumber.AbstractTestNGCucumberTests;
 import com.test.reporting.Reporting;
+import com.test.ui.actions.WebDriverSession;
 import com.test.ui.actions.WebDriverSteps;
 import com.test.utils.Status;
+import com.test.utils.SystemProperties;
 
 import io.cucumber.testng.CucumberOptions;
 
@@ -29,6 +31,11 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 	@BeforeSuite
 	public void beforeSuit() {
 
+		boolean appType=SystemProperties.getBooleanValue("application.type.isMainframe");
+		if (appType==true) {
+			WebDriverSteps.openApplication("MAINFRAME");
+		}
+		
 		Reporting.logReporter(Status.INFO,
 				"......................................... Befor Suite called ....................................");
 		System.out.println("Info : -- " + GoogleSheetData.getExecutionStatus());
@@ -74,7 +81,9 @@ public class AppCucumberRunner extends AbstractTestNGCucumberTests {
 
 		GoogleSheetsUtils.updateBulKDataIntoGSheets(p1_apps, p2_apps, p3_apps);
 
-		WebDriverSteps.closeTheBrowser();
+		if (WebDriverSession.getWebDriverForCurrentThreat() != null) {
+            WebDriverSteps.closeTheBrowser();
+        }
 	}
 
 	/**

@@ -70,8 +70,8 @@ Login into the Application with valid credentials
 Login into the CRIS SS Application with valid credentials
     # Login Into Application    ${APP_USERNAME}    ${APP_PASSWORD}
     # Verify actual and expected string    01    027    13    ${CRIS_APP_TITLE}
-    Log Reporting    Homepage displayed successfully
-    Capture Screen        DASHBOARD.jpg
+    # Log Reporting    Homepage displayed successfully
+    # Capture Screen        DASHBOARD.jpg
 
 ##Keywords for AB BSC verification
 Open CRIS3 AB BSC page to verify Health Check
@@ -216,11 +216,13 @@ Login SOECS Application
 Login into SOECS application
     Log Reporting    Step1- Login into the SOECS Application with valid credentials.
     Capture Screen    LAUNCH_PAGE.jpg
+    Sleep    2s
     Verify Page Contain Text    ${SOECS_LOGINPAGE}
     Login SOECS Application
     
  Verify SOECS homepage is displayed
     Log Reporting    Step2- Verify SOECS Application homepage.
+    Sleep    2s
     Verify Page Contain Text    ${SOECS_HOMEPAGE}
     Capture Screen    HOMEPAGE.jpg
 

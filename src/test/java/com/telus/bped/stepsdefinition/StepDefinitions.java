@@ -1279,7 +1279,7 @@ public class StepDefinitions extends BaseTest {
         }
         if (status.equals("NOTFOUND")) {
             MainframeUtils MainframeUtils = new MainframeUtils();
-            WebDriverSteps.openApplication("MAINFRAME");
+            
             String robotFilePath = System.getProperty("user.dir") + File.separator + "MainframeProject" + File.separator
                     + "Tests" + File.separator + applicationName + ".robot";
 
@@ -1326,7 +1326,9 @@ public class StepDefinitions extends BaseTest {
             case "FPOAB":
             case "PAPSAB":
             case "FPOBC":
-            case "PAPSBC": {
+            case "PAPSBC":
+            case "CRISSSBC":
+            {
                 String tn_number = null;
                 String region = null;
                 if (applicationName.contains("CAMSAB") || applicationName.contains("CRISAB")

@@ -124,7 +124,7 @@ Feature: BPED Apps HealthCheck
   #Mainframe Apps
   #================
   
-  @Mainframe @ALLAPPS @P1-APPS-MF @CRIS1AB @test
+  @Mainframe @ALLAPPS @P1-APPS-MF @CRIS1AB
   Scenario: Customer Records Information System 1 / Inquiry: AB
     Given Test "CRISAB" Applications
     
@@ -146,7 +146,7 @@ Feature: BPED Apps HealthCheck
     
   @Mainframe @ALLAPPS @CRISSSBC @P1-APPS-MF
   Scenario: CRIS SS: Customer Records Information System Special Services
-    #Given Test "CRISSS" Applications
+    Given Test "CRISSSBC" Applications
     
 	#Additional TC's
 	@Mainframe @P1-APPS-MF @CRIS2AB @test
