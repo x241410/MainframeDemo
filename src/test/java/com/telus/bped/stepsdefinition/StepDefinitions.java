@@ -1384,25 +1384,26 @@ public class StepDefinitions extends BaseTest {
         JSONArray baseDataAppDetailsArray = googleSheetsUtils.readMainframeApplicationsSheet(token);
         for (int j = 0; j < baseDataAppDetailsArray.length(); j++) {
             int appIndex = GenericUtils.getIndexFromJsonObject(baseDataAppDetailsArray, applicationName);
-            JSONArray dataObject = (JSONArray) baseDataAppDetailsArray.get(appIndex - 1);
-            String dependentAppsList = "";
+
+            if(appIndex>0) {
+                JSONArray dataObject = (JSONArray) baseDataAppDetailsArray.get(appIndex - 1);
+                String dependentAppsList = "";
 
 
-            if (dataObject.toString().contains(applicationName)) {
-                dependentAppsList = dataObject.getString(1);
+                if (dataObject.toString().contains(applicationName)) {
+                    dependentAppsList = dataObject.getString(1);
+                }
+
+                for (JSONObject a : GoogleSheetData.newList) {
+                    if (dependentAppsList.contains(a.getString("appName"))) {
+                        status = a.getString("appStatus");
+
+                    }
+
+                }
+
+
             }
-
-            for(JSONObject a:GoogleSheetData.newList){
-              if(dependentAppsList.contains(a.getString("appName"))){
-                 status=a.getString("appStatus");
-
-              }
-
-            }
-
-
-
-
         }
 
 
