@@ -4,6 +4,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.intuit.karate.core.FeatureResult;
 import com.telus.api.test.utils.APIJava;
 import com.telus.bped.steps.*;
+
 import com.telus.bped.utils.DBUtils;
 import com.telus.bped.utils.GenericUtils;
 import com.telus.bped.utils.GoogleSheetData;
@@ -36,8 +37,6 @@ import org.sikuli.script.Screen;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
 import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -485,7 +484,7 @@ public class StepDefinitions extends BaseTest {
         Reporting.logReporter(Status.INFO, "LogInfo===> tags: " + tags);
         if (tags.contains("@P1-APPS") || tags.contains("@P1-APPS-MF")) {
             statusObj.put("P1_APPS", "P1_APPS");
-        } else if (tags.contains("@P2-APPS")|| tags.contains("@P2-APPS-MF")) {
+        } else if (tags.contains("@P2-APPS") || tags.contains("@P2-APPS-MF")) {
             statusObj.put("P2_APPS", "P2_APPS");
         } else if (tags.contains("@P3-APPS") || tags.contains("@P3-APPS-MF")) {
             statusObj.put("P3_APPS", "P3_APPS");
@@ -1266,10 +1265,13 @@ public class StepDefinitions extends BaseTest {
 //    }
 
     @Given("Test {string} Applications")
-    public void verifyMainframeApp(String applicationName) throws IOException {
+    public void verifyMainframeApp(String applicationName) throws Exception {
 
         String status;
+
         status = getApplicationStatusIfAlreadyExist(applicationName);
+
+
         if (status.equalsIgnoreCase("Passed")) {
             Validate.assertTrue(true, true, "Application Passed");
             Reporting.logReporter(Status.PASS, "Application Passed");
@@ -1279,7 +1281,7 @@ public class StepDefinitions extends BaseTest {
         }
         if (status.equals("NOTFOUND")) {
             MainframeUtils MainframeUtils = new MainframeUtils();
-            
+
             String robotFilePath = System.getProperty("user.dir") + File.separator + "MainframeProject" + File.separator
                     + "Tests" + File.separator + applicationName + ".robot";
 
@@ -1327,8 +1329,7 @@ public class StepDefinitions extends BaseTest {
             case "PAPSAB":
             case "FPOBC":
             case "PAPSBC":
-            case "CRISSSBC":
-            {
+            case "CRISSSBC": {
                 String tn_number = null;
                 String region = null;
                 if (applicationName.contains("CAMSAB") || applicationName.contains("CRISAB")
@@ -1374,280 +1375,311 @@ public class StepDefinitions extends BaseTest {
     }
 
 
-    public String getApplicationStatusIfAlreadyExist(String applicationName) {
+    public String getApplicationStatusIfAlreadyExist(String applicationName) throws Exception {
         String status = "NOTFOUND";
-
         String executedList = GoogleSheetData.newList.toString();
-        if (applicationName.equals("CRISAB")) {
-            if (executedList.contains("Customer Records Information System 1 / Inquiry: AB")
-                    ||
-                    executedList.contains("Customer Records Information System 2 / Update: AB")
-                    ||
-                    executedList.contains("Customer Data Base System: AB")
-                    ||
-                    executedList.contains("Consolidated Billing Number: AB")
-                    ||
-                    executedList.contains("Customer Activity Processing System: AB")
-                    ||
-                    executedList.contains("Customized Utility Billing System: AB")
-                    ||
-                    executedList.contains("Printer Utility BMP System: AB")
-                    ||
-                    executedList.contains("Small Exchange Carrier Access Billing System: AB")
 
-            ) {
-                for (JSONObject obj : GoogleSheetData.newList) {
-                    if (obj.get("appName").equals("Customer Records Information System 1 / Inquiry: AB")
+        GoogleSheetsUtils googleSheetsUtils = new GoogleSheetsUtils();
+        String token = GoogleSheetsUtils.getAccessToken();
+        JSONArray baseDataAppDetailsArray = googleSheetsUtils.readMainframeApplicationsSheet(token);
+        for (int j = 0; j < baseDataAppDetailsArray.length(); j++) {
+            int appIndex = GenericUtils.getIndexFromJsonObject(baseDataAppDetailsArray, applicationName);
+            JSONArray dataObject = (JSONArray) baseDataAppDetailsArray.get(appIndex - 1);
+            String dependentAppsList = "";
 
-                            ||
-                            obj.get("appName").equals("Customer Records Information System 2 / Update: AB")
-                            ||
-                            obj.get("appName").equals("Customer Data Base System: AB")
-                            ||
-                            obj.get("appName").equals("Consolidated Billing Number: AB")
-                            ||
-                            obj.get("appName").equals("Customer Activity Processing System: AB")
-                            ||
-                            obj.get("appName").equals("Customized Utility Billing System: AB")
-                            ||
-                            obj.get("appName").equals("Printer Utility BMP System: AB")
-                            ||
-                            obj.get("appName").equals("Small Exchange Carrier Access Billing System: AB")
-                    ) {
-                        status = obj.getString("appStatus");
-                    }
-                }
 
+            if (dataObject.toString().contains(applicationName)) {
+                dependentAppsList = dataObject.getString(1);
+            }
+
+            for(JSONObject a:GoogleSheetData.newList){
+              if(dependentAppsList.contains(a.getString("appName"))){
+                 status=a.getString("appStatus");
+
+              }
 
             }
 
 
-        } else if (applicationName.equals("CRISBC")) {
-            if (executedList.contains("Customer Records Information System 1 / Inquiry: BC")
-                    ||
-                    executedList.contains("Customer Records Information System 2 / Update: BC")
-                    ||
-                    executedList.contains("Customer Data Base System: BC")
-                    ||
-                    executedList.contains("Consolidated Billing Number: BC")
-                    ||
-                    executedList.contains("Accurate Business Customer Data")
-                    ||
-                    executedList.contains("Bulk Service Order")
-                    ||
-                    executedList.contains("Customer Activity Processing System: BC")
-                    ||
-                    executedList.contains("Customized Utility Billing System: BC")
-                    ||
-                    executedList.contains("E911: Billing")
-                    ||
-                    executedList.contains("Major Accounts Summary Billing")
-                    ||
-                    executedList.contains("Marketing Cross Reference")
-                    ||
-                    executedList.contains("National Carrier Access Management System")
-                    ||
-                    executedList.contains("Printer Utility BMP System II: BC")
-                    ||
-                    executedList.contains("Trouble Reporting Information Handling System")
 
-            ) {
-                for (JSONObject obj : GoogleSheetData.newList) {
-                    if (obj.get("appName").equals("Customer Records Information System 1 / Inquiry: BC")
-                            ||
-                            obj.get("appName").equals("Customer Records Information System 2 / Update: BC")
-                            ||
-                            obj.get("appName").equals("Customer Data Base System: BC")
-                            ||
-                            obj.get("appName").equals("Consolidated Billing Number: BC")
-                            ||
-                            obj.get("appName").equals("Accurate Business Customer Data")
-                            ||
-                            obj.get("appName").equals("Bulk Service Order")
-                            ||
-                            obj.get("appName").equals("Customer Activity Processing System: BC")
-                            ||
-                            obj.get("appName").equals("Customized Utility Billing System: BC")
-                            ||
-                            obj.get("appName").equals("E911: Billing")
-                            ||
-                            obj.get("appName").equals("Major Accounts Summary Billing")
-                            ||
-                            obj.get("appName").equals("Marketing Cross Reference")
-                            ||
-                            obj.get("appName").equals("National Carrier Access Management System")
-                            ||
-                            obj.get("appName").equals("Printer Utility BMP System II: BC")
-                            ||
-                            obj.get("appName").equals("Trouble Reporting Information Handling System")
-
-                    ) {
-                        status = obj.getString("appStatus");
-                    }
-
-
-                }
-
-
-            }
-
-        } else if (applicationName.equals("CRIS3AB")) {
-            if (executedList.contains("CRIS3: Customer Records Information System 3 / Service Order System: AB")
-                    ||
-                    executedList.contains("Due Date System: AB")
-                    ||
-                    executedList.contains("Consolidated Billing Number: AB")
-                    ||
-                    executedList.contains("Customer Activity Processing System: AB")
-                    ||
-                    executedList.contains("Printer Utility BMP System: AB")
-                    ||
-                    executedList.contains("Customized Utility Billing System: AB")
-                    ||
-                    executedList.contains("Small Exchange Carrier Access Billing System: AB")
-
-
-            ) {
-                for (JSONObject obj : GoogleSheetData.newList) {
-                    if (obj.get("appName").equals("CRIS3: Customer Records Information System 3 / Service Order System: AB")
-                            ||
-                            obj.get("appName").equals("Due Date System: AB")
-                            ||
-                            obj.get("appName").equals("Consolidated Billing Number: AB")
-                            ||
-                            obj.get("appName").equals("Customer Activity Processing System: AB")
-                            ||
-                            obj.get("appName").equals("Printer Utility BMP System: AB")
-                            ||
-                            obj.get("appName").equals("Customized Utility Billing System: AB")
-                            ||
-                            obj.get("appName").equals("Small Exchange Carrier Access Billing System: AB")
-
-
-                    ) {
-                        status = obj.getString("appStatus");
-                    }
-
-
-                }
-
-
-            }
-
-        } else if (applicationName.equals("CRIS3BC")) {
-            if (executedList.contains("CRIS3: Customer Records Information System 3 / Service Order System: BC")
-                    ||
-                    executedList.contains("Due Date System: BC")
-                    ||
-                    executedList.contains("Consolidated Billing Number: BC")
-                    ||
-                    executedList.contains("Accurate Business Customer Data")
-                    ||
-                    executedList.contains("Bulk Service Order")
-                    ||
-                    executedList.contains("Customer Activity Processing System: BC")
-                    ||
-                    executedList.contains("Customized Utility Billing System: BC")
-                    ||
-                    executedList.contains("E911: Billing")
-                    ||
-                    executedList.contains("Major Accounts Summary Billing")
-                    ||
-                    executedList.contains("Marketing Cross Reference")
-                    ||
-                    executedList.contains("National Carrier Access Management System")
-                    ||
-                    executedList.contains("Printer Utility BMP System II: BC")
-                    ||
-                    executedList.contains("Trouble Reporting Information Handling System")
-
-
-            ) {
-                for (JSONObject obj : GoogleSheetData.newList) {
-                    if (obj.get("appName").equals("CRIS3: Customer Records Information System 3 / Service Order System: BC")
-                            ||
-                            obj.get("appName").equals("Due Date System: BC")
-                            ||
-                            obj.get("appName").equals("Consolidated Billing Number: BC")
-                            ||
-                            obj.get("appName").equals("Accurate Business Customer Data")
-                            ||
-                            obj.get("appName").equals("Bulk Service Order")
-                            ||
-                            obj.get("appName").equals("Customer Activity Processing System: BC")
-                            ||
-                            obj.get("appName").equals("Customized Utility Billing System: BC")
-                            ||
-                            obj.get("appName").equals("E911: Billing")
-                            ||
-                            obj.get("appName").equals("Major Accounts Summary Billing")
-                            ||
-                            obj.get("appName").equals("Marketing Cross Reference")
-                            ||
-                            obj.get("appName").equals("National Carrier Access Management System")
-                            ||
-                            obj.get("appName").equals("Printer Utility BMP System II: BC")
-                            ||
-                            obj.get("appName").equals("Trouble Reporting Information Handling System")
-
-                    ) {
-                        status = obj.getString("appStatus");
-
-                    }
-
-
-                }
-
-
-            }
-
-        } else if (applicationName.equals("CAMSAB")) {
-            if (executedList.contains("CAMS: AB")
-                    ||
-                    executedList.contains("Triad: AB")
-
-
-            ) {
-                for (JSONObject obj : GoogleSheetData.newList) {
-                    if (obj.get("appName").equals("CAMS: AB")
-                            ||
-                            obj.get("appName").equals("Triad: AB")
-
-
-                    ) {
-                        status = obj.getString("appStatus");
-
-                    }
-
-
-                }
-
-
-            }
-
-        } else if (applicationName.equals("CAMSBC")) {
-            if (executedList.contains("CAMS: BC")
-                    ||
-                    executedList.contains("Triad: BC")
-
-
-            ) {
-                for (JSONObject obj : GoogleSheetData.newList) {
-                    if (obj.get("appName").equals("CAMS: BC")
-                            ||
-                            obj.get("appName").equals("Triad: BC")
-
-                    ) {
-                        status = obj.getString("appStatus");
-
-                    }
-
-                }
-
-
-            }
 
         }
+
+
+
+
+
+
+//        if (applicationName.equals("CRISAB")) {
+//            if (executedList.contains("Customer Records Information System 1 / Inquiry: AB")
+//                    ||
+//                    executedList.contains("Customer Records Information System 2 / Update: AB")
+//                    ||
+//                    executedList.contains("Customer Data Base System: AB")
+//                    ||
+//                    executedList.contains("Consolidated Billing Number: AB")
+//                    ||
+//                    executedList.contains("Customer Activity Processing System: AB")
+//                    ||
+//                    executedList.contains("Customized Utility Billing System: AB")
+//                    ||
+//                    executedList.contains("Printer Utility BMP System: AB")
+//                    ||
+//                    executedList.contains("Small Exchange Carrier Access Billing System: AB")
+//
+//            ) {
+//                for (JSONObject obj : GoogleSheetData.newList) {
+//                    if (obj.get("appName").equals("Customer Records Information System 1 / Inquiry: AB")
+//
+//                            ||
+//                            obj.get("appName").equals("Customer Records Information System 2 / Update: AB")
+//                            ||
+//                            obj.get("appName").equals("Customer Data Base System: AB")
+//                            ||
+//                            obj.get("appName").equals("Consolidated Billing Number: AB")
+//                            ||
+//                            obj.get("appName").equals("Customer Activity Processing System: AB")
+//                            ||
+//                            obj.get("appName").equals("Customized Utility Billing System: AB")
+//                            ||
+//                            obj.get("appName").equals("Printer Utility BMP System: AB")
+//                            ||
+//                            obj.get("appName").equals("Small Exchange Carrier Access Billing System: AB")
+//                    ) {
+//                        status = obj.getString("appStatus");
+//                    }
+//                }
+//
+//
+//            }
+//
+//
+//        } else if (applicationName.equals("CRISBC")) {
+//            if (executedList.contains("Customer Records Information System 1 / Inquiry: BC")
+//                    ||
+//                    executedList.contains("Customer Records Information System 2 / Update: BC")
+//                    ||
+//                    executedList.contains("Customer Data Base System: BC")
+//                    ||
+//                    executedList.contains("Consolidated Billing Number: BC")
+//                    ||
+//                    executedList.contains("Accurate Business Customer Data")
+//                    ||
+//                    executedList.contains("Bulk Service Order")
+//                    ||
+//                    executedList.contains("Customer Activity Processing System: BC")
+//                    ||
+//                    executedList.contains("Customized Utility Billing System: BC")
+//                    ||
+//                    executedList.contains("E911: Billing")
+//                    ||
+//                    executedList.contains("Major Accounts Summary Billing")
+//                    ||
+//                    executedList.contains("Marketing Cross Reference")
+//                    ||
+//                    executedList.contains("National Carrier Access Management System")
+//                    ||
+//                    executedList.contains("Printer Utility BMP System II: BC")
+//                    ||
+//                    executedList.contains("Trouble Reporting Information Handling System")
+//
+//            ) {
+//                for (JSONObject obj : GoogleSheetData.newList) {
+//                    if (obj.get("appName").equals("Customer Records Information System 1 / Inquiry: BC")
+//                            ||
+//                            obj.get("appName").equals("Customer Records Information System 2 / Update: BC")
+//                            ||
+//                            obj.get("appName").equals("Customer Data Base System: BC")
+//                            ||
+//                            obj.get("appName").equals("Consolidated Billing Number: BC")
+//                            ||
+//                            obj.get("appName").equals("Accurate Business Customer Data")
+//                            ||
+//                            obj.get("appName").equals("Bulk Service Order")
+//                            ||
+//                            obj.get("appName").equals("Customer Activity Processing System: BC")
+//                            ||
+//                            obj.get("appName").equals("Customized Utility Billing System: BC")
+//                            ||
+//                            obj.get("appName").equals("E911: Billing")
+//                            ||
+//                            obj.get("appName").equals("Major Accounts Summary Billing")
+//                            ||
+//                            obj.get("appName").equals("Marketing Cross Reference")
+//                            ||
+//                            obj.get("appName").equals("National Carrier Access Management System")
+//                            ||
+//                            obj.get("appName").equals("Printer Utility BMP System II: BC")
+//                            ||
+//                            obj.get("appName").equals("Trouble Reporting Information Handling System")
+//
+//                    ) {
+//                        status = obj.getString("appStatus");
+//                    }
+//
+//
+//                }
+//
+//
+//            }
+//
+//        } else if (applicationName.equals("CRIS3AB")) {
+//            if (executedList.contains("CRIS3: Customer Records Information System 3 / Service Order System: AB")
+//                    ||
+//                    executedList.contains("Due Date System: AB")
+//                    ||
+//                    executedList.contains("Consolidated Billing Number: AB")
+//                    ||
+//                    executedList.contains("Customer Activity Processing System: AB")
+//                    ||
+//                    executedList.contains("Printer Utility BMP System: AB")
+//                    ||
+//                    executedList.contains("Customized Utility Billing System: AB")
+//                    ||
+//                    executedList.contains("Small Exchange Carrier Access Billing System: AB")
+//
+//
+//            ) {
+//                for (JSONObject obj : GoogleSheetData.newList) {
+//                    if (obj.get("appName").equals("CRIS3: Customer Records Information System 3 / Service Order System: AB")
+//                            ||
+//                            obj.get("appName").equals("Due Date System: AB")
+//                            ||
+//                            obj.get("appName").equals("Consolidated Billing Number: AB")
+//                            ||
+//                            obj.get("appName").equals("Customer Activity Processing System: AB")
+//                            ||
+//                            obj.get("appName").equals("Printer Utility BMP System: AB")
+//                            ||
+//                            obj.get("appName").equals("Customized Utility Billing System: AB")
+//                            ||
+//                            obj.get("appName").equals("Small Exchange Carrier Access Billing System: AB")
+//
+//
+//                    ) {
+//                        status = obj.getString("appStatus");
+//                    }
+//
+//
+//                }
+//
+//
+//            }
+//
+//        } else if (applicationName.equals("CRIS3BC")) {
+//            if (executedList.contains("CRIS3: Customer Records Information System 3 / Service Order System: BC")
+//                    ||
+//                    executedList.contains("Due Date System: BC")
+//                    ||
+//                    executedList.contains("Consolidated Billing Number: BC")
+//                    ||
+//                    executedList.contains("Accurate Business Customer Data")
+//                    ||
+//                    executedList.contains("Bulk Service Order")
+//                    ||
+//                    executedList.contains("Customer Activity Processing System: BC")
+//                    ||
+//                    executedList.contains("Customized Utility Billing System: BC")
+//                    ||
+//                    executedList.contains("E911: Billing")
+//                    ||
+//                    executedList.contains("Major Accounts Summary Billing")
+//                    ||
+//                    executedList.contains("Marketing Cross Reference")
+//                    ||
+//                    executedList.contains("National Carrier Access Management System")
+//                    ||
+//                    executedList.contains("Printer Utility BMP System II: BC")
+//                    ||
+//                    executedList.contains("Trouble Reporting Information Handling System")
+//
+//
+//            ) {
+//                for (JSONObject obj : GoogleSheetData.newList) {
+//                    if (obj.get("appName").equals("CRIS3: Customer Records Information System 3 / Service Order System: BC")
+//                            ||
+//                            obj.get("appName").equals("Due Date System: BC")
+//                            ||
+//                            obj.get("appName").equals("Consolidated Billing Number: BC")
+//                            ||
+//                            obj.get("appName").equals("Accurate Business Customer Data")
+//                            ||
+//                            obj.get("appName").equals("Bulk Service Order")
+//                            ||
+//                            obj.get("appName").equals("Customer Activity Processing System: BC")
+//                            ||
+//                            obj.get("appName").equals("Customized Utility Billing System: BC")
+//                            ||
+//                            obj.get("appName").equals("E911: Billing")
+//                            ||
+//                            obj.get("appName").equals("Major Accounts Summary Billing")
+//                            ||
+//                            obj.get("appName").equals("Marketing Cross Reference")
+//                            ||
+//                            obj.get("appName").equals("National Carrier Access Management System")
+//                            ||
+//                            obj.get("appName").equals("Printer Utility BMP System II: BC")
+//                            ||
+//                            obj.get("appName").equals("Trouble Reporting Information Handling System")
+//
+//                    ) {
+//                        status = obj.getString("appStatus");
+//
+//                    }
+//
+//
+//                }
+//
+//
+//            }
+//
+//        } else if (applicationName.equals("CAMSAB")) {
+//            if (executedList.contains("CAMS: AB")
+//                    ||
+//                    executedList.contains("Triad: AB")
+//
+//
+//            ) {
+//                for (JSONObject obj : GoogleSheetData.newList) {
+//                    if (obj.get("appName").equals("CAMS: AB")
+//                            ||
+//                            obj.get("appName").equals("Triad: AB")
+//
+//
+//                    ) {
+//                        status = obj.getString("appStatus");
+//
+//                    }
+//
+//
+//                }
+//
+//
+//            }
+//
+//        } else if (applicationName.equals("CAMSBC")) {
+//            if (executedList.contains("CAMS: BC")
+//                    ||
+//                    executedList.contains("Triad: BC")
+//
+//
+//            ) {
+//                for (JSONObject obj : GoogleSheetData.newList) {
+//                    if (obj.get("appName").equals("CAMS: BC")
+//                            ||
+//                            obj.get("appName").equals("Triad: BC")
+//
+//                    ) {
+//                        status = obj.getString("appStatus");
+//
+//                    }
+//
+//                }
+//
+//
+//            }
+//
+//        }
 
         return status;
 

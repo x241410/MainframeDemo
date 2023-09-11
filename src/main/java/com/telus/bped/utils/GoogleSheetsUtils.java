@@ -10,6 +10,7 @@ import com.test.utils.SystemProperties;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.Map;
+import com.telus.bped.utils.*;
 
 public class GoogleSheetsUtils {
 
@@ -408,6 +409,23 @@ public class GoogleSheetsUtils {
         return new JSONArray(apiOperationRead.get(responseValueStr).toString());
 
     }
+
+    public JSONArray readMainframeApplicationsSheet(String token) {
+
+        System.setProperty(karateTokenStr, token);
+        System.setProperty(karateSheetIdStr, getSheetId());
+        System.setProperty(karateSheetNameStr, "MainframeApps");
+
+        /**
+         * Call Read Googlesheet API
+         */
+
+        FeatureResult result1 = APIJava.runKarateFeatureReturnResultSet(tempEnvVar, readGSheetClassPathStr);
+        Map<String, Object> apiOperationRead = result1.getResultAsPrimitiveMap();
+        return new JSONArray(apiOperationRead.get(responseValueStr).toString());
+
+    }
+
     public JSONArray readManualExecutionGoogleSheet(String token) {
 
         System.setProperty(karateTokenStr, token);
