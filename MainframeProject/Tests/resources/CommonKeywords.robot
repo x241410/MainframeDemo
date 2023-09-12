@@ -15,16 +15,14 @@ Login Into The Mainframe Region AB and verify
     Login into the AB Region
 
 Connect to AB Region
-    Log Reporting    Step1- Login into the TPX AB in ${REGION} region
-    Capture Screen    LAUNCH.jpg             
+    Log Reporting    Step1- Login into the TPX AB in ${REGION} region            
     Verify actual and expected string    19    013    41    ${WELCOME_TITLE}
     Log Reporting    Region page displayed successfully
     Connect to region    ${REGION}
-
+    
 Login into the AB Region
     Login Into Region    ${REG_USERNAME}    ${REG_PASSWORD}    17    015    034
     Write Text and Enter    ${SELECT_NEWS}
-    Capture Screen    LOGIN.jpg
 
 ##Keywords of Application login
 
@@ -42,24 +40,22 @@ Login Into the CRIS SS Application and verify
     
 Enter CRIS3 Application name and verify
     Log Reporting    Step2- Login into CRIS3 Application
-    Write Text and Enter    /for cris3
+    Enter Application Name    /for cris3
     Verify actual and expected string    17    031    35    ${CRIS_APP_LOGINPAGE}
     Log Reporting    CRIS3 login page displayed successfully
-    Capture Screen        LOGINPAGE.jpg
 	
 Enter CRIS Application name and verify 
     Log Reporting    Step2- Login into CRIS Application
-    Write Text and Enter    /for cris
+    Enter Application Name   /for cris
     Verify actual and expected string    17    031    35    ${CRIS_APP_LOGINPAGE}
     Log Reporting    CRIS login page displayed successfully
-    Capture Screen        LOGINPAGE.jpg
 
 Enter CRIS SS Application name and verify
     Log Reporting    Step2- Login into CRIS SS Application
-    Write Text and Enter    /for cris ss
+    Enter Application Name    /for cris ss
     Verify actual and expected string    17    031    35    ${CRIS_APP_LOGINPAGE}
     Log Reporting    CRIS SS login page displayed successfully
-    Capture Screen        LOGINPAGE.jpg
+    Capture Screen        APPLICATION_LOGIN_PAGE.jpg
     
 Login into the Application with valid credentials
     Login Into Application    ${APP_USERNAME}    ${APP_PASSWORD}
@@ -100,7 +96,6 @@ Login Into The Mainframe Region BC and verify
 
 Connect to BC Region
     Log Reporting    Step1- Login into the TPX BC in ${REGION} region
-    Capture Screen        LAUNCH.jpg
     Verify actual and expected string    04    002    20    ${REGION_TITLE}
     Log Reporting    Region page displayed successfully
     Connect to region    ${REGION}
@@ -112,7 +107,6 @@ Login into the BC Region
     Login Into Region    ${REG_USERNAME}    ${REG_PASSWORD}    03    028    053
     Verify actual and expected string    20    020    22    ${LOGIN_ALERT}
     Log Reporting    Region logged in successfully
-    Capture Screen        REGION_LOGIN.jpg
     ${PRESS_ESC}=    evaluate    genericUtils.clearScreen()    modules=genericUtils
     Sleep    3s
 
@@ -156,7 +150,7 @@ Open CAMS Collection Screen to verify Health Check
     Send Enter
     Verify actual and expected string    01    031    17    ${CAMS_COLLECTION_SCREEN_PAGE}
     Log Reporting    Collection Screen displayed successfully.
-    Capture Screen    SS4_CAMSAB_PAGE.jpg
+    Capture Screen    SCREEN.jpg
 
 Verify BSC Screen
     #1. Verify screen name
@@ -179,17 +173,13 @@ Verify TN Number
 Logout CRIS Application
     Send PF    1
     Sleep    2s 
+    Capture Screen    LOGOUT.jpg
 
 Logout CAMS Application
     Send PF    3
     Send PF    1
     Sleep    2s 
-
-Capture Screen
-    [Arguments]    ${ssname}
-    ${suite_source}    Get Variable Value    ${SUITE SOURCE}
-    ${file_name}    Evaluate    os.path.basename($suite_source).split('.')[0]
-    Screenshot.Take Screenshot    ${file_name}_${ssname}
+    Capture Screen    LOGOUT.jpg
 
 Suite Setup for TPX_AB
     Open Connection    ${TPX_AB}
@@ -230,6 +220,7 @@ Logout from SOECS application
     Log Reporting    Step3- Perform logout from SOECS application.
     Write Text and Enter    3
     Capture Screen        LOGOUT_PAGE.jpg
+    Sleep    2s
 
 Suite Setup for SOECS
     Open Connection    ${HOST_soecs}

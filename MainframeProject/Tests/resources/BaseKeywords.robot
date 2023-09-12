@@ -8,19 +8,22 @@ Library           Screenshot
 *** Keywords ***
 Connect to region
     [Arguments]    ${region}
-    Write Bare    ${region}
+    Write Bare    ${region}  #imsc
+    Capture Screen    REGION.jpg      
     Send Enter
 
 Login Into Region
     [Arguments]    ${username}    ${password}    ${ypos}    ${xpos}    ${pxpos}
     Write Bare In Position    ${username}    ${ypos}    ${xpos}
     Write Bare In Position    ${password}    ${ypos}    ${pxpos}
+    Capture Screen    LOGIN_REGION.jpg
     Send Enter
 
 Login Into Application
     [Arguments]    ${username}    ${password}
     Write Bare    ${username}
     Write Bare    ${password}
+    Capture Screen    APPLICATION_LOGIN.jpg
     Send Enter
 
 Write Text
@@ -89,3 +92,15 @@ Verify actual and expected string without log
     [Arguments]    ${ypos}    ${xpos}    ${length}    ${expectedStr}
     ${actualStr}    Read    ${ypos}    ${xpos}    ${length}
     Should Be Equal As Strings    ${actualStr}    ${expectedStr}
+
+Capture Screen
+    [Arguments]    ${ssname}
+    ${suite_source}    Get Variable Value    ${SUITE SOURCE}
+    ${file_name}    Evaluate    os.path.basename($suite_source).split('.')[0]
+    Screenshot.Take Screenshot    ${file_name}_${ssname}
+
+Enter Application Name
+   [Arguments]    ${text}
+    Write Bare    ${text}
+    Capture Screen    APPLICATION_TO_LOGIN.jpg
+    Send Enter
