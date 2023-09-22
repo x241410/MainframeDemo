@@ -1,6 +1,6 @@
-import random,string,time,datetime,pyautogui
-
-pyautogui.FAILSAFE = False
+import random,string,time,datetime,keyboard
+from pynput.keyboard import Key, Controller
+keyboard = Controller()
 
 def billingName():
     letters = string.ascii_lowercase
@@ -22,5 +22,8 @@ def dueDate():
     return str(Due_Date)
 
 def clearScreen():
-    pyautogui.hotkey('alt', 'c')
+    keyboard.press(Key.alt_l)
+    keyboard.press('c')
+    keyboard.release('c')
+    keyboard.release(Key.alt_l)
     return
