@@ -1,4 +1,4 @@
-import random,string,time,datetime,keyboard
+import random,string,time,datetime,pyautogui
 
 def billingName():
     letters = string.ascii_lowercase
@@ -20,5 +20,5 @@ def dueDate():
     return str(Due_Date)
 
 def clearScreen():
-    keyboard.press('alt+c')
+    pyautogui.hotkey('alt', 'c')
     return
