@@ -1,5 +1,7 @@
 import random,string,time,datetime,pyautogui
 
+pyautogui.FAILSAFE = False
+
 def billingName():
     letters = string.ascii_lowercase
     BillingName = "Test,"+''.join((random.choice(letters) for i in range(5)))+"."
