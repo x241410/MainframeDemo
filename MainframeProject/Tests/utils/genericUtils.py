@@ -20,7 +20,5 @@ def dueDate():
     return str(Due_Date)
 
 def clearScreen():
-    keyboard.press_and_release('esc')
-    keyboard.write("clear")
-    keyboard.press_and_release('enter')
+    keyboard.press('alt+c')
     return

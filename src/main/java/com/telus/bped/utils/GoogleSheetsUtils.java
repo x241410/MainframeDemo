@@ -54,7 +54,7 @@ public class GoogleSheetsUtils {
                     "classpath:services/getAuthToken.feature");
             apiOperation = result.getResultAsPrimitiveMap();
             accessToken = apiOperation.get("access_token").toString();
-            Reporting.logReporter(Status.INFO, "Access Token Generated Successfully !");
+            //Reporting.logReporter(Status.INFO, "Access Token Generated Successfully !");
 
         return accessToken;
     }
