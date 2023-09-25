@@ -107,7 +107,8 @@ Login into the BC Region
     Login Into Region    ${REG_USERNAME}    ${REG_PASSWORD}    03    028    053
     Verify actual and expected string    20    020    22    ${LOGIN_ALERT}
     Log Reporting    Region logged in successfully
-    ${PRESS_ESC}=    evaluate    genericUtils.clearScreen()    modules=genericUtils
+    Execute Command    clear
+    #${PRESS_ESC}=    evaluate    genericUtils.clearScreen()    modules=genericUtils
     Sleep    3s
 
 ##Keywords for BC BSC verification
