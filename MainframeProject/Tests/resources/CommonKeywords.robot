@@ -107,8 +107,8 @@ Login into the BC Region
     Login Into Region    ${REG_USERNAME}    ${REG_PASSWORD}    03    028    053
     Verify actual and expected string    20    020    22    ${LOGIN_ALERT}
     Log Reporting    Region logged in successfully
+    Sleep    3s
     Execute Command    clear
-    #${PRESS_ESC}=    evaluate    genericUtils.clearScreen()    modules=genericUtils
     Sleep    3s
 
 ##Keywords for BC BSC verification
@@ -207,13 +207,13 @@ Login SOECS Application
 Login into SOECS application
     Log Reporting    Step1- Login into the SOECS Application with valid credentials.
     Capture Screen    LAUNCH_PAGE.jpg
-    Sleep    2s
+    Sleep    5s
     Verify Page Contain Text    ${SOECS_LOGINPAGE}
     Login SOECS Application
     
  Verify SOECS homepage is displayed
     Log Reporting    Step2- Verify SOECS Application homepage.
-    Sleep    2s
+    Sleep    5s
     Verify Page Contain Text    ${SOECS_HOMEPAGE}
     Capture Screen    HOMEPAGE.jpg
 

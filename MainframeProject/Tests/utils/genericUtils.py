@@ -1,6 +1,4 @@
 import random,string,time,datetime,keyboard
-from pynput.keyboard import Key, Controller
-keyboard = Controller()
 
 def billingName():
     letters = string.ascii_lowercase
@@ -20,15 +18,3 @@ def dueDate():
     NextDay_Date = datetime.datetime.today() + datetime.timedelta(days=1)
     Due_Date= NextDay_Date.strftime ('%Y%m%d')
     return str(Due_Date)
-
-def clearScreen():
-    time.sleep(1)
-    keyboard.press(Key.alt_l)
-    time.sleep(1)
-    keyboard.press('c')
-    time.sleep(1)
-    keyboard.release('c')
-    time.sleep(1)
-    keyboard.release(Key.alt_l)
-    time.sleep(1)
-    return
