@@ -22,8 +22,13 @@ def dueDate():
     return str(Due_Date)
 
 def clearScreen():
+    time.sleep(1)
     keyboard.press(Key.alt_l)
+    time.sleep(1)
     keyboard.press('c')
+    time.sleep(1)
     keyboard.release('c')
+    time.sleep(1)
     keyboard.release(Key.alt_l)
+    time.sleep(1)
     return
