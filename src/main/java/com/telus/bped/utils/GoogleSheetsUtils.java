@@ -192,7 +192,7 @@ public class GoogleSheetsUtils {
 				 * for (Object a : dataObject) { dataObject1.put(a); }
 				 */
                 
-                for (int l=0; l< dataObject.length(); l++) {
+                for (int l=0; l< 8; l++) {
                 	 dataObject1.put(dataObject.get(l));
                 }
 
