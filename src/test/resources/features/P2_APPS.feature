@@ -135,10 +135,10 @@ Feature: BPED Apps HealthCheck
   #Mainframe Apps
   #================
   
-  @Mainframe @P2-APPS-MF @DDSAB @test
+  @Mainframe @P2-APPS-MF @DDSAB
   Scenario: Due Date System: AB
     Given Test "CRIS3AB" Applications
     
-  @Mainframe @P2-APPS-MF @DDSBC @test
+  @Mainframe @P2-APPS-MF @DDSBC
   Scenario: Due Date System: BC
     Given Test "CRIS3BC" Applications

@@ -79,35 +79,35 @@ Feature: BPED Apps HealthCheck
   #Mainframe Apps
   #================
   
-  @Mainframe @ALLAPPS @CAMSAB @P3-APPS-MF
+  @Mainframe @CAMSAB @P3-APPS-MF
   Scenario: CAMS: AB
     Given Test "CAMSAB" Applications
     
-  @Mainframe @ALLAPPS @CAMSBC @P3-APPS-MF
+  @Mainframe @CAMSBC @P3-APPS-MF
   Scenario: CAMS: BC
     Given Test "CAMSBC" Applications
     
-  @Mainframe @ALLAPPS  @TRIADAB @P3-APPS-MF
+  @Mainframe  @TRIADAB @P3-APPS-MF
   Scenario: Triad: AB
     Given Test "CAMSAB" Applications
 
-	@Mainframe @ALLAPPS @TRIADBC @P3-APPS-MF
+	@Mainframe @TRIADBC @P3-APPS-MF
   Scenario: Triad: BC
     Given Test "CAMSBC" Applications
     
-	@Mainframe @ALLAPPS @P3-APPS-MF @PAPSAB
+	@Mainframe @P3-APPS-MF @PAPSAB
   Scenario: PreAuthorized Payment System: AB
     Given Test "PAPSAB" Applications
     
-  @Mainframe @ALLAPPS @P3-APPS-MF @FPOAB
+  @Mainframe @P3-APPS-MF @FPOAB
   Scenario: Flexible Payment Options: AB
     Given Test "FPOAB" Applications
     
-  @Mainframe @ALLAPPS @P3-APPS @PAPSBC
+  @Mainframe @P3-APPS-MF @PAPSBC
   Scenario: PreAuthorized Payment System: BC
     Given Test "PAPSBC" Applications
     
-  @Mainframe @ALLAPPS @P3-APPS-MF @FPOBC
+  @Mainframe @P3-APPS-MF @FPOBC
   Scenario: Flexible Payment Options: BC
     Given Test "FPOBC" Applications
  ##AB
@@ -115,88 +115,70 @@ Feature: BPED Apps HealthCheck
   Scenario: Customer Activity Processing System: AB
     Given Test "CRISAB" Applications
 		Given Test "CRIS3AB" Applications
-		Given Test "CAMSAB" Applications
 		
 	@Mainframe	@P3-APPS-MF @CUBSAB
   Scenario: Customized Utility Billing System: AB
     Given Test "CRISAB" Applications
 		Given Test "CRIS3AB" Applications
-		Given Test "CAMSAB" Applications
 		
 	@Mainframe	@P3-APPS-MF @PUBSAB
   Scenario: Printer Utility BMP System: AB
     Given Test "CRISAB" Applications
 		Given Test "CRIS3AB" Applications
-		Given Test "CAMSAB" Applications
 		
 	@Mainframe	@P3-APPS-MF @SECABSAB
   Scenario: Small Exchange Carrier Access Billing System: AB
     Given Test "CRISAB" Applications
 		Given Test "CRIS3AB" Applications
-		Given Test "CAMSAB" Applications
-		
 		
 		##BC
 	@Mainframe	@P3-APPS-MF @ABCDBC
   Scenario: Accurate Business Customer Data
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications
 
 	@Mainframe	@P3-APPS-MF @BSOBC
   Scenario: Bulk Service Order
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications
 		
 	@Mainframe	@P3-APPS-MF @CAPSBC
   Scenario: Customer Activity Processing System: BC
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications
 		
 		
 	@Mainframe	@P3-APPS-MF @CUBSBC
   Scenario: Customized Utility Billing System: BC
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications
 		
 	@Mainframe	@P3-APPS-MF @EBBC
   Scenario: E911: Billing
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications
-		
 		
 	@Mainframe	@P3-APPS-MF	@MASBBC
   Scenario: Major Accounts Summary Billing
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications
-		
 		
 	@Mainframe	@P3-APPS-MF	@MCRBC
   Scenario: Marketing Cross Reference
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications
-		
 		
 	@Mainframe	@P3-APPS-MF @NCAMSBC
   Scenario: National Carrier Access Management System
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications
 		
 	@Mainframe	@P3-APPS-MF @PUBSIIBC
   Scenario: Printer Utility BMP System II: BC
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications
 		
 	@Mainframe	@P3-APPS-MF @TRIHSBC
   Scenario: Trouble Reporting Information Handling System
     Given Test "CRISBC" Applications
 		Given Test "CRIS3BC" Applications
-		Given Test "CAMSBC" Applications

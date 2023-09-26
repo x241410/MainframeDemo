@@ -124,32 +124,32 @@ Feature: BPED Apps HealthCheck
   #Mainframe Apps
   #================
   
-  @Mainframe @ALLAPPS @P1-APPS-MF @CRIS1AB
+  @Mainframe @P1-APPS-MF @CRIS1AB
   Scenario: Customer Records Information System 1 / Inquiry: AB
     Given Test "CRISAB" Applications
     
- 	@Mainframe @ALLAPPS @CRIS3AB @P1-APPS-MF
+ 	@Mainframe @CRIS3AB @P1-APPS-MF
   Scenario: CRIS3: Customer Records Information System 3 / Service Order System: AB
     Given Test "CRIS3AB" Applications
 
-  @Mainframe @ALLAPPS @SOECS @P1-APPS-MF
+  @Mainframe @SOECS @P1-APPS-MF
   Scenario: Service Order Entry and Control System
     Given Test "SOECS" Applications
     
-  @Mainframe @ALLAPPS @CRIS1BC @P1-APPS-MF
+  @Mainframe @CRIS1BC @P1-APPS-MF
   Scenario: Customer Records Information System 1 / Inquiry: BC
     Given Test "CRISBC" Applications
 
-	@Mainframe @ALLAPPS @CRIS3BC @P1-APPS-MF
+	@Mainframe @CRIS3BC @P1-APPS-MF
   Scenario: CRIS3: Customer Records Information System 3 / Service Order System: BC
     Given Test "CRIS3BC" Applications
     
-  @Mainframe @ALLAPPS @CRISSSBC @P1-APPS-MF
+  @Mainframe @CRISSSBC @P1-APPS-MF
   Scenario: CRIS SS: Customer Records Information System Special Services
     Given Test "CRISSSBC" Applications
     
 	#Additional TC's
-	@Mainframe @P1-APPS-MF @CRIS2AB @test
+	@Mainframe @P1-APPS-MF @CRIS2AB
   Scenario: Customer Records Information System 2 / Update: AB
     Given Test "CRISAB" Applications
     
@@ -157,11 +157,11 @@ Feature: BPED Apps HealthCheck
   Scenario: Customer Data Base System: AB
     Given Test "CRISAB" Applications
     
-  @Mainframe @CRISBC @P1-APPS-MF	@CRIS2BC
+  @Mainframe @P1-APPS-MF	@CRIS2BC
   Scenario: Customer Records Information System 2 / Update: BC
     Given Test "CRISBC" Applications
 
-	@Mainframe @CRIS3BC @P1-APPS-MF	@CDBSBC
+	@Mainframe @P1-APPS-MF	@CDBSBC
   Scenario: Customer Data Base System: BC
     Given Test "CRISBC" Applications
 
