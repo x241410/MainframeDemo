@@ -1246,15 +1246,15 @@ public class StepDefinitions extends BaseTest {
                     + "Tests" + File.separator + applicationName + ".robot";
 
             //String buildUrl = System.getenv("BUILD_URL");
-            String buildUrl = System.getenv("BUILD_URL");
-            Reporting.logReporter(Status.INFO, buildUrl);
-            String wsUrl = buildUrl.split("BPED_Mainframe_Test")[0].concat("BPED_Mainframe_Test/ws/");
+//            String buildUrl = System.getenv("BUILD_URL");
+//            Reporting.logReporter(Status.INFO, buildUrl);
+//            String wsUrl = buildUrl.split("BPED_Mainframe_Test")[0].concat("BPED_Mainframe_Test/ws/");
             String reportFilePath = SystemProperties.getStringValue("mainframe.build.report.artifact.path")
                     + applicationName + "_Report" + ".html";
             String logFilePath = SystemProperties.getStringValue("mainframe.build.report.artifact.path") + applicationName
                     + "_Log" + ".html";
-            String reportFileArtifectPath = wsUrl + reportFilePath;
-            String logFileArtifectPath = wsUrl + logFilePath;
+            String reportFileArtifectPath = getBuildUrl() + reportFilePath;
+            String logFileArtifectPath = getBuildUrl() + logFilePath;
 
             try {
                 String command = MainframeUtils.generateCommand(getEnviornmentVariablesForApplication(applicationName),
@@ -1370,5 +1370,15 @@ public class StepDefinitions extends BaseTest {
         return status;
 
     }
-
+    
+    public String getBuildUrl() {
+    	
+    	String buildUrl = System.getenv("BUILD_URL");
+    	String jobSplit="TestAutomation/job/";
+        String[] baseUrl = buildUrl.split(jobSplit);
+        String[] jobName = baseUrl[1].split("/");
+        String wsUrl = baseUrl[0].concat(jobSplit).concat(jobName[0]).concat("/ws/");
+    	return wsUrl;
+    	
+    }
 }
